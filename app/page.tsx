@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { Navigation } from "@/components/navigation"
+import { WaterlooSeal } from "@/components/waterloo-seal"
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
@@ -78,9 +79,12 @@ export default function Home() {
                 </p>
 
                 <div className="pt-4 space-y-3 text-sm text-muted-foreground">
-                <p className="font-semibold text-foreground mb-2">Why I Stand Out:</p>
+                  <p className="font-semibold text-foreground mb-2">Why I Stand Out:</p>
                   <div className="space-y-2">
-                    <p>Received Waterloo's Highest Co-op Student Award</p>
+                    <p className="flex items-center gap-2">
+                      <WaterlooSeal />
+                      Received Waterloo's Highest Co-op Student Award
+                    </p>
                     <p>
                       At Rootly (YC-backed), ship production code in week one and now build enterprise tools with senior
                       devs
