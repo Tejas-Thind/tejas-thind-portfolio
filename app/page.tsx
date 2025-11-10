@@ -77,15 +77,8 @@ export default function Home() {
                   <span className="text-foreground"> product</span>.
                 </p>
 
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Looking for Summer 2026 Internships
-                  </div>
-                </div>
-
                 <div className="pt-4 space-y-3 text-sm text-muted-foreground">
-                <p className="font-semibold text-foreground mb-2">Why I Stand Out</p>
+                <p className="font-semibold text-foreground mb-2">Why I Stand Out:</p>
                   <div className="space-y-2">
                     <p>Received Waterloo's Highest Co-op Student Award</p>
                     <p>
