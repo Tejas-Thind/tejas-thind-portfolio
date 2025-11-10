@@ -61,46 +61,52 @@ export default function Home() {
           ref={(el) => (sectionsRef.current[0] = el)}
           className="min-h-screen flex items-center opacity-0"
         >
-          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
-            <div className="lg:col-span-3 space-y-6 sm:space-y-8">
-              <div className="space-y-3 sm:space-y-2">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-                  Tejas <span className="text-muted-foreground">Thind</span>
-                </h1>
+          <div className="w-full space-y-12 sm:space-y-16">
+            {/* CURRENTLY section at top */}
+            <div className="flex justify-between items-end">
+              <div className="lg:col-span-3 space-y-6 sm:space-y-8">
+                <div className="space-y-3 sm:space-y-2">
+                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
+                    Tejas <span className="text-muted-foreground">Thind</span>
+                  </h1>
+                </div>
+
+                <div className="space-y-6 max-w-md">
+                  <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+                    Management Engineering @ UWaterloo. Building at the intersection of
+                    <span className="text-foreground"> software</span>,<span className="text-foreground"> data</span>,
+                    and
+                    <span className="text-foreground"> product</span>.
+                  </p>
+                </div>
               </div>
 
-              <div className="space-y-6 max-w-md">
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Management Engineering @ UWaterloo. Building at the intersection of
-                  <span className="text-foreground"> software</span>,<span className="text-foreground"> data</span>, and
-                  <span className="text-foreground"> product</span>.
-                </p>
-
-                <div className="pt-4 space-y-3 text-sm text-muted-foreground">
-                  <p className="font-semibold text-foreground mb-2">Why I Stand Out:</p>
+              {/* CURRENTLY moved to top right, aligned with bio bottom */}
+              <div className="hidden lg:flex flex-col justify-start space-y-4 -mt-1">
+                <div className="space-y-4 text-right">
+                  <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
                   <div className="space-y-2">
-                    <p>Received Waterloo's Highest Co-op Student Award</p>
-                    <p>
-                      At Rootly (YC-backed), ship production code in week one and now build enterprise tools with senior
-                      devs
-                    </p>
-                    <p>
-                      Share my tech journey online on Instagram, which opens opportunities like becoming a Growth Fellow
-                      at Boardy
-                    </p>
+                    <div className="text-foreground">Software Engineer Intern</div>
+                    <div className="text-muted-foreground">@ Rootly AI (YC S21)</div>
+                    <div className="text-xs text-muted-foreground">Sept 2025 — Present</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8">
-              <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
-                <div className="space-y-2">
-                  <div className="text-foreground">Software Engineer Intern</div>
-                  <div className="text-muted-foreground">@ Rootly AI (YC S21)</div>
-                  <div className="text-xs text-muted-foreground">Sept 2025 — Present</div>
-                </div>
+            {/* Why I Stand Out section with full width */}
+            <div className="space-y-6">
+              <p className="font-semibold text-foreground">Why I Stand Out:</p>
+              <div className="space-y-3 text-sm text-muted-foreground max-w-3xl">
+                <p>Received Waterloo's Highest Co-op Student Award</p>
+                <p>
+                  At Rootly (YC-backed), ship production code in week one and now build enterprise tools with senior
+                  devs
+                </p>
+                <p>
+                  Share my tech journey online on Instagram, which opens opportunities like becoming a Growth Fellow at
+                  Boardy
+                </p>
               </div>
             </div>
           </div>
