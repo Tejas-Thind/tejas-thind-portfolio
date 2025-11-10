@@ -83,6 +83,21 @@ export default function Home() {
                     Looking for Summer 2026 Internships
                   </div>
                 </div>
+
+                <div className="pt-4 space-y-3 text-sm text-muted-foreground">
+                <p className="font-semibold text-foreground mb-2">Why I Stand Out</p>
+                  <div className="space-y-2">
+                    <p>Received Waterloo's Highest Co-op Student Award</p>
+                    <p>
+                      At Rootly (YC-backed), ship production code in week one and now build enterprise tools with senior
+                      devs
+                    </p>
+                    <p>
+                      Share my tech journey online on Instagram, which opens opportunities like becoming a Growth Fellow
+                      at Boardy
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -308,8 +323,7 @@ export default function Home() {
         <footer className="py-12 sm:py-16 border-t border-border">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
-              <div className="text-sm text-muted-foreground">© 2025 Felix Macaspac. All rights reserved.</div>
-              <div className="text-xs text-muted-foreground">Built with v0.dev by Felix Macaspac</div>
+              <div className="text-sm text-muted-foreground">Tejas Thind</div>
             </div>
 
             <div className="flex items-center gap-4">
