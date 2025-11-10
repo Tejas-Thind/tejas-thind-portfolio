@@ -2,6 +2,8 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { Navigation } from "@/components/navigation"
+import { WaterlooLogo, RootlyLogo, BoardyLogo } from "@/components/logos"
+import { AnimatedLink } from "@/components/animated-link"
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
@@ -63,7 +65,7 @@ export default function Home() {
         >
           <div className="w-full space-y-12 sm:space-y-16">
             {/* CURRENTLY section at top */}
-            <div className="flex justify-between items-end">
+            <div className="flex justify-between items-baseline">
               <div className="lg:col-span-3 space-y-6 sm:space-y-8">
                 <div className="space-y-3 sm:space-y-2">
                   <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
@@ -73,7 +75,16 @@ export default function Home() {
 
                 <div className="space-y-6 max-w-md">
                   <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                    Management Engineering @ UWaterloo. Building at the intersection of
+                    Management Engineering @{" "}
+                    <AnimatedLink
+                      href="https://uwaterloo.ca/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground"
+                    >
+                      UWaterloo
+                    </AnimatedLink>
+                    . Building at the intersection of
                     <span className="text-foreground"> software</span>,<span className="text-foreground"> data</span>,
                     and
                     <span className="text-foreground"> product</span>.
@@ -87,7 +98,18 @@ export default function Home() {
                   <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
                   <div className="space-y-2">
                     <div className="text-foreground">Software Engineer Intern</div>
-                    <div className="text-muted-foreground">@ Rootly AI (YC S21)</div>
+                    <div className="text-muted-foreground">
+                      @{" "}
+                      <AnimatedLink
+                        href="https://rootly.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground"
+                      >
+                        Rootly AI
+                      </AnimatedLink>{" "}
+                      (YC S21)
+                    </div>
                     <div className="text-xs text-muted-foreground">Sept 2025 — Present</div>
                   </div>
                 </div>
@@ -97,15 +119,55 @@ export default function Home() {
             {/* Why I Stand Out section with full width */}
             <div className="space-y-6">
               <p className="font-semibold text-foreground">Why I Stand Out:</p>
-              <div className="space-y-3 text-sm text-muted-foreground max-w-3xl">
-                <p>Received Waterloo's Highest Co-op Student Award</p>
+              <div className="space-y-3 text-base text-muted-foreground max-w-3xl">
                 <p>
-                  At Rootly (YC-backed), ship production code in week one and now build enterprise tools with senior
-                  devs
+                  Received <WaterlooLogo />{" "}
+                  <AnimatedLink
+                    href="https://uwaterloo.ca/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground"
+                  >
+                    UWaterloo's
+                  </AnimatedLink>{" "}
+                  highest Co-op student
+                  <span className="text-foreground"> award</span>
                 </p>
                 <p>
-                  Share my tech journey online on Instagram, which opens opportunities like becoming a Growth Fellow at
-                  Boardy
+                  At <RootlyLogo />{" "}
+                  <AnimatedLink
+                    href="https://rootly.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground"
+                  >
+                    Rootly AI
+                  </AnimatedLink>{" "}
+                  (YC-backed), shipped
+                  <span className="text-foreground"> production code</span> in week one and now building
+                  <span className="text-foreground"> enterprise tools</span> with senior devs
+                </p>
+                <p>
+                  Sharing my tech journey online on{" "}
+                  <AnimatedLink
+                    href="https://www.instagram.com/tejastnd/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground"
+                  >
+                    Instagram
+                  </AnimatedLink>
+                  , which opens opportunities like becoming a <span className="text-foreground">Growth Fellow</span> at{" "}
+                  <BoardyLogo />{" "}
+                  <AnimatedLink
+                    href="https://www.boardy.ai/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground"
+                  >
+                    Boardy
+                  </AnimatedLink>
+                  , an AI Super Connector
                 </p>
               </div>
             </div>
