@@ -47,7 +47,7 @@ export default function Home() {
           {["intro", "work", "thoughts", "connect"].map((section) => (
             <button
               key={section}
-              onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth", block: "start" })}
               className={`w-2 h-8 rounded-full transition-all duration-500 ${
                 activeSection === section ? "bg-foreground" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
               }`}
