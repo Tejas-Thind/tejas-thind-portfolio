@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import { Navigation } from "@/components/navigation"
 import { WaterlooLogo, RootlyLogo, BoardyLogo } from "@/components/logos"
 import { AnimatedLink } from "@/components/animated-link"
 
@@ -40,20 +39,23 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-      <Navigation />
-
-      <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-        <div className="flex flex-col gap-4">
-          {["intro", "work", "thoughts", "connect"].map((section) => (
-            <button
-              key={section}
-              onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth", block: "start" })}
-              className={`w-2 h-8 rounded-full transition-all duration-500 ${
-                activeSection === section ? "bg-foreground" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-              }`}
-              aria-label={`Navigate to ${section}`}
-            />
-          ))}
+      <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
+        <div className="flex gap-8 text-sm">
+          <Link href="/" className="text-foreground transition-transform duration-300 hover:-translate-y-1">
+            About
+          </Link>
+          <Link
+            href="/experience"
+            className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+          >
+            Experience
+          </Link>
+          <Link
+            href="/projects"
+            className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+          >
+            Projects
+          </Link>
         </div>
       </nav>
 
@@ -64,56 +66,23 @@ export default function Home() {
           className="min-h-screen flex items-center opacity-0"
         >
           <div className="w-full space-y-12 sm:space-y-16">
-            {/* CURRENTLY section at top */}
-            <div className="flex justify-between items-baseline">
-              <div className="lg:col-span-3 space-y-6 sm:space-y-8">
-                <div className="space-y-3 sm:space-y-2">
-                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
-                    Tejas <span className="text-muted-foreground">Thind</span>
-                  </h1>
-                </div>
+            <div className="space-y-6 sm:space-y-8">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
+                Tejas <span className="text-muted-foreground">Thind</span>
+              </h1>
 
-                <div className="space-y-6 max-w-md">
-                  <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                    Management Engineering @{" "}
-                    <AnimatedLink
-                      href="https://uwaterloo.ca/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground"
-                    >
-                      UWaterloo
-                    </AnimatedLink>
-                    . Building at the intersection of
-                    <span className="text-foreground"> software</span>,<span className="text-foreground"> data</span>,
-                    and
-                    <span className="text-foreground"> product</span>.
-                  </p>
-                </div>
-              </div>
-
-              {/* CURRENTLY moved to top right, aligned with bio bottom */}
-              <div className="hidden lg:flex flex-col justify-start space-y-4 -mt-1">
-                <div className="space-y-4 text-right">
-                  <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
-                  <div className="space-y-2">
-                    <div className="text-foreground">Software Engineer Intern</div>
-                    <div className="text-muted-foreground">
-                      @{" "}
-                      <AnimatedLink
-                        href="https://rootly.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground"
-                      >
-                        Rootly AI
-                      </AnimatedLink>{" "}
-                      (YC S21)
-                    </div>
-                    <div className="text-xs text-muted-foreground">Sept 2025 — Present</div>
-                  </div>
-                </div>
-              </div>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-md">
+                Management Engineering @{" "}
+                <AnimatedLink
+                  href="https://uwaterloo.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground"
+                >
+                  UWaterloo
+                </AnimatedLink>
+                .
+              </p>
             </div>
 
             {/* Why I Stand Out section with full width */}
@@ -170,6 +139,12 @@ export default function Home() {
                   , an AI Super Connector
                 </p>
               </div>
+            </div>
+
+            <div className="space-y-6 pt-12">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                You can reach out to me at <span className="text-foreground">t3thind[at]uwaterloo[dot]ca</span>
+              </p>
             </div>
           </div>
         </header>
@@ -413,22 +388,6 @@ export default function Home() {
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                   </svg>
                 )}
-              </button>
-
-              <button className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300">
-                <svg
-                  className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  />
-                </svg>
               </button>
             </div>
           </div>
