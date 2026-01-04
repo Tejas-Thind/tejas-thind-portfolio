@@ -7,7 +7,7 @@ export function WaterlooLogo() {
       alt="University of Waterloo logo"
       width={16}
       height={16}
-      className="inline w-4 h-4 ml-1 mr-1.5 rounded-full align-text-bottom"
+      className="inline w-4 h-4 ml-1 mr-1.5 rounded-full align-middle"
     />
   )
 }
@@ -19,7 +19,7 @@ export function RootlyLogo() {
       alt="Rootly logo"
       width={16}
       height={16}
-      className="inline w-4 h-4 ml-1 mr-1.5 rounded-full align-text-bottom"
+      className="inline w-4 h-4 ml-1 mr-1.5 rounded-full align-middle"
     />
   )
 }
@@ -31,7 +31,19 @@ export function BoardyLogo() {
       alt="Boardy logo"
       width={16}
       height={16}
-      className="inline w-4 h-4 ml-1 mr-1.5 rounded-full align-text-bottom"
+      className="inline w-4 h-4 ml-1 mr-1.5 rounded-full align-middle"
+    />
+  )
+}
+
+export function CloverLogo() {
+  return (
+    <Image
+      src="/images/design-mode/clover_logo.jpg"
+      alt="Clover Labs logo"
+      width={16}
+      height={16}
+      className="inline w-4 h-4 ml-1 mr-1.5 rounded-full align-middle"
     />
   )
 }
