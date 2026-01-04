@@ -1,19 +1,11 @@
 "use client"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useThemeToggle } from "@/hooks/use-theme"
 import { WaterlooLogo, RootlyLogo, BoardyLogo, CloverLogo } from "@/components/logos"
 import { AnimatedLink } from "@/components/animated-link"
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(true)
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark)
-  }, [isDark])
-
-  const toggleTheme = () => {
-    setIsDark(!isDark)
-  }
+  const { isDark, toggleTheme } = useThemeToggle()
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">

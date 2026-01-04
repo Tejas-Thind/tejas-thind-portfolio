@@ -1,17 +1,9 @@
 "use client"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useThemeToggle } from "@/hooks/use-theme"
 
 export default function Experience() {
-  const [isDark, setIsDark] = useState(true)
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark)
-  }, [isDark])
-
-  const toggleTheme = () => {
-    setIsDark(!isDark)
-  }
+  const { isDark, toggleTheme } = useThemeToggle()
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
@@ -39,7 +31,7 @@ export default function Experience() {
         <section className="min-h-screen py-32 pt-20 sm:pt-24">
           <div className="space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-4xl sm:text-5xl font-light">Experience</h2>
+              <h2 className="text-4xl sm:text-5xl font-normal">Experience</h2>
             </div>
 
             <div className="space-y-12">
