@@ -21,19 +21,16 @@ export default function Home() {
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
-            <Link href="/" className="text-foreground transition-transform duration-300 hover:-translate-y-1">
+            <Link
+              href="/"
+              className="text-foreground font-medium transition-transform duration-300 hover:-translate-y-1"
+            >
               About
             </Link>
-            <Link
-              href="/experience"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
-            >
+            <Link href="/experience" className="text-foreground transition-all duration-300 hover:-translate-y-1">
               Experience
             </Link>
-            <Link
-              href="/projects"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
-            >
+            <Link href="/projects" className="text-foreground transition-all duration-300 hover:-translate-y-1">
               Projects
             </Link>
           </div>
@@ -41,20 +38,20 @@ export default function Home() {
       </nav>
 
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
-        <header className="flex items-center py-32 pt-20 sm:pt-24">
-          <div className="w-full space-y-12 sm:space-y-16">
-            <div className="space-y-6 sm:space-y-8">
-              <h1 className="text-4xl sm:text-5xl font-light tracking-tight text-muted-foreground">
-                Hey, I'm <span className="text-foreground">Tejas</span>
+        <header className="flex items-center py-20 pt-20 sm:pt-24">
+          <div className="w-full space-y-8 sm:space-y-10">
+            <div className="space-y-4 sm:space-y-6">
+              <h1 className="text-4xl sm:text-5xl font-normal tracking-tight text-foreground">
+                Hey, I'm <span className="font-semibold">Tejas</span>
               </h1>
 
-              <p className="text-base sm:text-base text-muted-foreground leading-relaxed max-w-md">
-                Management Engineering @{" "}
+              <p className="text-base sm:text-base text-foreground leading-relaxed max-w-md">
+                Management Engineering @ <WaterlooLogo />
                 <AnimatedLink
                   href="https://uwaterloo.ca/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground"
+                  className="text-foreground font-semibold"
                 >
                   UWaterloo
                 </AnimatedLink>
@@ -62,87 +59,86 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <p className="font-semibold text-foreground">Why I Stand Out:</p>
-              <div className="space-y-3 text-base text-muted-foreground max-w-3xl">
-                <p>
+              <div className="space-y-2 text-base text-foreground max-w-3xl">
+                <p className="font-normal">
                   Software Engineer Intern at <CloverLogo />{" "}
                   <AnimatedLink
                     href="https://cloverlabs.ai/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground"
+                    className="text-foreground font-semibold"
                   >
                     Clover Labs
                   </AnimatedLink>
-                  , the <span className="text-foreground">fastest</span> growing startup in Canada, building AI growth
+                  , the <span className="font-semibold">fastest</span> growing startup in Canada, building AI growth
                   agents that turn distribution into a system
                 </p>
-                <p>
+                <p className="font-normal">
                   At <RootlyLogo />{" "}
                   <AnimatedLink
                     href="https://rootly.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground"
+                    className="text-foreground font-semibold"
                   >
                     Rootly AI
                   </AnimatedLink>{" "}
-                  (YC-backed), shipped
-                  <span className="text-foreground"> production code</span> in week one and now building
-                  <span className="text-foreground"> enterprise tools</span> with senior devs
+                  (YC-backed), shipped <span className="font-semibold">45+ features</span> for
+                  <span className="font-semibold"> enterprise customers</span> including Nvidia, Figma, Dropbox,
+                  LinkedIn, and Yahoo
                 </p>
-                <p>
+                <p className="font-normal">
                   Sharing my tech journey online on{" "}
                   <AnimatedLink
                     href="https://www.instagram.com/tejastnd/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground"
+                    className="text-foreground font-semibold"
                   >
                     Instagram
                   </AnimatedLink>
-                  , which opens opportunities like becoming a <span className="text-foreground">Growth Fellow</span> and{" "}
-                  <span className="text-foreground">Deal Partner</span> at <BoardyLogo />{" "}
+                  , which opens opportunities like becoming a <span className="font-semibold">Growth Fellow</span> and{" "}
+                  <span className="font-semibold">Deal Partner</span> at <BoardyLogo />{" "}
                   <AnimatedLink
                     href="https://www.boardy.ai/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground"
+                    className="text-foreground font-semibold"
                   >
                     Boardy
                   </AnimatedLink>
                   , an AI Super Connector
                 </p>
-                <p>
+                <p className="font-normal">
                   Received <WaterlooLogo />{" "}
                   <AnimatedLink
                     href="https://uwaterloo.ca/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-foreground"
+                    className="text-foreground font-semibold"
                   >
                     UWaterloo's
                   </AnimatedLink>{" "}
-                  highest Co-op student
-                  <span className="text-foreground"> award</span>
+                  highest Co-op student <span className="font-semibold">award</span>
                 </p>
               </div>
             </div>
 
-            <div className="space-y-6 pt-12">
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                You can reach out to me at <span className="text-foreground">t3thind[at]uwaterloo[dot]ca</span>
+            <div className="space-y-2 pt-2 pb-1">
+              <p className="text-base text-foreground leading-relaxed font-normal">
+                You can reach out to me at <span className="font-semibold">t3thind[at]uwaterloo[dot]ca</span>
               </p>
             </div>
           </div>
         </header>
 
-        <footer className="py-12 sm:py-16 border-t border-border">
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
+        <footer className="py-6 sm:py-8 border-t border-border">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -150,7 +146,7 @@ export default function Home() {
             </a>
             <a
               href="https://www.linkedin.com/in/tejas-thind/"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -158,7 +154,7 @@ export default function Home() {
             </a>
             <a
               href="https://x.com/tejasthind4"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -166,7 +162,7 @@ export default function Home() {
             </a>
             <a
               href="https://www.instagram.com/tejastnd/"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -174,15 +170,17 @@ export default function Home() {
             </a>
             <a
               href="https://github.com/Tejas-Thind"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
             </a>
+            <span className="text-foreground">|</span>
+            <span className="text-foreground">Appearance:</span>
             <button
               onClick={toggleTheme}
-              className="ml-auto text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2 cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? "☀️" : "🌙"}

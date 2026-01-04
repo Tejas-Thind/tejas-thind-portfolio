@@ -19,19 +19,16 @@ export default function Projects() {
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
-            <Link
-              href="/"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
-            >
+            <Link href="/" className="text-foreground transition-all duration-300 hover:-translate-y-1">
               About
             </Link>
-            <Link
-              href="/experience"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
-            >
+            <Link href="/experience" className="text-foreground transition-all duration-300 hover:-translate-y-1">
               Experience
             </Link>
-            <Link href="/projects" className="text-foreground transition-transform duration-300 hover:-translate-y-1">
+            <Link
+              href="/projects"
+              className="text-foreground font-medium transition-transform duration-300 hover:-translate-y-1"
+            >
               Projects
             </Link>
           </div>
@@ -41,7 +38,7 @@ export default function Projects() {
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <section className="min-h-screen py-32 pt-20 sm:pt-24">
           <div className="space-y-16">
-            <h2 className="text-4xl sm:text-5xl font-light">Projects</h2>
+            <h2 className="text-4xl sm:text-5xl font-normal">Projects</h2>
 
             <div className="grid gap-8 lg:grid-cols-2">
               {[
@@ -72,21 +69,21 @@ export default function Projects() {
               ].map((post, index) => (
                 <article
                   key={index}
-                  className="group p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
+                  className="group p-8 border border-border rounded-lg hover:border-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
                 >
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
+                    <div className="flex items-center justify-between text-xs text-foreground font-mono">
                       <span>{post.date}</span>
                       <span>{post.readTime}</span>
                     </div>
 
-                    <h3 className="text-xl font-medium group-hover:text-muted-foreground transition-colors duration-300">
+                    <h3 className="text-xl font-medium text-foreground group-hover:font-semibold transition-all duration-300">
                       {post.title}
                     </h3>
 
-                    <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
+                    <p className="text-foreground leading-relaxed">{post.excerpt}</p>
 
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                    <div className="flex items-center gap-2 text-sm text-foreground group-hover:font-medium transition-all duration-300">
                       <span>Read more</span>
                       <svg
                         className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
@@ -110,10 +107,10 @@ export default function Projects() {
         </section>
 
         <footer className="py-16 border-t border-border">
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -121,7 +118,7 @@ export default function Projects() {
             </a>
             <a
               href="https://www.linkedin.com/in/tejas-thind/"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -129,7 +126,7 @@ export default function Projects() {
             </a>
             <a
               href="https://x.com/tejasthind4"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -137,7 +134,7 @@ export default function Projects() {
             </a>
             <a
               href="https://www.instagram.com/tejastnd/"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -145,15 +142,17 @@ export default function Projects() {
             </a>
             <a
               href="https://github.com/Tejas-Thind"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
             </a>
+            <span className="text-foreground">|</span>
+            <span className="text-foreground">Appearance:</span>
             <button
               onClick={toggleTheme}
-              className="ml-auto text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2"
               aria-label="Toggle theme"
             >
               {isDark ? "☀️" : "🌙"}

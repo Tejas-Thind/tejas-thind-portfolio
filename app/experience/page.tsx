@@ -19,19 +19,16 @@ export default function Experience() {
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
-            <Link
-              href="/"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
-            >
+            <Link href="/" className="text-foreground transition-all duration-300 hover:-translate-y-1">
               About
             </Link>
-            <Link href="/experience" className="text-foreground transition-transform duration-300 hover:-translate-y-1">
+            <Link
+              href="/experience"
+              className="text-foreground font-medium transition-transform duration-300 hover:-translate-y-1"
+            >
               Experience
             </Link>
-            <Link
-              href="/projects"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
-            >
+            <Link href="/projects" className="text-foreground transition-all duration-300 hover:-translate-y-1">
               Projects
             </Link>
           </div>
@@ -81,24 +78,24 @@ export default function Experience() {
                   className="group grid lg:grid-cols-12 gap-8 py-8 border-b border-border/50 hover:border-border transition-colors duration-500"
                 >
                   <div className="lg:col-span-2">
-                    <div className="text-2xl font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500">
+                    <div className="text-2xl font-normal text-foreground group-hover:font-medium transition-all duration-500">
                       {job.year}
                     </div>
                   </div>
 
                   <div className="lg:col-span-6 space-y-3">
                     <div>
-                      <h3 className="text-xl font-medium">{job.role}</h3>
-                      <div className="text-muted-foreground">{job.company}</div>
+                      <h3 className="text-xl font-medium text-foreground">{job.role}</h3>
+                      <div className="text-foreground">{job.company}</div>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed max-w-lg">{job.description}</p>
+                    <p className="text-foreground leading-relaxed max-w-lg">{job.description}</p>
                   </div>
 
                   <div className="lg:col-span-4 flex flex-wrap gap-2 lg:justify-end mt-2 lg:mt-0">
                     {job.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-xs text-muted-foreground rounded group-hover:border-muted-foreground/50 transition-colors duration-500"
+                        className="px-2 py-1 text-xs text-foreground rounded group-hover:border-foreground/50 transition-colors duration-500"
                       >
                         {tech}
                       </span>
@@ -111,10 +108,10 @@ export default function Experience() {
         </section>
 
         <footer className="py-16 border-t border-border">
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -122,7 +119,7 @@ export default function Experience() {
             </a>
             <a
               href="https://www.linkedin.com/in/tejas-thind/"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -130,7 +127,7 @@ export default function Experience() {
             </a>
             <a
               href="https://x.com/tejasthind4"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -138,7 +135,7 @@ export default function Experience() {
             </a>
             <a
               href="https://www.instagram.com/tejastnd/"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -146,15 +143,17 @@ export default function Experience() {
             </a>
             <a
               href="https://github.com/Tejas-Thind"
-              className="hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
             </a>
+            <span className="text-foreground">|</span>
+            <span className="text-foreground">Appearance:</span>
             <button
               onClick={toggleTheme}
-              className="ml-auto text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2"
               aria-label="Toggle theme"
             >
               {isDark ? "☀️" : "🌙"}
