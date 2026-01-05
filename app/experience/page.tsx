@@ -120,15 +120,25 @@ export default function Experience() {
                 <div
                   key={index}
                   onMouseMove={handleMouseMove}
-                  className="group relative p-6 rounded-lg border border-border/50 bg-background hover:border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                  className="group relative p-6 rounded-lg bg-background hover:-translate-y-1 transition-all duration-300"
+                  style={{
+                    ["--mouse-x" as string]: "50%",
+                    ["--mouse-y" as string]: "50%",
+                  }}
                 >
-                  {/* Shine effect overlay */}
+                  {/* Default border - always visible */}
+                  <div className="absolute inset-0 rounded-lg border border-border/50" />
+
+                  {/* Border glow effect - layers on top of default border */}
                   <div
-                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute -inset-[1px] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     style={{
-                      background: `radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.03)"}, transparent 40%)`,
+                      background: `radial-gradient(150px circle at var(--mouse-x) var(--mouse-y), ${isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.3)"}, transparent 50%)`,
                     }}
                   />
+
+                  {/* Card background */}
+                  <div className="absolute inset-[1px] rounded-[7px] bg-background" />
 
                   <div className="relative flex flex-col sm:flex-row sm:items-start gap-4">
                     {/* Logo */}
