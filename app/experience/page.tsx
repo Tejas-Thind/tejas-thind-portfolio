@@ -1,9 +1,85 @@
 "use client"
 import Link from "next/link"
+import type React from "react"
+
+import Image from "next/image"
 import { useThemeToggle } from "@/hooks/use-theme"
 
 export default function Experience() {
   const { isDark, toggleTheme } = useThemeToggle()
+
+  const experiences = [
+    {
+      company: "Clover Labs",
+      logo: "/images/design-mode/clover_logo.jpg",
+      role: "Software Engineer Intern",
+      location: "Toronto, ON",
+      date: "Winter 2026",
+      description:
+        "Building AI growth agents and internal systems that power large scale experimentation, automation, and distribution at the fastest growing startup in Canada.",
+      current: true,
+    },
+    {
+      company: "Boardy",
+      logo: "/images/design-mode/boardy_logo.jpeg",
+      role: "Deal Partner & Growth Fellow",
+      location: "Toronto, ON",
+      date: "2025-2026",
+      description:
+        "Connecting high-potential founders raising capital to the world's first AI-led venture fund while driving growth initiatives.",
+      current: true,
+    },
+    {
+      company: "Rootly AI",
+      suffix: "(YC S21)",
+      logo: "/images/rootlyhq-logo.jpg",
+      role: "Software Engineer Intern",
+      location: "Toronto, ON",
+      date: "Fall 2025",
+      description:
+        "Shipped 45+ features for enterprise customers including Nvidia, Figma, Dropbox, LinkedIn, and Yahoo.",
+      current: false,
+    },
+    {
+      company: "Industry 4.0 Design Team",
+      logo: "/images/industry4team-logo.jpg",
+      role: "VP of Software",
+      location: "Waterloo, ON",
+      date: "2024-2025",
+      description:
+        "Helped develop an internal AI-powered tool to support design teams at the University of Waterloo, also led the development and continuous improvement of our website.",
+      current: false,
+    },
+    {
+      company: "General Dynamic Land Systems - Canada",
+      logo: "/images/general-dynamics-logo.png",
+      role: "Engineering Intern",
+      location: "London, ON",
+      date: "Winter 2025",
+      description:
+        "Worked on defense systems engineering projects, contributing to software development and testing for mission-critical applications.",
+      current: false,
+    },
+    {
+      company: "WAT.ai",
+      logo: "/images/wat.jpg",
+      role: "Machine Learning Developer",
+      location: "Waterloo, ON",
+      date: "Winter 2025",
+      description:
+        "Helped develop an AI-driven system to predict geological formations ahead of oil drills in real time.",
+      current: false,
+    },
+  ]
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    card.style.setProperty("--mouse-x", `${x}px`)
+    card.style.setProperty("--mouse-y", `${y}px`)
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
@@ -11,16 +87,23 @@ export default function Experience() {
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
-            <Link href="/" className="text-foreground transition-all duration-300 hover:-translate-y-1">
+            <Link
+              href="/"
+              className="text-foreground font-normal opacity-50 transition-all duration-300 hover:-translate-y-1 hover:opacity-100"
+            >
               About
             </Link>
             <Link
               href="/experience"
-              className="text-foreground font-medium transition-transform duration-300 hover:-translate-y-1"
+              className="text-foreground font-normal transition-transform duration-300 hover:-translate-y-1"
+              style={{ textShadow: "0 0 0.6px currentColor, 0 0 0.6px currentColor" }}
             >
               Experience
             </Link>
-            <Link href="/projects" className="text-foreground transition-all duration-300 hover:-translate-y-1">
+            <Link
+              href="/projects"
+              className="text-foreground font-normal opacity-50 transition-all duration-300 hover:-translate-y-1 hover:opacity-100"
+            >
               Projects
             </Link>
           </div>
@@ -29,69 +112,53 @@ export default function Experience() {
 
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <section className="min-h-screen py-32 pt-20 sm:pt-24">
-          <div className="space-y-16">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-4xl sm:text-5xl font-normal">Experience</h2>
-            </div>
+          <div className="space-y-12">
+            <h2 className="text-4xl sm:text-5xl font-normal">Experience</h2>
 
-            <div className="space-y-12">
-              {[
-                {
-                  year: "2023",
-                  role: "Senior Frontend Engineer",
-                  company: "Vercel",
-                  description: "Leading frontend architecture for developer tools and AI-powered features.",
-                  tech: ["React", "TypeScript", "Next.js"],
-                },
-                {
-                  year: "2022",
-                  role: "Frontend Engineer",
-                  company: "Linear",
-                  description: "Built performant interfaces for project management and team collaboration.",
-                  tech: ["React", "GraphQL", "Framer Motion"],
-                },
-                {
-                  year: "2021",
-                  role: "Full Stack Developer",
-                  company: "Stripe",
-                  description: "Developed payment infrastructure and merchant-facing dashboard features.",
-                  tech: ["Ruby", "React", "PostgreSQL"],
-                },
-                {
-                  year: "2019",
-                  role: "Software Engineer",
-                  company: "Airbnb",
-                  description: "Created booking flow optimizations and host management tools.",
-                  tech: ["React", "Node.js", "MySQL"],
-                },
-              ].map((job, index) => (
+            <div className="space-y-4">
+              {experiences.map((job, index) => (
                 <div
                   key={index}
-                  className="group grid lg:grid-cols-12 gap-8 py-8 border-b border-border/50 hover:border-border transition-colors duration-500"
+                  onMouseMove={handleMouseMove}
+                  className="group relative p-6 rounded-lg border border-border/50 bg-background hover:border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                 >
-                  <div className="lg:col-span-2">
-                    <div className="text-2xl font-normal text-foreground group-hover:font-medium transition-all duration-500">
-                      {job.year}
-                    </div>
-                  </div>
+                  {/* Shine effect overlay */}
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.03)"}, transparent 40%)`,
+                    }}
+                  />
 
-                  <div className="lg:col-span-6 space-y-3">
-                    <div>
-                      <h3 className="text-xl font-medium text-foreground">{job.role}</h3>
-                      <div className="text-foreground">{job.company}</div>
+                  <div className="relative flex flex-col sm:flex-row sm:items-start gap-4">
+                    {/* Logo */}
+                    <div className="flex-shrink-0">
+                      <Image
+                        src={job.logo || "/placeholder.svg"}
+                        alt={`${job.company} logo`}
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 rounded-lg object-cover"
+                      />
                     </div>
-                    <p className="text-foreground leading-relaxed max-w-lg">{job.description}</p>
-                  </div>
 
-                  <div className="lg:col-span-4 flex flex-wrap gap-2 lg:justify-end mt-2 lg:mt-0">
-                    {job.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs text-foreground rounded group-hover:border-foreground/50 transition-colors duration-500"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 mb-2">
+                        <div>
+                          <h3 className="text-lg font-semibold text-foreground">
+                            {job.company}
+                            {job.suffix && <span className="font-normal text-muted-foreground ml-2">{job.suffix}</span>}
+                          </h3>
+                          <p className="text-foreground">{job.role}</p>
+                        </div>
+                        <div className="text-sm text-muted-foreground sm:text-right flex-shrink-0">
+                          <p>{job.location}</p>
+                          <p>{job.date}</p>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed">{job.description}</p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -100,10 +167,10 @@ export default function Experience() {
         </section>
 
         <footer className="py-16 border-t border-border">
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground items-center">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -111,7 +178,7 @@ export default function Experience() {
             </a>
             <a
               href="https://www.linkedin.com/in/tejas-thind/"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -119,7 +186,7 @@ export default function Experience() {
             </a>
             <a
               href="https://x.com/tejasthind4"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -127,7 +194,7 @@ export default function Experience() {
             </a>
             <a
               href="https://www.instagram.com/tejastnd/"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -135,17 +202,17 @@ export default function Experience() {
             </a>
             <a
               href="https://github.com/Tejas-Thind"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
             </a>
-            <span className="text-foreground">|</span>
-            <span className="text-foreground">Appearance:</span>
+            <span className="text-muted-foreground">|</span>
+            <span className="text-muted-foreground">Appearance:</span>
             <button
               onClick={toggleTheme}
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2 cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? "☀️" : "🌙"}

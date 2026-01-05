@@ -15,14 +15,21 @@ export default function Home() {
           <div className="flex gap-6 sm:gap-8">
             <Link
               href="/"
-              className="text-foreground font-medium transition-transform duration-300 hover:-translate-y-1"
+              className="text-foreground font-normal transition-transform duration-300 hover:-translate-y-1"
+              style={{ textShadow: "0 0 0.6px currentColor, 0 0 0.6px currentColor" }}
             >
               About
             </Link>
-            <Link href="/experience" className="text-foreground transition-all duration-300 hover:-translate-y-1">
+            <Link
+              href="/experience"
+              className="text-foreground font-normal opacity-50 transition-all duration-300 hover:-translate-y-1 hover:opacity-100"
+            >
               Experience
             </Link>
-            <Link href="/projects" className="text-foreground transition-all duration-300 hover:-translate-y-1">
+            <Link
+              href="/projects"
+              className="text-foreground font-normal opacity-50 transition-all duration-300 hover:-translate-y-1 hover:opacity-100"
+            >
               Projects
             </Link>
           </div>
@@ -31,8 +38,8 @@ export default function Home() {
 
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header className="flex items-center py-20 pt-20 sm:pt-24">
-          <div className="w-full space-y-8 sm:space-y-10">
-            <div className="space-y-4 sm:space-y-6">
+          <div className="w-full space-y-6 sm:space-y-8">
+            <div className="space-y-3 sm:space-y-4">
               <h1 className="text-4xl sm:text-5xl font-normal tracking-tight text-foreground">
                 Hey, I'm <span className="font-semibold">Tejas</span>
               </h1>
@@ -51,7 +58,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <p className="font-semibold text-foreground">Why I Stand Out:</p>
               <div className="space-y-2 text-base text-foreground max-w-3xl">
                 <p className="font-normal">
@@ -118,7 +125,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-2 pt-2 pb-1">
+            <div>
               <p className="text-base text-foreground leading-relaxed font-normal">
                 You can reach out to me at <span className="font-semibold">t3thind[at]uwaterloo[dot]ca</span>
               </p>
@@ -126,11 +133,11 @@ export default function Home() {
           </div>
         </header>
 
-        <footer className="py-6 sm:py-8 border-t border-border">
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground items-center">
+        <footer className="pt-4 pb-2 border-t border-border">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -138,7 +145,7 @@ export default function Home() {
             </a>
             <a
               href="https://www.linkedin.com/in/tejas-thind/"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -146,7 +153,7 @@ export default function Home() {
             </a>
             <a
               href="https://x.com/tejasthind4"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -154,7 +161,7 @@ export default function Home() {
             </a>
             <a
               href="https://www.instagram.com/tejastnd/"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -162,17 +169,17 @@ export default function Home() {
             </a>
             <a
               href="https://github.com/Tejas-Thind"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
             </a>
-            <span className="text-foreground">|</span>
-            <span className="text-foreground">Appearance:</span>
+            <span className="text-muted-foreground">|</span>
+            <span className="text-muted-foreground">Appearance:</span>
             <button
               onClick={toggleTheme}
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2 cursor-pointer"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2 cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? "☀️" : "🌙"}

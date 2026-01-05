@@ -11,15 +11,22 @@ export default function Projects() {
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
-            <Link href="/" className="text-foreground transition-all duration-300 hover:-translate-y-1">
+            <Link
+              href="/"
+              className="text-foreground font-normal opacity-50 transition-all duration-300 hover:-translate-y-1 hover:opacity-100"
+            >
               About
             </Link>
-            <Link href="/experience" className="text-foreground transition-all duration-300 hover:-translate-y-1">
+            <Link
+              href="/experience"
+              className="text-foreground font-normal opacity-50 transition-all duration-300 hover:-translate-y-1 hover:opacity-100"
+            >
               Experience
             </Link>
             <Link
               href="/projects"
-              className="text-foreground font-medium transition-transform duration-300 hover:-translate-y-1"
+              className="text-foreground font-normal transition-transform duration-300 hover:-translate-y-1"
+              style={{ textShadow: "0 0 0.6px currentColor, 0 0 0.6px currentColor" }}
             >
               Projects
             </Link>
@@ -99,10 +106,10 @@ export default function Projects() {
         </section>
 
         <footer className="py-16 border-t border-border">
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground items-center">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -110,7 +117,7 @@ export default function Projects() {
             </a>
             <a
               href="https://www.linkedin.com/in/tejas-thind/"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -118,7 +125,7 @@ export default function Projects() {
             </a>
             <a
               href="https://x.com/tejasthind4"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -126,7 +133,7 @@ export default function Projects() {
             </a>
             <a
               href="https://www.instagram.com/tejastnd/"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -134,17 +141,17 @@ export default function Projects() {
             </a>
             <a
               href="https://github.com/Tejas-Thind"
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
             </a>
-            <span className="text-foreground">|</span>
-            <span className="text-foreground">Appearance:</span>
+            <span className="text-muted-foreground">|</span>
+            <span className="text-muted-foreground">Appearance:</span>
             <button
               onClick={toggleTheme}
-              className="text-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2"
               aria-label="Toggle theme"
             >
               {isDark ? "☀️" : "🌙"}
