@@ -240,8 +240,8 @@ function CardWithEffect({
   }
 
   const proximityGlow = getProximityGlow()
-  const glowColor = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.6)"
-  const softGlowColor = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.2)"
+  const glowColor = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.9)"
+  const softGlowColor = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.4)"
 
   return (
     <div
@@ -276,11 +276,11 @@ function CardWithEffect({
         <div
           className="absolute inset-0 rounded-lg pointer-events-none"
           style={{
-            background: `radial-gradient(150px circle at ${localMouse.x}px ${localMouse.y}px, ${glowColor}, transparent 70%)`,
+            background: `radial-gradient(200px circle at ${localMouse.x}px ${localMouse.y}px, ${glowColor}, transparent 70%)`,
             mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             maskComposite: "xor",
             WebkitMaskComposite: "xor",
-            padding: "1px",
+            padding: "1.5px",
             transition: "opacity 0.1s ease-out",
           }}
         />
