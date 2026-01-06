@@ -2,11 +2,25 @@
 import Link from "next/link"
 import type React from "react"
 
+import { useRef, useEffect, useState, useCallback } from "react"
 import Image from "next/image"
 import { useThemeToggle } from "@/hooks/use-theme"
 
 export default function Experience() {
   const { isDark, toggleTheme } = useThemeToggle()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    requestAnimationFrame(() => {
+      setMousePos({ x: e.clientX, y: e.clientY })
+    })
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [handleMouseMove])
 
   const experiences = [
     {
@@ -15,8 +29,7 @@ export default function Experience() {
       role: "Software Engineer Intern",
       location: "Toronto, ON",
       date: "Winter 2026",
-      description:
-        "Building AI growth agents and internal systems that power large scale experimentation, automation, and distribution at the fastest growing startup in Canada.",
+      description: "The fastest growing startup in Canada. Working on Echos, an AI-powered video editing platform.",
       current: true,
     },
     {
@@ -72,15 +85,6 @@ export default function Experience() {
     },
   ]
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget
-    const rect = card.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    card.style.setProperty("--mouse-x", `${x}px`)
-    card.style.setProperty("--mouse-y", `${y}px`)
-  }
-
   return (
     <div className="min-h-screen bg-background text-foreground relative">
       <nav className="fixed top-0 left-0 right-0 z-50">
@@ -115,62 +119,9 @@ export default function Experience() {
           <div className="space-y-12">
             <h2 className="text-4xl sm:text-5xl font-normal">Experience</h2>
 
-            <div className="space-y-4">
+            <div ref={containerRef} className="space-y-4">
               {experiences.map((job, index) => (
-                <div
-                  key={index}
-                  onMouseMove={handleMouseMove}
-                  className="group relative p-6 rounded-lg bg-background hover:-translate-y-1 transition-all duration-300"
-                  style={{
-                    ["--mouse-x" as string]: "50%",
-                    ["--mouse-y" as string]: "50%",
-                  }}
-                >
-                  {/* Default border - always visible */}
-                  <div className="absolute inset-0 rounded-lg border border-border/50" />
-
-                  {/* Border glow effect - layers on top of default border */}
-                  <div
-                    className="absolute -inset-[1px] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    style={{
-                      background: `radial-gradient(150px circle at var(--mouse-x) var(--mouse-y), ${isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.3)"}, transparent 50%)`,
-                    }}
-                  />
-
-                  {/* Card background */}
-                  <div className="absolute inset-[1px] rounded-[7px] bg-background" />
-
-                  <div className="relative flex flex-col sm:flex-row sm:items-start gap-4">
-                    {/* Logo */}
-                    <div className="flex-shrink-0">
-                      <Image
-                        src={job.logo || "/placeholder.svg"}
-                        alt={`${job.company} logo`}
-                        width={48}
-                        height={48}
-                        className="w-12 h-12 rounded-lg object-cover"
-                      />
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 mb-2">
-                        <div>
-                          <h3 className="text-lg font-semibold text-foreground">
-                            {job.company}
-                            {job.suffix && <span className="font-normal text-muted-foreground ml-2">{job.suffix}</span>}
-                          </h3>
-                          <p className="text-foreground">{job.role}</p>
-                        </div>
-                        <div className="text-sm text-muted-foreground sm:text-right flex-shrink-0">
-                          <p>{job.location}</p>
-                          <p>{job.date}</p>
-                        </div>
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed">{job.description}</p>
-                    </div>
-                  </div>
-                </div>
+                <CardWithEffect key={index} job={job} mousePos={mousePos} isDark={isDark} />
               ))}
             </div>
           </div>
@@ -230,6 +181,143 @@ export default function Experience() {
           </div>
         </footer>
       </main>
+    </div>
+  )
+}
+
+function CardWithEffect({
+  job,
+  mousePos,
+  isDark,
+}: {
+  job: {
+    company: string
+    logo: string
+    role: string
+    location: string
+    date: string
+    description: string
+    current: boolean
+    suffix?: string
+  }
+  mousePos: { x: number; y: number }
+  isDark: boolean
+}) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [isHovering, setIsHovering] = useState(false)
+  const [localMouse, setLocalMouse] = useState({ x: 0, y: 0 })
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+
+  // Calculate proximity-based border glow
+  const getProximityGlow = () => {
+    if (!cardRef.current) return 0
+    const rect = cardRef.current.getBoundingClientRect()
+    const cardCenterX = rect.left + rect.width / 2
+    const cardCenterY = rect.top + rect.height / 2
+    const distance = Math.sqrt(Math.pow(mousePos.x - cardCenterX, 2) + Math.pow(mousePos.y - cardCenterY, 2))
+    const maxDistance = 400
+    return Math.max(0, 1 - distance / maxDistance)
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    setLocalMouse({ x, y })
+
+    // Smooth 3D tilt calculation
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    const tiltX = ((centerY - y) / centerY) * 4
+    const tiltY = ((x - centerX) / centerX) * 4
+    setTilt({ x: tiltX, y: tiltY })
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovering(false)
+    setTilt({ x: 0, y: 0 })
+  }
+
+  const proximityGlow = getProximityGlow()
+  const glowColor = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.6)"
+  const softGlowColor = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.2)"
+
+  return (
+    <div
+      ref={cardRef}
+      className="group relative p-6 rounded-lg bg-background"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+        transition: "transform 0.15s ease-out",
+        transformStyle: "preserve-3d",
+      }}
+    >
+      {/* Base border - always visible */}
+      <div className="absolute inset-0 rounded-lg border border-border/70" />
+
+      {/* Proximity glow for nearby cards */}
+      {!isHovering && proximityGlow > 0.1 && (
+        <div
+          className="absolute inset-0 rounded-lg pointer-events-none"
+          style={{
+            opacity: proximityGlow * 0.5,
+            boxShadow: `inset 0 0 0 1px ${softGlowColor}`,
+            transition: "opacity 0.2s ease-out",
+          }}
+        />
+      )}
+
+      {/* Cursor-following border highlight - only on hover */}
+      {isHovering && (
+        <div
+          className="absolute inset-0 rounded-lg pointer-events-none"
+          style={{
+            background: `radial-gradient(150px circle at ${localMouse.x}px ${localMouse.y}px, ${glowColor}, transparent 70%)`,
+            mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+            maskComposite: "xor",
+            WebkitMaskComposite: "xor",
+            padding: "1px",
+            transition: "opacity 0.1s ease-out",
+          }}
+        />
+      )}
+
+      {/* Card background */}
+      <div className="absolute inset-[1px] rounded-[7px] bg-muted/30" />
+
+      {/* Content */}
+      <div className="relative flex flex-col sm:flex-row sm:items-start gap-4">
+        <div className="flex-shrink-0">
+          <Image
+            src={job.logo || "/placeholder.svg"}
+            alt={`${job.company} logo`}
+            width={48}
+            height={48}
+            className="w-12 h-12 rounded-lg object-cover"
+          />
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 mb-2">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">
+                {job.company}
+                {job.suffix && <span className="font-normal text-muted-foreground ml-2">{job.suffix}</span>}
+              </h3>
+              <p className="text-foreground">{job.role}</p>
+            </div>
+            <div className="text-sm text-muted-foreground sm:text-right flex-shrink-0">
+              <p>{job.location}</p>
+              <p>{job.date}</p>
+            </div>
+          </div>
+          <p className="text-muted-foreground leading-relaxed">{job.description}</p>
+        </div>
+      </div>
     </div>
   )
 }

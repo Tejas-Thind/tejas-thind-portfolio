@@ -71,8 +71,8 @@ export default function Home() {
                   >
                     Clover Labs
                   </AnimatedLink>
-                  , the <span className="font-semibold">fastest</span> growing startup in Canada, building AI growth
-                  agents that turn distribution into a system
+                  , the <span className="font-semibold">fastest</span> growing startup in Canada. On track for{" "}
+                  <span className="font-semibold">$50M ARR</span> in 2026, building AI growth agents.
                 </p>
                 <p className="font-normal">
                   At <RootlyLogo />{" "}
