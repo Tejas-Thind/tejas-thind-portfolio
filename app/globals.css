@@ -11,6 +11,13 @@ body {
   @apply bg-transparent;
 }
 
+/* Added Google Sans as the default font */
+@theme inline {
+  --font-sans: "Google Sans", system-ui, sans-serif;
+  /* Added Newsreader as serif font */
+  --font-serif: "Newsreader", Georgia, serif;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

@@ -47,8 +47,9 @@ export default function Home() {
         <header className="flex items-center py-20 pt-20 sm:pt-24">
           <div className="w-full space-y-6 sm:space-y-8">
             <div className="space-y-3 sm:space-y-4">
-              <h1 className="text-4xl sm:text-5xl font-normal tracking-tight text-foreground">
-                Hey, I'm <span className="font-semibold">Tejas</span>
+              <h1 className="text-4xl sm:text-5xl tracking-tight text-foreground font-serif">
+                <span className="font-normal italic">Hey, I'm </span>
+                <span className="font-semibold italic">Tejas</span>
               </h1>
 
               <p className="text-base sm:text-base text-foreground leading-relaxed max-w-md">

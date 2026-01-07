@@ -32,6 +32,7 @@ export default function Experience() {
       description:
         "The fastest growing startup in Canada. Working on Echos, an AI-powered video editing platform.",
       current: true,
+      url: "https://www.cloverlabs.ai/",
     },
     {
       company: "Boardy",
@@ -42,6 +43,7 @@ export default function Experience() {
       description:
         "Connecting high-potential founders raising capital to the world's first AI-led venture fund while driving growth initiatives.",
       current: true,
+      url: "https://www.boardy.ai/",
     },
     {
       company: "Rootly AI",
@@ -53,6 +55,7 @@ export default function Experience() {
       description:
         "Shipped 45+ features for enterprise customers including Nvidia, Figma, Dropbox, LinkedIn, and Yahoo.",
       current: false,
+      url: "https://rootly.com/",
     },
     {
       company: "Industry 4.0 Design Team",
@@ -63,6 +66,7 @@ export default function Experience() {
       description:
         "Helped develop an internal AI-powered tool to support design teams at the University of Waterloo, also led the development and continuous improvement of our website.",
       current: false,
+      url: "https://www.uwindustry4.ca/",
     },
     {
       company: "General Dynamic Land Systems - Canada",
@@ -73,6 +77,7 @@ export default function Experience() {
       description:
         "Worked on defense systems engineering projects, contributing to software development and testing for mission-critical applications.",
       current: false,
+      url: "https://www.gdls.com/",
     },
     {
       company: "WAT.ai",
@@ -83,6 +88,7 @@ export default function Experience() {
       description:
         "Helped develop an AI-driven system to predict geological formations ahead of oil drills in real time.",
       current: false,
+      url: "https://watai.ca/",
     },
   ];
 
@@ -199,6 +205,7 @@ function CardWithEffect({
   isDark,
 }: {
   job: {
+<<<<<<< HEAD
     company: string;
     logo: string;
     role: string;
@@ -210,6 +217,20 @@ function CardWithEffect({
   };
   mousePos: { x: number; y: number };
   isDark: boolean;
+=======
+    company: string
+    logo: string
+    role: string
+    location: string
+    date: string
+    description: string
+    current: boolean
+    suffix?: string
+    url: string
+  }
+  mousePos: { x: number; y: number }
+  isDark: boolean
+>>>>>>> main
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -255,6 +276,7 @@ function CardWithEffect({
   const softGlowColor = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.4)";
 
   return (
+<<<<<<< HEAD
     <div
       ref={cardRef}
       className="group relative p-6 rounded-lg bg-background/50 backdrop-blur-sm"
@@ -269,49 +291,37 @@ function CardWithEffect({
     >
       {/* Base border - always visible */}
       <div className="absolute inset-0 rounded-lg border border-border/70" />
+=======
+    <a href={job.url} target="_blank" rel="noopener noreferrer" className="block">
+      <div
+        ref={cardRef}
+        className="group relative p-6 rounded-lg bg-background cursor-pointer"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+          transition: "transform 0.15s ease-out",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        {/* Base border - always visible */}
+        <div className="absolute inset-0 rounded-lg border border-border/70" />
+>>>>>>> main
 
-      {/* Proximity glow for nearby cards */}
-      {!isHovering && proximityGlow > 0.1 && (
-        <div
-          className="absolute inset-0 rounded-lg pointer-events-none"
-          style={{
-            opacity: proximityGlow * 0.5,
-            boxShadow: `inset 0 0 0 1px ${softGlowColor}`,
-            transition: "opacity 0.2s ease-out",
-          }}
-        />
-      )}
-
-      {/* Cursor-following border highlight - only on hover */}
-      {isHovering && (
-        <div
-          className="absolute inset-0 rounded-lg pointer-events-none"
-          style={{
-            background: `radial-gradient(200px circle at ${localMouse.x}px ${localMouse.y}px, ${glowColor}, transparent 70%)`,
-            mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-            maskComposite: "xor",
-            WebkitMaskComposite: "xor",
-            padding: "1.5px",
-            transition: "opacity 0.1s ease-out",
-          }}
-        />
-      )}
-
-      {/* Card background */}
-      <div className="absolute inset-[1px] rounded-[7px] bg-muted/30" />
-
-      {/* Content */}
-      <div className="relative flex flex-col sm:flex-row sm:items-start gap-4">
-        <div className="flex-shrink-0">
-          <Image
-            src={job.logo || "/placeholder.svg"}
-            alt={`${job.company} logo`}
-            width={48}
-            height={48}
-            className="w-12 h-12 rounded-lg object-cover"
+        {/* Proximity glow for nearby cards */}
+        {!isHovering && proximityGlow > 0.1 && (
+          <div
+            className="absolute inset-0 rounded-lg pointer-events-none"
+            style={{
+              opacity: proximityGlow * 0.5,
+              boxShadow: `inset 0 0 0 1px ${softGlowColor}`,
+              transition: "opacity 0.2s ease-out",
+            }}
           />
-        </div>
+        )}
 
+<<<<<<< HEAD
         <div className="flex-1 min-w-0">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 mb-2">
             <div>
@@ -337,4 +347,56 @@ function CardWithEffect({
       </div>
     </div>
   );
+=======
+        {/* Cursor-following border highlight - only on hover */}
+        {isHovering && (
+          <div
+            className="absolute inset-0 rounded-lg pointer-events-none"
+            style={{
+              background: `radial-gradient(200px circle at ${localMouse.x}px ${localMouse.y}px, ${glowColor}, transparent 70%)`,
+              mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              maskComposite: "xor",
+              WebkitMaskComposite: "xor",
+              padding: "1.5px",
+              transition: "opacity 0.1s ease-out",
+            }}
+          />
+        )}
+
+        {/* Card background */}
+        <div className="absolute inset-[1px] rounded-[7px] bg-muted/30" />
+
+        {/* Content */}
+        <div className="relative flex flex-col sm:flex-row sm:items-start gap-4">
+          <div className="flex-shrink-0">
+            <Image
+              src={job.logo || "/placeholder.svg"}
+              alt={`${job.company} logo`}
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-lg object-cover"
+            />
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 mb-2">
+              <div>
+                <h3 className="text-lg font-semibold text-foreground">
+                  {job.company}
+                  {job.suffix && <span className="font-normal text-muted-foreground ml-2">{job.suffix}</span>}
+                </h3>
+                <p className="text-foreground">{job.role}</p>
+              </div>
+              <div className="text-sm text-muted-foreground sm:text-right flex-shrink-0">
+                <p>{job.location}</p>
+                <p>{job.date}</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed">{job.description}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  )
+>>>>>>> main
 }
