@@ -4,6 +4,11 @@
 /* Fix navbar shift by reserving space for scrollbar */
 html {
   scrollbar-gutter: stable;
+  @apply text-foreground;
+}
+
+body {
+  @apply bg-transparent;
 }
 
 :root {

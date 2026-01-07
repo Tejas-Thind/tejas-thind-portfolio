@@ -1,28 +1,33 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Geist } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { Geist } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import CanvasCursor from "@/components/canvas-cursor";
+import "./globals.css";
 
 const geist = Geist({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-geist",
-})
+});
 
 export const metadata: Metadata = {
   title: "Tejas Thind",
   description: "Engineering Student @ UWaterloo.",
   generator: "v0.app",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} dark`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${geist.variable} dark`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -42,8 +47,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
+        <div className="fixed inset-0 z-[-2] bg-background pointer-events-none" />
+        <CanvasCursor />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
