@@ -1,26 +1,26 @@
-"use client"
-import Link from "next/link"
-import type React from "react"
+"use client";
+import Link from "next/link";
+import type React from "react";
 
-import { useRef, useEffect, useState, useCallback } from "react"
-import Image from "next/image"
-import { useThemeToggle } from "@/hooks/use-theme"
+import { useRef, useEffect, useState, useCallback } from "react";
+import Image from "next/image";
+import { useThemeToggle } from "@/hooks/use-theme";
 
 export default function Experience() {
-  const { isDark, toggleTheme } = useThemeToggle()
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const { isDark, toggleTheme } = useThemeToggle();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     requestAnimationFrame(() => {
-      setMousePos({ x: e.clientX, y: e.clientY })
-    })
-  }, [])
+      setMousePos({ x: e.clientX, y: e.clientY });
+    });
+  }, []);
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [handleMouseMove])
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [handleMouseMove]);
 
   const experiences = [
     {
@@ -29,7 +29,8 @@ export default function Experience() {
       role: "Software Engineer Intern",
       location: "Toronto, ON",
       date: "Winter 2026",
-      description: "The fastest growing startup in Canada. Working on Echos, an AI-powered video editing platform.",
+      description:
+        "The fastest growing startup in Canada. Working on Echos, an AI-powered video editing platform.",
       current: true,
       url: "https://www.cloverlabs.ai/",
     },
@@ -89,10 +90,10 @@ export default function Experience() {
       current: false,
       url: "https://watai.ca/",
     },
-  ]
+  ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
+    <div className="min-h-screen text-foreground relative">
       <nav className="fixed top-0 left-0 right-0 z-50">
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
@@ -106,7 +107,9 @@ export default function Experience() {
             <Link
               href="/experience"
               className="text-foreground font-normal transition-transform duration-300 hover:-translate-y-1"
-              style={{ textShadow: "0 0 0.6px currentColor, 0 0 0.6px currentColor" }}
+              style={{
+                textShadow: "0 0 0.6px currentColor, 0 0 0.6px currentColor",
+              }}
             >
               Experience
             </Link>
@@ -127,7 +130,12 @@ export default function Experience() {
 
             <div ref={containerRef} className="space-y-4">
               {experiences.map((job, index) => (
-                <CardWithEffect key={index} job={job} mousePos={mousePos} isDark={isDark} />
+                <CardWithEffect
+                  key={index}
+                  job={job}
+                  mousePos={mousePos}
+                  isDark={isDark}
+                />
               ))}
             </div>
           </div>
@@ -182,13 +190,13 @@ export default function Experience() {
               className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2 cursor-pointer"
               aria-label="Toggle theme"
             >
-              {isDark ? "☀️" : "🌙"}
+              {isDark ? "" : ""}
             </button>
           </div>
         </footer>
       </main>
     </div>
-  )
+  );
 }
 
 function CardWithEffect({
@@ -197,64 +205,67 @@ function CardWithEffect({
   isDark,
 }: {
   job: {
-    company: string
-    logo: string
-    role: string
-    location: string
-    date: string
-    description: string
-    current: boolean
-    suffix?: string
-    url: string
-  }
-  mousePos: { x: number; y: number }
-  isDark: boolean
+    company: string;
+    logo: string;
+    role: string;
+    location: string;
+    date: string;
+    description: string;
+    current: boolean;
+    suffix?: string;
+    url: string;
+  };
+  mousePos: { x: number; y: number };
+  isDark: boolean;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const [isHovering, setIsHovering] = useState(false)
-  const [localMouse, setLocalMouse] = useState({ x: 0, y: 0 })
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const [localMouse, setLocalMouse] = useState({ x: 0, y: 0 });
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   // Calculate proximity-based border glow
   const getProximityGlow = () => {
-    if (!cardRef.current) return 0
-    const rect = cardRef.current.getBoundingClientRect()
-    const cardCenterX = rect.left + rect.width / 2
-    const cardCenterY = rect.top + rect.height / 2
-    const distance = Math.sqrt(Math.pow(mousePos.x - cardCenterX, 2) + Math.pow(mousePos.y - cardCenterY, 2))
-    const maxDistance = 400
-    return Math.max(0, 1 - distance / maxDistance)
-  }
+    if (!cardRef.current) return 0;
+    const rect = cardRef.current.getBoundingClientRect();
+    const cardCenterX = rect.left + rect.width / 2;
+    const cardCenterY = rect.top + rect.height / 2;
+    const distance = Math.sqrt(
+      Math.pow(mousePos.x - cardCenterX, 2) +
+        Math.pow(mousePos.y - cardCenterY, 2)
+    );
+    const maxDistance = 400;
+    return Math.max(0, 1 - distance / maxDistance);
+  };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return
-    const rect = cardRef.current.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    setLocalMouse({ x, y })
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setLocalMouse({ x, y });
 
     // Smooth 3D tilt calculation
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-    const tiltX = ((centerY - y) / centerY) * 4
-    const tiltY = ((x - centerX) / centerX) * 4
-    setTilt({ x: tiltX, y: tiltY })
-  }
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const tiltX = ((centerY - y) / centerY) * 4;
+    const tiltY = ((x - centerX) / centerX) * 4;
+    setTilt({ x: tiltX, y: tiltY });
+  };
 
   const handleMouseLeave = () => {
-    setIsHovering(false)
-    setTilt({ x: 0, y: 0 })
-  }
+    setIsHovering(false);
+    setTilt({ x: 0, y: 0 });
+  };
 
-  const proximityGlow = getProximityGlow()
-  const glowColor = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.9)"
-  const softGlowColor = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.4)"
+  const proximityGlow = getProximityGlow();
+  const glowColor = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.9)";
+  const softGlowColor = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.4)";
 
   return (
     <a href={job.url} target="_blank" rel="noopener noreferrer" className="block">
       <div
         ref={cardRef}
-        className="group relative p-6 rounded-lg bg-background cursor-pointer"
+        className="group relative p-6 rounded-lg bg-background/50 backdrop-blur-sm cursor-pointer"
         onMouseEnter={() => setIsHovering(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -294,9 +305,21 @@ function CardWithEffect({
           />
         )}
 
-        {/* Card background */}
-        <div className="absolute inset-[1px] rounded-[7px] bg-muted/30" />
-
+        {/* Cursor-following border highlight - only on hover */}
+        {isHovering && (
+          <div
+            className="absolute inset-0 rounded-lg pointer-events-none"
+            style={{
+              background: `radial-gradient(200px circle at ${localMouse.x}px ${localMouse.y}px, ${glowColor}, transparent 70%)`,
+              mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              maskComposite: "xor",
+              WebkitMaskComposite: "xor",
+              padding: "1.5px",
+              transition: "opacity 0.1s ease-out",
+            }}
+          />
+        )}
+        
         {/* Content */}
         <div className="relative flex flex-col sm:flex-row sm:items-start gap-4">
           <div className="flex-shrink-0">
@@ -314,7 +337,11 @@ function CardWithEffect({
               <div>
                 <h3 className="text-lg font-semibold text-foreground">
                   {job.company}
-                  {job.suffix && <span className="font-normal text-muted-foreground ml-2">{job.suffix}</span>}
+                  {job.suffix && (
+                    <span className="font-normal text-muted-foreground ml-2">
+                      {job.suffix}
+                    </span>
+                  )}
                 </h3>
                 <p className="text-foreground">{job.role}</p>
               </div>
@@ -323,10 +350,12 @@ function CardWithEffect({
                 <p>{job.date}</p>
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed">{job.description}</p>
+            <p className="text-muted-foreground leading-relaxed">
+              {job.description}
+            </p>
           </div>
         </div>
       </div>
     </a>
-  )
+  );
 }
