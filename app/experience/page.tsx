@@ -93,7 +93,7 @@ export default function Experience() {
 
   return (
     <div className="min-h-screen text-foreground relative">
-      <nav className="fixed top-0 left-0 right-0 z-50">
+      <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in">
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
@@ -125,17 +125,25 @@ export default function Experience() {
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <section className="min-h-screen py-32 pt-20 sm:pt-24">
           <div className="space-y-12">
-            <h2 className="text-4xl sm:text-5xl font-normal">Experience</h2>
+            <h2 className="text-4xl sm:text-5xl font-normal animate-init animate-blur-in animate-delay-100">
+              Experience
+            </h2>
 
             <div ref={containerRef} className="space-y-4">
               {experiences.map((job, index) => (
-                <CardWithEffect key={index} job={job} mousePos={mousePos} isDark={isDark} />
+                <div
+                  key={index}
+                  className="animate-init animate-blur-in"
+                  style={{ animationDelay: `${150 + index * 75}ms` }}
+                >
+                  <CardWithEffect job={job} mousePos={mousePos} isDark={isDark} />
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <footer className="py-16 border-t border-border">
+        <footer className="py-16 border-t border-border animate-init animate-blur-in animate-delay-500">
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"

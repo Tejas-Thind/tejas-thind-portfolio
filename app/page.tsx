@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-foreground relative">
-      <nav className="fixed top-0 left-0 right-0 z-50">
+      <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in">
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
@@ -41,7 +41,7 @@ export default function Home() {
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header className="flex items-center py-20 pt-20 sm:pt-24">
           <div className="w-full space-y-6 sm:space-y-8">
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-3 sm:space-y-4 animate-init animate-blur-in animate-delay-100">
               <h1 className="text-4xl sm:text-5xl tracking-tight text-foreground font-serif">
                 <span className="font-normal italic">Hey, I'm </span>
                 <span className="font-semibold italic">Tejas</span>
@@ -61,7 +61,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-3 animate-init animate-blur-in animate-delay-200">
               <p className="font-semibold text-foreground">Why I Stand Out:</p>
               <div className="space-y-2 text-base text-foreground max-w-3xl">
                 <p className="font-normal">
@@ -128,7 +128,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div>
+            <div className="animate-init animate-blur-in animate-delay-300">
               <p className="text-base text-foreground leading-relaxed font-normal">
                 You can reach out to me at <span className="font-semibold">t3thind[at]uwaterloo[dot]ca</span>
               </p>
@@ -136,7 +136,7 @@ export default function Home() {
           </div>
         </header>
 
-        <footer className="pt-4 pb-2 border-t border-border">
+        <footer className="pt-4 pb-2 border-t border-border animate-init animate-blur-in animate-delay-400">
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
