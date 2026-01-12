@@ -1,15 +1,20 @@
-"use client"
-import Link from "next/link"
-import { useThemeToggle } from "@/hooks/use-theme"
-import { WaterlooLogo, RootlyLogo, BoardyLogo, CloverLogo } from "@/components/logos"
-import { AnimatedLink } from "@/components/animated-link"
+"use client";
+import Link from "next/link";
+import { useThemeToggle } from "@/hooks/use-theme";
+import {
+  WaterlooLogo,
+  RootlyLogo,
+  BoardyLogo,
+  CloverLogo,
+} from "@/components/logos";
+import { AnimatedLink } from "@/components/animated-link";
 
 export default function Home() {
-  const { isDark, toggleTheme } = useThemeToggle()
+  const { isDark, toggleTheme } = useThemeToggle();
 
   return (
     <div className="min-h-screen text-foreground relative">
-      <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in">
+      <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in animate-delay-100">
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
@@ -41,7 +46,7 @@ export default function Home() {
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header className="flex items-center py-20 pt-20 sm:pt-24">
           <div className="w-full space-y-6 sm:space-y-8">
-            <div className="space-y-3 sm:space-y-4 animate-init animate-blur-in animate-delay-100">
+            <div className="space-y-3 sm:space-y-4 animate-init animate-blur-in animate-delay-200">
               <h1 className="text-4xl sm:text-5xl tracking-tight text-foreground font-serif">
                 <span className="font-normal italic">Hey, I'm </span>
                 <span className="font-semibold italic">Tejas</span>
@@ -61,7 +66,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-3 animate-init animate-blur-in animate-delay-200">
+            <div className="space-y-3 animate-init animate-blur-in animate-delay-300">
               <p className="font-semibold text-foreground">Why I Stand Out:</p>
               <div className="space-y-2 text-base text-foreground max-w-3xl">
                 <p className="font-normal">
@@ -74,8 +79,10 @@ export default function Home() {
                   >
                     Clover Labs
                   </AnimatedLink>
-                  , the <span className="font-semibold">fastest</span> growing startup in Canada. On track for{" "}
-                  <span className="font-semibold">$50M ARR</span> in 2026, building AI growth agents.
+                  , the <span className="font-semibold">fastest</span> growing
+                  startup in Canada. On track for{" "}
+                  <span className="font-semibold">$50M ARR</span> in 2026,
+                  building AI growth agents.
                 </p>
                 <p className="font-normal">
                   At <RootlyLogo />{" "}
@@ -87,9 +94,13 @@ export default function Home() {
                   >
                     Rootly AI
                   </AnimatedLink>{" "}
-                  (YC-backed), shipped <span className="font-semibold">45+ features</span> for
-                  <span className="font-semibold"> enterprise customers</span> including Nvidia, Figma, Dropbox,
-                  LinkedIn, and Yahoo
+                  (YC-backed), shipped{" "}
+                  <span className="font-semibold">45+ features</span> for
+                  <span className="font-semibold">
+                    {" "}
+                    enterprise customers
+                  </span>{" "}
+                  including Nvidia, Figma, Dropbox, LinkedIn, and Yahoo
                 </p>
                 <p className="font-normal">
                   Sharing my tech journey online on{" "}
@@ -101,8 +112,10 @@ export default function Home() {
                   >
                     Instagram
                   </AnimatedLink>
-                  , which opens opportunities like becoming a <span className="font-semibold">Growth Fellow</span> and{" "}
-                  <span className="font-semibold">Deal Partner</span> at <BoardyLogo />{" "}
+                  , which opens opportunities like becoming a{" "}
+                  <span className="font-semibold">Growth Fellow</span> and{" "}
+                  <span className="font-semibold">Deal Partner</span> at{" "}
+                  <BoardyLogo />{" "}
                   <AnimatedLink
                     href="https://www.boardy.ai/"
                     target="_blank"
@@ -123,20 +136,24 @@ export default function Home() {
                   >
                     UWaterloo's
                   </AnimatedLink>{" "}
-                  highest Co-op student award <span className="font-semibold">twice</span>
+                  highest Co-op student award{" "}
+                  <span className="font-semibold">twice</span>
                 </p>
               </div>
             </div>
 
-            <div className="animate-init animate-blur-in animate-delay-300">
+            <div className="animate-init animate-blur-in animate-delay-400">
               <p className="text-base text-foreground leading-relaxed font-normal">
-                You can reach out to me at <span className="font-semibold">t3thind[at]uwaterloo[dot]ca</span>
+                You can reach out to me at{" "}
+                <span className="font-semibold">
+                  t3thind[at]uwaterloo[dot]ca
+                </span>
               </p>
             </div>
           </div>
         </header>
 
-        <footer className="pt-4 pb-2 border-t border-border animate-init animate-blur-in animate-delay-400">
+        <footer className="pt-4 pb-2 border-t border-border animate-init animate-blur-in animate-delay-500">
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
@@ -193,5 +210,5 @@ export default function Home() {
 
       <div className="fixed bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none"></div>
     </div>
-  )
+  );
 }
