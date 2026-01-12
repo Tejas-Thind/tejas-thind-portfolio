@@ -8,13 +8,31 @@ import {
   CloverLogo,
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const { isDark, toggleTheme } = useThemeToggle();
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+
+  useEffect(() => {
+    const hasVisited = sessionStorage.getItem("hasVisited");
+    if (hasVisited) {
+      setIsFirstLoad(false);
+    } else {
+      sessionStorage.setItem("hasVisited", "true");
+    }
+  }, []);
+
+  const getDelay = (baseDelay: number) => {
+    return isFirstLoad ? baseDelay + 800 : baseDelay; // Add 800ms extra delay on first load
+  };
 
   return (
     <div className="min-h-screen text-foreground relative">
-      <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in animate-delay-100">
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in"
+        style={{ animationDelay: `${getDelay(200)}ms` }}
+      >
         <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
         <div className="relative flex items-center justify-center px-6 sm:px-8 py-6 sm:py-8 text-sm md:text-base">
           <div className="flex gap-6 sm:gap-8">
@@ -46,7 +64,10 @@ export default function Home() {
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header className="flex items-center py-20 pt-20 sm:pt-24">
           <div className="w-full space-y-6 sm:space-y-8">
-            <div className="space-y-3 sm:space-y-4 animate-init animate-blur-in animate-delay-200">
+            <div
+              className="space-y-3 sm:space-y-4 animate-init animate-blur-in"
+              style={{ animationDelay: `${getDelay(400)}ms` }}
+            >
               <h1 className="text-4xl sm:text-5xl tracking-tight text-foreground font-serif">
                 <span className="font-normal italic">Hey, I'm </span>
                 <span className="font-semibold italic">Tejas</span>
@@ -66,7 +87,10 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-3 animate-init animate-blur-in animate-delay-300">
+            <div
+              className="space-y-3 animate-init animate-blur-in"
+              style={{ animationDelay: `${getDelay(600)}ms` }}
+            >
               <p className="font-semibold text-foreground">Why I Stand Out:</p>
               <div className="space-y-2 text-base text-foreground max-w-3xl">
                 <p className="font-normal">
@@ -153,7 +177,10 @@ export default function Home() {
           </div>
         </header>
 
-        <footer className="pt-4 pb-2 border-t border-border animate-init animate-blur-in animate-delay-500">
+        <footer
+          className="pt-4 pb-2 border-t border-border animate-init animate-blur-in"
+          style={{ animationDelay: `${getDelay(1000)}ms` }}
+        >
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
