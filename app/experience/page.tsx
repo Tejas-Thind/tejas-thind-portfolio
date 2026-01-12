@@ -191,7 +191,7 @@ export default function Experience() {
               className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2 cursor-pointer"
               aria-label="Toggle theme"
             >
-              {isDark ? "" : ""}
+              {isDark ? "☀️" : "🌙"}
             </button>
           </div>
         </footer>
