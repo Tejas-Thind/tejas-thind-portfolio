@@ -154,18 +154,19 @@ body {
   }
 
   /* Added blur-to-clear fade-in animation */
-  /* Slowed down blur-in animation from 0.6s to 1s */
+  /* Slowed down blur-in animation for a sleeker look */
   .animate-blur-in {
-    animation: blur-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: blur-in 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    will-change: transform, opacity, filter;
   }
 
   @keyframes blur-in {
-    from {
+    0% {
       opacity: 0;
-      filter: blur(10px);
-      transform: translateY(8px);
+      filter: blur(6px);
+      transform: translateY(12px);
     }
-    to {
+    100% {
       opacity: 1;
       filter: blur(0);
       transform: translateY(0);
@@ -175,24 +176,47 @@ body {
   /* Staggered delays for cascading effect */
   /* Increased staggered delays for smoother cascade */
   .animate-delay-100 {
-    animation-delay: 150ms;
+    animation-delay: 200ms;
   }
   .animate-delay-200 {
-    animation-delay: 300ms;
+    animation-delay: 400ms;
   }
   .animate-delay-300 {
-    animation-delay: 450ms;
-  }
-  .animate-delay-400 {
     animation-delay: 600ms;
   }
+  .animate-delay-400 {
+    animation-delay: 800ms;
+  }
   .animate-delay-500 {
-    animation-delay: 750ms;
+    animation-delay: 1000ms;
   }
 
   /* Initial state for animated elements */
   .animate-init {
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(6px);
+    transform: translateY(12px);
+  }
+
+  /* Non-blur animation for elements with backdrop-filter (prevents glitching) */
+  .animate-slide-up-fade {
+    animation: slide-up-fade 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    will-change: transform, opacity;
+  }
+
+  @keyframes slide-up-fade {
+    0% {
+      opacity: 0;
+      transform: translateY(12px) translateZ(0); /* Force hardware accel */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) translateZ(0);
+    }
+  }
+
+  .animate-init-slide {
+    opacity: 0;
+    transform: translateY(12px);
   }
 }
