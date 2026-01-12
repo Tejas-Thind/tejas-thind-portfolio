@@ -1,62 +1,62 @@
-"use client";
-import Link from "next/link";
-import type React from "react";
+"use client"
+import Link from "next/link"
+import type React from "react"
 
-import { useRef, useEffect, useState, useCallback } from "react";
-import { useThemeToggle } from "@/hooks/use-theme";
+import { useRef, useEffect, useState, useCallback } from "react"
+import { useThemeToggle } from "@/hooks/use-theme"
 
 export default function Projects() {
-  const { isDark, toggleTheme } = useThemeToggle();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const { isDark, toggleTheme } = useThemeToggle()
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     requestAnimationFrame(() => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    });
-  }, []);
+      setMousePos({ x: e.clientX, y: e.clientY })
+    })
+  }, [])
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [handleMouseMove]);
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [handleMouseMove])
 
   const projects = [
     {
       title: "Internly",
       description:
         "Lets students share and explore real internship experiences while analyzing resumes for ATS compatibility, experience alignment, and generating detailed score recovery plans.",
-      tech: ["TypeScript", "Next.js", "AI"],
+      tech: ["TypeScript", "Next.js", "Supabase", "Tailwind CSS"],
       link: "https://internly.tech",
     },
     {
       title: "AI-Enhanced Incident Management System",
       description:
         "Simulates a real-time incident replay system where each message is analyzed by AI to extract actionable suggestions. Built for Rootly AI (YC S21).",
-      tech: ["Ruby", "OpenAI", "Real-time"],
+      tech: ["Ruby", "JavaScript", "HTML", "CSS", "OpenAI API"],
       link: "https://github.com/Tejas-Thind/AI-Enhanced-Incident-Management-System",
-    },
-    {
-      title: "FitGenius",
-      description:
-        "Leverages OpenAI API to create customized workout plans tailored to user needs. Allows users to log workouts, track progress, and work toward fitness goals.",
-      tech: ["JavaScript", "OpenAI", "Fitness"],
-      link: "https://github.com/Tejas-Thind/FitGenius",
     },
     {
       title: "Loan Amount ML Predictor",
       description:
         "Machine learning project to predict loan amounts using Random Forest and XGBoost. Features data preprocessing, feature engineering, and hyperparameter tuning.",
-      tech: ["Python", "ML", "XGBoost"],
+      tech: ["Python", "NumPy", "Pandas", "scikit-learn", "XGBoost"],
       link: "https://github.com/Tejas-Thind/Loan-Amount-ML-Predictor",
     },
     {
       title: "User Management System",
       description:
         "Built with Spring Boot, deployed on AWS EC2 using Docker. Features REST API for managing users, PostgreSQL integration, and containerized deployment.",
-      tech: ["Java", "Spring Boot", "AWS", "Docker"],
+      tech: ["Java", "Spring Boot", "Docker", "AWS"],
       link: "https://github.com/Tejas-Thind/User-Management-System",
     },
-  ];
+    {
+      title: "FitGenius",
+      description:
+        "Leverages OpenAI API to create customized workout plans tailored to user needs. Allows users to log workouts, track progress, and work toward fitness goals.",
+      tech: ["JavaScript", "HTML", "CSS", "OpenAI API"],
+      link: "https://github.com/Tejas-Thind/FitGenius",
+    },
+  ]
 
   return (
     <div className="min-h-screen text-foreground relative">
@@ -96,12 +96,7 @@ export default function Projects() {
 
             <div className="space-y-4">
               {projects.map((project, index) => (
-                <ProjectCardWithEffect
-                  key={index}
-                  project={project}
-                  mousePos={mousePos}
-                  isDark={isDark}
-                />
+                <ProjectCardWithEffect key={index} project={project} mousePos={mousePos} isDark={isDark} />
               ))}
             </div>
           </div>
@@ -162,7 +157,7 @@ export default function Projects() {
         </footer>
       </main>
     </div>
-  );
+  )
 }
 
 function ProjectCardWithEffect({
@@ -171,56 +166,53 @@ function ProjectCardWithEffect({
   isDark,
 }: {
   project: {
-    title: string;
-    description: string;
-    tech: string[];
-    link: string;
-  };
-  mousePos: { x: number; y: number };
-  isDark: boolean;
+    title: string
+    description: string
+    tech: string[]
+    link: string
+  }
+  mousePos: { x: number; y: number }
+  isDark: boolean
 }) {
-  const cardRef = useRef<HTMLAnchorElement>(null);
-  const [isHovering, setIsHovering] = useState(false);
-  const [localMouse, setLocalMouse] = useState({ x: 0, y: 0 });
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLAnchorElement>(null)
+  const [isHovering, setIsHovering] = useState(false)
+  const [localMouse, setLocalMouse] = useState({ x: 0, y: 0 })
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
 
   // Calculate proximity-based border glow
   const getProximityGlow = () => {
-    if (!cardRef.current) return 0;
-    const rect = cardRef.current.getBoundingClientRect();
-    const cardCenterX = rect.left + rect.width / 2;
-    const cardCenterY = rect.top + rect.height / 2;
-    const distance = Math.sqrt(
-      Math.pow(mousePos.x - cardCenterX, 2) +
-        Math.pow(mousePos.y - cardCenterY, 2)
-    );
-    const maxDistance = 400;
-    return Math.max(0, 1 - distance / maxDistance);
-  };
+    if (!cardRef.current) return 0
+    const rect = cardRef.current.getBoundingClientRect()
+    const cardCenterX = rect.left + rect.width / 2
+    const cardCenterY = rect.top + rect.height / 2
+    const distance = Math.sqrt(Math.pow(mousePos.x - cardCenterX, 2) + Math.pow(mousePos.y - cardCenterY, 2))
+    const maxDistance = 400
+    return Math.max(0, 1 - distance / maxDistance)
+  }
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setLocalMouse({ x, y });
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    setLocalMouse({ x, y })
 
     // Smooth 3D tilt calculation
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const tiltX = ((centerY - y) / centerY) * 4;
-    const tiltY = ((x - centerX) / centerX) * 4;
-    setTilt({ x: tiltX, y: tiltY });
-  };
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    const tiltX = ((centerY - y) / centerY) * 4
+    const tiltY = ((x - centerX) / centerX) * 4
+    setTilt({ x: tiltX, y: tiltY })
+  }
 
   const handleMouseLeave = () => {
-    setIsHovering(false);
-    setTilt({ x: 0, y: 0 });
-  };
+    setIsHovering(false)
+    setTilt({ x: 0, y: 0 })
+  }
 
-  const proximityGlow = getProximityGlow();
-  const glowColor = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.9)";
-  const softGlowColor = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.4)";
+  const proximityGlow = getProximityGlow()
+  const glowColor = isDark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.9)"
+  const softGlowColor = isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.4)"
 
   return (
     <a
@@ -274,14 +266,10 @@ function ProjectCardWithEffect({
       {/* Content */}
       <div className="relative">
         <div className="mb-3">
-          <h3 className="text-lg font-semibold text-foreground">
-            {project.title}
-          </h3>
+          <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
         </div>
 
-        <p className="text-muted-foreground leading-relaxed mb-4">
-          {project.description}
-        </p>
+        <p className="text-muted-foreground leading-relaxed mb-4">{project.description}</p>
 
         <div className="flex flex-wrap gap-2">
           {project.tech.map((tech, techIndex) => (
@@ -295,5 +283,5 @@ function ProjectCardWithEffect({
         </div>
       </div>
     </a>
-  );
+  )
 }
