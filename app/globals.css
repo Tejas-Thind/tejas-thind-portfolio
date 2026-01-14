@@ -137,6 +137,32 @@ body {
   }
 }
 
+/* Fix for hover translate animations in Tailwind v4 */
+.hover-lift {
+  transition: transform 300ms ease;
+}
+.hover-lift:hover {
+  transform: translateY(-0.25rem);
+}
+
+/* Fix for animated underline links in Tailwind v4 */
+.animated-link {
+  position: relative;
+  display: inline-block;
+}
+.animated-link .underline-bar {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1.5px;
+  width: 0;
+  background-color: currentColor;
+  transition: width 300ms ease-out;
+}
+.animated-link:hover .underline-bar {
+  width: 100%;
+}
+
 @layer utilities {
   .animate-fade-in-up {
     animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;

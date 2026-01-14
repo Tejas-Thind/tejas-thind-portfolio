@@ -38,7 +38,7 @@ export default function Home() {
           <div className="flex gap-6 sm:gap-8">
             <Link
               href="/"
-              className="text-foreground font-normal transition-transform duration-300 hover:-translate-y-1"
+              className="text-foreground font-normal hover-lift"
               style={{
                 textShadow: "0 0 0.6px currentColor, 0 0 0.6px currentColor",
               }}
@@ -47,13 +47,13 @@ export default function Home() {
             </Link>
             <Link
               href="/experience"
-              className="text-foreground font-normal opacity-50 transition-all duration-300 hover:-translate-y-1 hover:opacity-100"
+              className="text-foreground font-normal opacity-50 hover-lift hover:opacity-100"
             >
               Experience
             </Link>
             <Link
               href="/projects"
-              className="text-foreground font-normal opacity-50 transition-all duration-300 hover:-translate-y-1 hover:opacity-100"
+              className="text-foreground font-normal opacity-50 hover-lift hover:opacity-100"
             >
               Projects
             </Link>
@@ -166,7 +166,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="animate-init animate-blur-in animate-delay-400">
+            <div
+              className="animate-init animate-blur-in"
+              style={{ animationDelay: `${getDelay(800)}ms` }}
+            >
               <p className="text-base text-foreground leading-relaxed font-normal">
                 You can reach out to me at{" "}
                 <span className="font-semibold">
@@ -184,7 +187,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
               href="mailto:tejas.st0544@gmail.com"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground hover-lift"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -192,7 +195,7 @@ export default function Home() {
             </a>
             <a
               href="https://www.linkedin.com/in/tejas-thind/"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground hover-lift"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -200,7 +203,7 @@ export default function Home() {
             </a>
             <a
               href="https://x.com/tejasthind4"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground hover-lift"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -208,7 +211,7 @@ export default function Home() {
             </a>
             <a
               href="https://www.instagram.com/tejastnd/"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground hover-lift"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -216,7 +219,7 @@ export default function Home() {
             </a>
             <a
               href="https://github.com/Tejas-Thind"
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1"
+              className="text-muted-foreground hover:text-foreground hover-lift"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -226,7 +229,7 @@ export default function Home() {
             <span className="text-muted-foreground">Appearance:</span>
             <button
               onClick={toggleTheme}
-              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:-translate-y-1 -ml-2 cursor-pointer"
+              className="text-muted-foreground hover:text-foreground hover-lift -ml-2 cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? "☀️" : "🌙"}

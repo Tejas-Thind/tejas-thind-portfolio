@@ -12,12 +12,13 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tejasthind.com"),
   title: {
     default: "Tejas Thind",
     template: "%s | Tejas Thind",
   },
   description:
-    "Management Engineering Student at the University of Waterloo. Software Engineer Intern at Clover Labs. Passionate about building impactful software.",
+    "Engineering + AI Student at the University of Waterloo. Software Engineer Intern at Clover Labs.",
   keywords: [
     "Tejas Thind",
     "Software Engineer",
@@ -34,11 +35,8 @@ export const metadata: Metadata = {
     url: "https://tejasthind.com",
     title: "Tejas Thind",
     description:
-      "Management Engineering Student at the University of Waterloo. Software Engineer Intern at Clover Labs. Passionate about building impactful software.",
+      "Engineering + AI Student at the University of Waterloo. Software Engineer Intern at Clover Labs.",
     siteName: "Tejas Thind Portfolio",
-  },
-  icons: {
-    icon: "/icon",
   },
 };
 
