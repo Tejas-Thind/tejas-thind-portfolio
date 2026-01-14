@@ -1,3 +1,3 @@
 # My Personal Website
 
-A personal website showcasing my highlights, experience, and projects!
+This website showcases my highlights, experiences, and projects!
