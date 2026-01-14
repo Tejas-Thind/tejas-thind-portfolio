@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | Tejas Thind",
   },
   description:
-    "Engineering + AI student at the University of Waterloo. Previous 3x SWE intern.",
+    "Engineering + AI student at University of Waterloo. Previous 3x SWE intern.",
   keywords: [
     "Tejas Thind",
     "Software Engineer",
@@ -37,6 +37,30 @@ export const metadata: Metadata = {
     description:
       "Engineering + AI student at University of Waterloo. Previous 3x SWE intern.",
     siteName: "Tejas Thind Portfolio",
+    images: [
+      {
+        url: "/icon.png",
+        width: 256,
+        height: 256,
+        alt: "Tejas Thind",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Tejas Thind",
+    description:
+      "Engineering + AI student at University of Waterloo. Previous 3x SWE intern.",
+    creator: "@tejasthind4",
+    images: ["/icon.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "256x256", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icon.png", sizes: "256x256", type: "image/png" },
+    ],
   },
 };
 
