@@ -12,9 +12,34 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Tejas Thind",
-  description: "Engineering Student @ UWaterloo.",
-  generator: "v0.app",
+  title: {
+    default: "Tejas Thind",
+    template: "%s | Tejas Thind",
+  },
+  description:
+    "Management Engineering Student at the University of Waterloo. Software Engineer Intern at Clover Labs. Passionate about building impactful software.",
+  keywords: [
+    "Tejas Thind",
+    "Software Engineer",
+    "University of Waterloo",
+    "Management Engineering",
+    "Full Stack Developer",
+    "Portfolio",
+  ],
+  authors: [{ name: "Tejas Thind" }],
+  creator: "Tejas Thind",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://tejasthind.com",
+    title: "Tejas Thind",
+    description:
+      "Management Engineering Student at the University of Waterloo. Software Engineer Intern at Clover Labs. Passionate about building impactful software.",
+    siteName: "Tejas Thind Portfolio",
+  },
+  icons: {
+    icon: "/icon",
+  },
 };
 
 export default function RootLayout({
