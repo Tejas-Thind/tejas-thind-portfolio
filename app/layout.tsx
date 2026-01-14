@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | Tejas Thind",
   },
   description:
-    "Engineering + AI Student at the University of Waterloo. Software Engineer Intern at Clover Labs.",
+    "Engineering + AI student at the University of Waterloo. Previous 3x SWE intern.",
   keywords: [
     "Tejas Thind",
     "Software Engineer",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     url: "https://tejasthind.com",
     title: "Tejas Thind",
     description:
-      "Engineering + AI Student at the University of Waterloo. Software Engineer Intern at Clover Labs.",
+      "Engineering + AI student at University of Waterloo. Previous 3x SWE intern.",
     siteName: "Tejas Thind Portfolio",
   },
 };

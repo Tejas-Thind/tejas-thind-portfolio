@@ -58,7 +58,7 @@ export function Navigation() {
           <button
             key={item.id}
             onClick={() => handleNavClick(item.id)}
-            className={`relative px-2 py-2 text-sm transition-colors duration-300 group cursor-pointer ${
+            className={`relative px-2 py-2 text-sm transition-all duration-300 group cursor-pointer ${
               activeSection === item.id ? "text-foreground" : "text-muted-foreground hover:text-foreground"
             }`}
           >
