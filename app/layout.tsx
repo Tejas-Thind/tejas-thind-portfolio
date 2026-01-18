@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import CanvasCursor from "@/components/canvas-cursor";
 import "./globals.css";
@@ -107,6 +108,7 @@ export default function RootLayout({
         <div className="fixed inset-0 z-[-2] bg-background pointer-events-none" />
         <CanvasCursor />
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
