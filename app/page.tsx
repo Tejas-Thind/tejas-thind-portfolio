@@ -150,19 +150,6 @@ export default function Home() {
                   </AnimatedLink>
                   , an AI Super Connector
                 </p>
-                <p className="font-normal">
-                  Received <WaterlooLogo />{" "}
-                  <AnimatedLink
-                    href="https://uwaterloo.ca/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground font-semibold"
-                  >
-                    UWaterloo's
-                  </AnimatedLink>{" "}
-                  highest Co-op student award{" "}
-                  <span className="font-semibold">twice</span>
-                </p>
               </div>
             </div>
 
