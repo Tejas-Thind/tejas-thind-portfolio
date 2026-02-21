@@ -291,7 +291,7 @@ function CardWithEffect({
     >
       <div
         ref={cardRef}
-        className="group relative p-6 rounded-lg bg-background/50 backdrop-blur-sm cursor-pointer"
+        className="group relative p-6 rounded-lg bg-background/20 backdrop-blur-2xl cursor-pointer"
         onMouseEnter={() => setIsHovering(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -332,7 +332,7 @@ function CardWithEffect({
           />
         )}
 
-        <div className="absolute inset-[1px] rounded-[7px] bg-muted/30" />
+        <div className="absolute inset-[1px] rounded-[7px] bg-muted/15" />
 
         {/* Content */}
         <div className="relative flex flex-col sm:flex-row sm:items-start gap-4">

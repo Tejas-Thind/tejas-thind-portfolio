@@ -238,7 +238,7 @@ function ProjectCardWithEffect({
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative block p-6 rounded-lg bg-background/50 backdrop-blur-sm"
+      className="group relative block p-6 rounded-lg bg-background/20 backdrop-blur-2xl"
       onMouseEnter={() => setIsHovering(true)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -280,7 +280,7 @@ function ProjectCardWithEffect({
       )}
 
       {/* Card background */}
-      <div className="absolute inset-[1px] rounded-[7px] bg-muted/30" />
+      <div className="absolute inset-[1px] rounded-[7px] bg-muted/15" />
 
       {/* Content */}
       <div className="relative">
