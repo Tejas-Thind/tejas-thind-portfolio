@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import type React from "react";
+import { CmdKHint } from "@/components/command-palette";
 
 import { useRef, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
@@ -214,12 +215,7 @@ export default function Experience() {
               {isDark ? "☀️" : "🌙"}
             </button>
             <span className="text-muted-foreground">|</span>
-            <button
-              onClick={() => window.dispatchEvent(new Event("open-palette"))}
-              className="text-muted-foreground hover:text-foreground hover-lift cursor-pointer text-xs border border-border/50 rounded px-1.5 py-0.5"
-            >
-              ⌘K
-            </button>
+            <CmdKHint />
           </div>
         </footer>
       </main>

@@ -9,6 +9,7 @@ import {
   TheoryLogo,
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
+import { CmdKHint } from "@/components/command-palette";
 import { CountUp } from "@/components/count-up";
 import { TextScramble } from "@/components/text-scramble";
 import { useEffect, useState } from "react";
@@ -241,12 +242,7 @@ export default function Home() {
               {isDark ? "☀️" : "🌙"}
             </button>
             <span className="text-muted-foreground">|</span>
-            <button
-              onClick={() => window.dispatchEvent(new Event("open-palette"))}
-              className="text-muted-foreground hover:text-foreground hover-lift cursor-pointer text-xs border border-border/50 rounded px-1.5 py-0.5"
-            >
-              ⌘K
-            </button>
+            <CmdKHint />
           </div>
         </footer>
       </main>

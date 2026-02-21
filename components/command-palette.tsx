@@ -23,12 +23,21 @@ const ITEMS: Item[] = [
   { group: "Copy", label: "Copy Email", action: "copy", value: "t3thind@uwaterloo.ca" },
 ];
 
+function useIsMac() {
+  const [isMac, setIsMac] = useState(true);
+  useEffect(() => {
+    setIsMac(navigator.platform.toUpperCase().includes("MAC"));
+  }, []);
+  return isMac;
+}
+
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const isMac = useIsMac();
 
   const filtered = ITEMS.filter(
     (item) =>
@@ -175,8 +184,21 @@ export function CommandPalette() {
           <span>↑↓ navigate</span>
           <span>↵ select</span>
           <span>esc close</span>
+          <span className="ml-auto">{isMac ? "⌘K" : "Ctrl+K"}</span>
         </div>
       </div>
     </div>
+  );
+}
+
+export function CmdKHint() {
+  const isMac = useIsMac();
+  return (
+    <button
+      onClick={() => window.dispatchEvent(new Event("open-palette"))}
+      className="text-muted-foreground hover:text-foreground hover-lift cursor-pointer text-xs border border-border/50 rounded px-1.5 py-0.5"
+    >
+      {isMac ? "⌘K" : "Ctrl+K"}
+    </button>
   );
 }
