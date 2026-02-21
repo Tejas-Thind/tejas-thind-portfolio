@@ -74,7 +74,7 @@ export default function Home() {
               <h1 className="text-4xl sm:text-5xl tracking-tight text-foreground font-serif">
                 <span className="font-normal italic">Hey, I'm </span>
                 <span className="font-semibold italic">
-                  <TextScramble text="Tejas" delay={isFirstLoad ? 2600 : 1800} duration={800} />
+                  <TextScramble text="Tejas" delay={getDelay(400)} duration={1000} />
                 </span>
               </h1>
 
