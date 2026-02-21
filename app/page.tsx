@@ -110,8 +110,7 @@ export default function Home() {
                     Theory Ventures
                   </AnimatedLink>{" "}
                   as a <span className="font-semibold">Data Science Engineer Intern</span>,
-                  exploring the venture capital industry to get an insider's
-                  look at how it operates.
+                  getting an insider's view into how a top-tier VC firm operates.
                 </p>
                 <p className="font-normal">
                   Current Software Engineer Intern at <CloverLogo />{" "}
