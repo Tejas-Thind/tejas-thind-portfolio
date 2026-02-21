@@ -123,10 +123,9 @@ export default function Home() {
                   >
                     Clover Labs
                   </AnimatedLink>
-                  , the <span className="font-semibold">fastest</span> growing
-                  startup in Canada. On track for{" "}
-                  <span className="font-semibold">$<CountUp to={50} suffix="M" /> ARR</span> in 2026,
-                  building AI growth agents.
+                  , Neo-backed. Building{" "}
+                  <span className="font-semibold">Echos</span>, an AI-driven
+                  video generation and editing platform.
                 </p>
                 <p className="font-normal">
                   At <RootlyLogo />{" "}
