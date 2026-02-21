@@ -92,11 +92,20 @@ export default function Projects() {
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <section className="min-h-screen py-32 pt-20 sm:pt-24">
           <div className="space-y-12">
-            <h2 className="text-4xl sm:text-5xl font-normal">Projects</h2>
+            <h2
+              className="text-4xl sm:text-5xl font-semibold italic font-serif animate-init animate-blur-in"
+              style={{ animationDelay: "100ms" }}
+            >
+              Projects
+            </h2>
 
             <div className="space-y-4">
               {projects.map((project, index) => (
-                <div key={index}>
+                <div
+                  key={index}
+                  className="animate-init-slide animate-slide-up-fade"
+                  style={{ animationDelay: `${200 + index * 75}ms` }}
+                >
                   <ProjectCardWithEffect
                     project={project}
                     mousePos={mousePos}
