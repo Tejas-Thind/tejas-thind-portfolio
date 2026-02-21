@@ -103,7 +103,7 @@ export default function Projects() {
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className="animate-init-slide animate-slide-up-fade"
+                  className="animate-card-in"
                   style={{ animationDelay: `${200 + index * 75}ms` }}
                 >
                   <ProjectCardWithEffect
