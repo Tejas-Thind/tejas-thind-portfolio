@@ -10,6 +10,7 @@ import {
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
 import { CountUp } from "@/components/count-up";
+import { TextScramble } from "@/components/text-scramble";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -72,7 +73,9 @@ export default function Home() {
             >
               <h1 className="text-4xl sm:text-5xl tracking-tight text-foreground font-serif">
                 <span className="font-normal italic">Hey, I'm </span>
-                <span className="font-semibold italic">Tejas</span>
+                <span className="font-semibold italic">
+                  <TextScramble text="Tejas" delay={isFirstLoad ? 2600 : 1800} duration={800} />
+                </span>
               </h1>
 
               <p className="text-base sm:text-base text-foreground leading-relaxed max-w-md">
@@ -236,6 +239,13 @@ export default function Home() {
               aria-label="Toggle theme"
             >
               {isDark ? "☀️" : "🌙"}
+            </button>
+            <span className="text-muted-foreground">|</span>
+            <button
+              onClick={() => window.dispatchEvent(new Event("open-palette"))}
+              className="text-muted-foreground hover:text-foreground hover-lift cursor-pointer text-xs border border-border/50 rounded px-1.5 py-0.5"
+            >
+              ⌘K
             </button>
           </div>
         </footer>

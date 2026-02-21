@@ -4,6 +4,8 @@ import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import CanvasCursor from "@/components/canvas-cursor";
+import { CommandPalette } from "@/components/command-palette";
+import { PageTransition } from "@/components/page-transition";
 import "./globals.css";
 
 const geist = Geist({
@@ -100,6 +102,9 @@ export default function RootLayout({
                   }
                 } catch (e) {}
               })();
+              console.log('%c Tejas Thind ', 'font-family:Georgia,serif; font-style:italic; font-weight:600; font-size:2rem; color:#fff; background:#111; padding:8px 14px; border-radius:6px;');
+              console.log('%c Management Engineering @ UWaterloo', 'font-size:0.8rem; color:#666; padding:2px 0;');
+              console.log('%c t3thind@uwaterloo.ca', 'font-size:0.8rem; color:#666; font-family:monospace;');
             `,
           }}
         />
@@ -107,7 +112,10 @@ export default function RootLayout({
       <body className="font-sans antialiased" suppressHydrationWarning>
         <div className="fixed inset-0 z-[-2] bg-background pointer-events-none" />
         <CanvasCursor />
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <CommandPalette />
+          <PageTransition>{children}</PageTransition>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
