@@ -6,8 +6,10 @@ import {
   RootlyLogo,
   BoardyLogo,
   CloverLogo,
+  TheoryLogo,
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
+import { CountUp } from "@/components/count-up";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -94,7 +96,21 @@ export default function Home() {
               <p className="font-semibold text-foreground">Why I Stand Out:</p>
               <div className="space-y-2 text-base text-foreground max-w-3xl">
                 <p className="font-normal">
-                  Software Engineer Intern at <CloverLogo />{" "}
+                  Incoming at <TheoryLogo />{" "}
+                  <AnimatedLink
+                    href="https://www.theoryvc.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground font-semibold"
+                  >
+                    Theory Ventures
+                  </AnimatedLink>{" "}
+                  as a <span className="font-semibold">Data Science Engineer Intern</span>,
+                  exploring the venture capital industry to get an insider's
+                  look at how it operates.
+                </p>
+                <p className="font-normal">
+                  Current Software Engineer Intern at <CloverLogo />{" "}
                   <AnimatedLink
                     href="https://cloverlabs.ai/"
                     target="_blank"
@@ -105,7 +121,7 @@ export default function Home() {
                   </AnimatedLink>
                   , the <span className="font-semibold">fastest</span> growing
                   startup in Canada. On track for{" "}
-                  <span className="font-semibold">$50M ARR</span> in 2026,
+                  <span className="font-semibold">$<CountUp to={50} suffix="M" /> ARR</span> in 2026,
                   building AI growth agents.
                 </p>
                 <p className="font-normal">
@@ -119,7 +135,7 @@ export default function Home() {
                     Rootly AI
                   </AnimatedLink>{" "}
                   (YC-backed), shipped{" "}
-                  <span className="font-semibold">45+ features</span> for
+                  <span className="font-semibold"><CountUp to={45} suffix="+" /> features</span> for
                   <span className="font-semibold">
                     {" "}
                     enterprise customers
