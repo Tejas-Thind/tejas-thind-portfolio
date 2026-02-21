@@ -291,7 +291,7 @@ function CardWithEffect({
     >
       <div
         ref={cardRef}
-        className="group relative p-6 rounded-lg bg-background/20 backdrop-blur-2xl cursor-pointer"
+        className="group relative p-6 rounded-lg bg-background/40 backdrop-blur-2xl cursor-pointer"
         onMouseEnter={() => setIsHovering(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
