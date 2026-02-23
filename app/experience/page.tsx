@@ -42,7 +42,7 @@ export default function Experience() {
       location: "Toronto, ON",
       date: "Winter 2026",
       description:
-        "The fastest growing startup in Canada. Working on Echos, an AI-powered video editing platform.",
+        "Neo-backed AI growth agents. Building Echos, an AI-powered social video automation platform.",
       current: true,
       url: "https://www.cloverlabs.ai/",
     },
@@ -68,17 +68,6 @@ export default function Experience() {
         "Shipped 45+ features for enterprise customers including Nvidia, Figma, Dropbox, LinkedIn, and Yahoo.",
       current: false,
       url: "https://rootly.com/",
-    },
-    {
-      company: "Industry 4.0 Design Team",
-      logo: "/images/industry4team-logo.jpg",
-      role: "VP of Software",
-      location: "Waterloo, ON",
-      date: "2024-2025",
-      description:
-        "Helped develop an internal AI-powered tool to support design teams at the University of Waterloo, also led the development and continuous improvement of our website.",
-      current: false,
-      url: "https://www.uwindustry4.ca/",
     },
     {
       company: "General Dynamic Land Systems - Canada",
