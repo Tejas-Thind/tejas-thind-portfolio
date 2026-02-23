@@ -75,7 +75,11 @@ export default function Home() {
               <h1 className="text-4xl sm:text-5xl tracking-tight text-foreground font-serif">
                 <span className="font-normal italic">Hey, I'm </span>
                 <span className="font-semibold italic">
-                  <TextScramble text="Tejas" delay={getDelay(400)} duration={1000} />
+                  <TextScramble
+                    text="Tejas"
+                    delay={getDelay(400)}
+                    duration={1000}
+                  />
                 </span>
               </h1>
 
@@ -109,8 +113,12 @@ export default function Home() {
                   >
                     Theory Ventures
                   </AnimatedLink>{" "}
-                  as a <span className="font-semibold">Data Science Engineer Intern</span>,
-                  getting an insider's view into how a top-tier VC firm operates.
+                  as a{" "}
+                  <span className="font-semibold">
+                    Data Science Engineer Intern
+                  </span>
+                  , getting an insider's view into how a top-tier VC firm
+                  operates.
                 </p>
                 <p className="font-normal">
                   Current Software Engineer Intern at <CloverLogo />{" "}
@@ -122,7 +130,7 @@ export default function Home() {
                   >
                     Clover Labs
                   </AnimatedLink>
-                  , Neo-backed AI growth agents. Building{" "}
+                  (Neo-backed), building{" "}
                   <span className="font-semibold">Echos</span>, an AI-powered
                   platform for social video automation.
                 </p>
@@ -137,7 +145,10 @@ export default function Home() {
                     Rootly AI
                   </AnimatedLink>{" "}
                   (YC-backed), shipped{" "}
-                  <span className="font-semibold"><CountUp to={45} suffix="+" /> features</span> used by Nvidia, Figma, Dropbox, LinkedIn, and Yahoo
+                  <span className="font-semibold">
+                    <CountUp to={45} suffix="+" /> features
+                  </span>{" "}
+                  used by Nvidia, Figma, Dropbox, LinkedIn, and Yahoo
                 </p>
                 <p className="font-normal">
                   Sharing my tech journey online on{" "}
