@@ -65,7 +65,7 @@ export default function Experience() {
       location: "Toronto, ON",
       date: "Fall 2025",
       description:
-        "Shipped 45+ features for enterprise customers including Nvidia, Figma, Dropbox, LinkedIn, and Yahoo.",
+        "Shipped 45+ features used by Nvidia, Figma, Dropbox, LinkedIn, and Yahoo.",
       current: false,
       url: "https://rootly.com/",
     },

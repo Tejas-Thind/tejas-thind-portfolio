@@ -137,12 +137,7 @@ export default function Home() {
                     Rootly AI
                   </AnimatedLink>{" "}
                   (YC-backed), shipped{" "}
-                  <span className="font-semibold"><CountUp to={45} suffix="+" /> features</span> for
-                  <span className="font-semibold">
-                    {" "}
-                    enterprise customers
-                  </span>{" "}
-                  including Nvidia, Figma, Dropbox, LinkedIn, and Yahoo
+                  <span className="font-semibold"><CountUp to={45} suffix="+" /> features</span> used by Nvidia, Figma, Dropbox, LinkedIn, and Yahoo
                 </p>
                 <p className="font-normal">
                   Sharing my tech journey online on{" "}
