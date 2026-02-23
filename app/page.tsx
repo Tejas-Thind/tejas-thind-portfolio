@@ -184,7 +184,7 @@ export default function Home() {
               <p className="text-base text-foreground leading-relaxed font-normal">
                 You can reach out to me at{" "}
                 <span className="font-semibold">
-                  t3thind[at]uwaterloo[dot]ca
+                  tejas.st0544[at]gmail[dot]com
                 </span>
               </p>
             </div>
