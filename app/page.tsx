@@ -124,7 +124,7 @@ export default function Home() {
                   </AnimatedLink>
                   , Neo-backed AI growth agents. Building{" "}
                   <span className="font-semibold">Echos</span>, an AI-powered
-                  social video automation platform.
+                  platform for social video automation.
                 </p>
                 <p className="font-normal">
                   At <RootlyLogo />{" "}
