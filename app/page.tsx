@@ -184,7 +184,7 @@ export default function Home() {
               <p className="text-base text-foreground leading-relaxed font-normal">
                 You can reach out to me at{" "}
                 <span className="font-semibold">
-                  tejas.st0544[at]gmail[dot]com
+                  t3thind[at]uwaterloo[dot]ca
                 </span>
               </p>
             </div>
@@ -197,7 +197,7 @@ export default function Home() {
         >
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
             <a
-              href="mailto:tejas.st0544@gmail.com"
+              href="mailto:t3thind@uwaterloo.ca"
               className="text-muted-foreground hover:text-foreground hover-lift"
               target="_blank"
               rel="noopener noreferrer"
