@@ -129,7 +129,7 @@ export default function Home() {
                     className="text-foreground font-semibold"
                   >
                     Clover Labs
-                  </AnimatedLink>
+                  </AnimatedLink>{" "}
                   (Neo-backed), building{" "}
                   <span className="font-semibold">Echos</span>, an AI-powered
                   platform for social video automation.
