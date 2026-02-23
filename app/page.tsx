@@ -122,7 +122,7 @@ export default function Home() {
                   >
                     Clover Labs
                   </AnimatedLink>
-                  , Neo-backed. Building{" "}
+                  , Neo-backed AI growth agents. Building{" "}
                   <span className="font-semibold">Echos</span>, an AI-driven
                   video generation and editing platform.
                 </p>
