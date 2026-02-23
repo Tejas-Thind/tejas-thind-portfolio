@@ -42,7 +42,7 @@ export default function Experience() {
       location: "Toronto, ON",
       date: "Winter 2026",
       description:
-        "Neo-backed AI growth agents. Building Echos, an AI-driven video generation and editing platform.",
+        "Neo-backed AI growth agents. Building Echos, an AI-powered social video automation platform.",
       current: true,
       url: "https://www.cloverlabs.ai/",
     },

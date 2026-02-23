@@ -123,8 +123,8 @@ export default function Home() {
                     Clover Labs
                   </AnimatedLink>
                   , Neo-backed AI growth agents. Building{" "}
-                  <span className="font-semibold">Echos</span>, an AI-driven
-                  video generation and editing platform.
+                  <span className="font-semibold">Echos</span>, an AI-powered
+                  social video automation platform.
                 </p>
                 <p className="font-normal">
                   At <RootlyLogo />{" "}
