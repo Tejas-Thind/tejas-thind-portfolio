@@ -42,7 +42,7 @@ export default function Experience() {
       location: "Remote",
       date: "2026",
       description:
-        "Driving growth for Stanley — Stan Store's AI-powered LinkedIn content and growth assistant helping creators and entrepreneurs build personal brands — while building my own.",
+        "Driving growth for Stanley, Stan Store's AI-powered LinkedIn content and growth assistant, while building my own brand.",
       current: true,
       url: "https://www.stan.store",
     },
