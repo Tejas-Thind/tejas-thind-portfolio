@@ -36,6 +36,17 @@ export default function Experience() {
       url: "https://www.theoryvc.com/",
     },
     {
+      company: "Stan",
+      logo: "/images/stanwithme_logo.jpg",
+      role: "Growth Fellow",
+      location: "Remote",
+      date: "2026",
+      description:
+        "Driving growth for Stanley — Stan Store's AI-powered LinkedIn content and growth assistant helping creators and entrepreneurs build personal brands — while building my own.",
+      current: true,
+      url: "https://www.stan.store",
+    },
+    {
       company: "Clover Labs",
       logo: "/images/design-mode/clover_logo.jpg",
       role: "Software Engineer Intern",

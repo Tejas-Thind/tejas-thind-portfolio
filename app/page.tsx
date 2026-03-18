@@ -7,6 +7,7 @@ import {
   BoardyLogo,
   CloverLogo,
   TheoryLogo,
+  StanLogo,
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
 import { CmdKHint } from "@/components/command-palette";
@@ -161,8 +162,7 @@ export default function Home() {
                     Instagram
                   </AnimatedLink>
                   , which opens opportunities like becoming a{" "}
-                  <span className="font-semibold">Growth Fellow</span> and{" "}
-                  <span className="font-semibold">Deal Partner</span> at{" "}
+                  <span className="font-semibold">Growth Fellow</span> at{" "}
                   <BoardyLogo />{" "}
                   <AnimatedLink
                     href="https://www.boardy.ai/"
@@ -171,8 +171,17 @@ export default function Home() {
                     className="text-foreground font-semibold"
                   >
                     Boardy
+                  </AnimatedLink>{" "}
+                  and{" "}
+                  <StanLogo />{" "}
+                  <AnimatedLink
+                    href="https://www.stan.store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground font-semibold"
+                  >
+                    Stan
                   </AnimatedLink>
-                  , an AI Super Connector
                 </p>
               </div>
             </div>
