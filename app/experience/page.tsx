@@ -30,8 +30,7 @@ export default function Experience() {
       role: "Data Science Engineer Intern",
       location: "San Francisco, CA",
       date: "Summer 2026",
-      description:
-        "Incoming Summer 2026.",
+      description: "Incoming Summer 2026.",
       current: false,
       url: "https://www.theoryvc.com/",
     },
@@ -255,7 +254,7 @@ function CardWithEffect({
     const cardCenterY = rect.top + rect.height / 2;
     const distance = Math.sqrt(
       Math.pow(mousePos.x - cardCenterX, 2) +
-        Math.pow(mousePos.y - cardCenterY, 2)
+        Math.pow(mousePos.y - cardCenterY, 2),
     );
     const maxDistance = 400;
     return Math.max(0, 1 - distance / maxDistance);
