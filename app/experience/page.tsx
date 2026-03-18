@@ -40,7 +40,7 @@ export default function Experience() {
       logo: "/images/stanwithme_logo.jpg",
       role: "Growth Fellow",
       location: "Remote",
-      date: "2026",
+      date: "Winter 2026",
       description:
         "Driving growth for Stanley, Stan Store's AI-powered LinkedIn content and growth assistant, while building my own brand.",
       current: true,
