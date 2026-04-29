@@ -104,7 +104,7 @@ export default function Home() {
               style={{ animationDelay: `${getDelay(600)}ms` }}
             >
               <p className="font-semibold text-foreground">Why I Stand Out:</p>
-              <div className="space-y-2 text-base text-foreground max-w-3xl">
+              <div className="space-y-3 text-base text-foreground max-w-3xl">
                 <p className="font-normal">
                   Incoming at <TheoryLogo />{" "}
                   <AnimatedLink
@@ -123,7 +123,7 @@ export default function Home() {
                   operates.
                 </p>
                 <p className="font-normal">
-                  Current Software Engineer Intern at <CloverLogo />{" "}
+                  Software Engineer Intern at <CloverLogo />{" "}
                   <AnimatedLink
                     href="https://cloverlabs.ai/"
                     target="_blank"

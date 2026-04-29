@@ -31,7 +31,7 @@ export default function Experience() {
       location: "San Francisco, CA",
       date: "Summer 2026",
       description: "Incoming Summer 2026.",
-      current: false,
+      current: true,
       url: "https://www.theoryvc.com/",
     },
     {
@@ -42,7 +42,7 @@ export default function Experience() {
       date: "Winter 2026",
       description:
         "Driving growth for Stanley, Stan Store's AI-powered LinkedIn content and growth assistant, while building my own brand.",
-      current: true,
+      current: false,
       url: "https://www.stan.store",
     },
     {
@@ -53,7 +53,7 @@ export default function Experience() {
       date: "Winter 2026",
       description:
         "Neo-backed AI growth agents. Building Echos, an AI-powered social video automation platform.",
-      current: true,
+      current: false,
       url: "https://www.cloverlabs.ai/",
     },
     {
@@ -359,11 +359,17 @@ function CardWithEffect({
                     </span>
                   )}
                 </h3>
-                <p className="text-foreground">{job.role}</p>
+                <p className="text-foreground/70">{job.role}</p>
               </div>
               <div className="text-sm text-muted-foreground sm:text-right flex-shrink-0">
                 <p>{job.location}</p>
                 <p>{job.date}</p>
+                {job.current && (
+                  <p className="flex items-center sm:justify-end gap-1.5 mt-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80 animate-pulse" />
+                    <span className="text-emerald-400/80 text-xs">Now</span>
+                  </p>
+                )}
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed">
