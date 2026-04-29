@@ -103,7 +103,7 @@ export default function Home() {
               className="space-y-3 animate-init animate-blur-in"
               style={{ animationDelay: `${getDelay(600)}ms` }}
             >
-              <p className="font-semibold text-foreground">Why I Stand Out:</p>
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest">Why I Stand Out</p>
               <div className="space-y-3 text-base text-foreground max-w-3xl">
                 <p className="font-normal">
                   Incoming at <TheoryLogo />{" "}
