@@ -293,13 +293,13 @@ function CardWithEffect({
     >
       <div
         ref={cardRef}
-        className="group relative p-6 rounded-lg bg-background/40 backdrop-blur-2xl cursor-pointer"
+        className={`group relative p-6 rounded-lg backdrop-blur-2xl cursor-pointer ${isHovering ? "bg-background/70" : "bg-background/40"}`}
         onMouseEnter={() => setIsHovering(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
           transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateZ(0)`,
-          transition: "transform 0.15s ease-out",
+          transition: "transform 0.15s ease-out, background-color 0.2s ease",
           transformStyle: "preserve-3d",
           willChange: "transform",
         }}
