@@ -64,7 +64,7 @@ export default function Experience() {
       date: "2025-2026",
       description:
         "Connecting high-potential founders raising capital to the world's first AI-led venture fund while driving growth initiatives.",
-      current: true,
+      current: false,
       url: "https://www.boardy.ai/",
     },
     {
