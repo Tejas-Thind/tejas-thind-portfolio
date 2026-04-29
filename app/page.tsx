@@ -8,6 +8,7 @@ import {
   CloverLogo,
   TheoryLogo,
   StanLogo,
+  PolarityLogo,
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
 import { CmdKHint } from "@/components/command-palette";
@@ -171,8 +172,8 @@ export default function Home() {
                     className="text-foreground font-semibold"
                   >
                     Boardy
-                  </AnimatedLink>{" "}
-                  and{" "}
+                  </AnimatedLink>
+                  ,{" "}
                   <StanLogo />{" "}
                   <AnimatedLink
                     href="https://www.stan.store"
@@ -181,6 +182,16 @@ export default function Home() {
                     className="text-foreground font-semibold"
                   >
                     Stan
+                  </AnimatedLink>
+                  , and{" "}
+                  <PolarityLogo />{" "}
+                  <AnimatedLink
+                    href="https://www.polarity.so"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground font-semibold"
+                  >
+                    Polarity
                   </AnimatedLink>
                 </p>
               </div>

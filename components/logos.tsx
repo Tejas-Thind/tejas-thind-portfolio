@@ -71,3 +71,15 @@ export function StanLogo() {
     />
   );
 }
+
+export function PolarityLogo() {
+  return (
+    <Image
+      src="/images/polarityco_logo.jpg"
+      alt=""
+      width={16}
+      height={16}
+      className="inline w-4 h-4 mx-0.5 rounded-full align-middle"
+    />
+  );
+}
