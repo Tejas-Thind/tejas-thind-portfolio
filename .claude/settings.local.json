@@ -4,7 +4,8 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nEnhance SEO with metadata improvements and hover effects\n\n- Update meta description to be more concise\n- Add comprehensive favicon configuration for all platforms\n- Add OpenGraph and Twitter card metadata with images\n- Create sitemap.ts for better search engine discovery\n- Create robots.ts to guide search engine crawlers\n- Improve link hover effects to show white color on hover\n- Add smooth color transitions to all interactive links\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(gh api:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(git push *)"
     ]
   }
 }
