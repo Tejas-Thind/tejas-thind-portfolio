@@ -1,18 +1,11 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
-import CanvasCursor from "@/components/canvas-cursor";
+import { SiteNav } from "@/components/site-nav";
 import { CommandPalette } from "@/components/command-palette";
 import { PageTransition } from "@/components/page-transition";
 import "./globals.css";
-
-const geist = Geist({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-geist",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tejasthind.com"),
@@ -75,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} dark`}
+      className="dark"
       suppressHydrationWarning
     >
       <head>
@@ -111,8 +104,8 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <div className="fixed inset-0 z-[-2] bg-background pointer-events-none" />
-        <CanvasCursor />
         <ThemeProvider>
+          <SiteNav />
           <CommandPalette />
           <PageTransition>{children}</PageTransition>
         </ThemeProvider>
