@@ -2,6 +2,7 @@
 
 import { useThemeToggle } from "@/hooks/use-theme";
 import { CmdKHint } from "@/components/command-palette";
+import { cn } from "@/lib/utils";
 
 
 interface SiteFooterProps {
@@ -15,7 +16,7 @@ export function SiteFooter({ className = "", animated = false, animationDelay = 
 
   return (
     <footer
-      className={`pt-4 pb-2 border-t border-border ${animated ? "animate-init animate-blur-in" : ""} ${className}`}
+      className={cn("py-8 border-t border-border", animated && "animate-init animate-blur-in", className)}
       style={animated ? { animationDelay: `${animationDelay}ms` } : undefined}
     >
       <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
