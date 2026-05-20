@@ -179,20 +179,9 @@ function ProjectCardWithEffect({ project }: { project: Project }) {
           </h3>
         </div>
 
-        <p className="text-muted-foreground leading-relaxed mb-4">
+        <p className="text-muted-foreground leading-relaxed">
           {project.description}
         </p>
-
-        <div className="flex flex-wrap gap-x-3 gap-y-1">
-          {project.tech.map((tech, techIndex) => (
-            <span
-              key={techIndex}
-              className="font-mono text-xs text-muted-foreground/70 bg-muted/40 px-1.5 py-0.5 rounded"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
       </div>
     </a>
   );
