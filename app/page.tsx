@@ -78,7 +78,7 @@ export default function Home() {
                 <div className="flex gap-5 py-4 first:pt-0">
                   <span className="font-mono text-xs text-muted-foreground/40 pt-[0.3rem] w-5 flex-shrink-0 select-none tabular-nums">01</span>
                   <p className="text-base text-foreground leading-relaxed font-normal">
-                    At <TheoryLogo />{" "}
+                    Engineering Intern at <TheoryLogo />{" "}
                     <AnimatedLink
                       href="https://www.theoryvc.com/"
                       target="_blank"
@@ -86,9 +86,7 @@ export default function Home() {
                       className="text-foreground font-semibold"
                     >
                       Theory Ventures
-                    </AnimatedLink>{" "}
-                    as a{" "}
-                    Engineer Intern
+                    </AnimatedLink>
                     , building data infrastructure for deep, thesis-driven investing.
                   </p>
                 </div>
@@ -96,7 +94,7 @@ export default function Home() {
                 <div className="flex gap-5 py-4">
                   <span className="font-mono text-xs text-muted-foreground/40 pt-[0.3rem] w-5 flex-shrink-0 select-none tabular-nums">02</span>
                   <p className="text-base text-foreground leading-relaxed font-normal">
-                    Software Engineer Intern at <CloverLogo />{" "}
+                    SWE Intern at <CloverLogo />{" "}
                     <AnimatedLink
                       href="https://cloverlabs.ai/"
                       target="_blank"
@@ -125,14 +123,14 @@ export default function Home() {
                     <span className="font-semibold">
                       <CountUp to={45} suffix="+" /> features
                     </span>{" "}
-                    used by Nvidia, Figma, Dropbox, LinkedIn, and Yahoo
+                    used by Nvidia, Figma, Dropbox, LinkedIn & Yahoo
                   </p>
                 </div>
 
                 <div className="flex gap-5 py-4 last:pb-0">
                   <span className="font-mono text-xs text-muted-foreground/40 pt-[0.3rem] w-5 flex-shrink-0 select-none tabular-nums">04</span>
                   <p className="text-base text-foreground leading-relaxed font-normal">
-                    Sharing my journey online on{" "}
+                    Sharing my journey on{" "}
                     <AnimatedLink
                       href="https://www.instagram.com/tejastnd/"
                       target="_blank"
@@ -141,7 +139,7 @@ export default function Home() {
                     >
                       Instagram
                     </AnimatedLink>
-                    , which opened opportunities to do <span className="font-semibold">Growth</span> at{" "}
+                    {" "}opened doors to do <span className="font-semibold">Growth</span> at{" "}
                     <BoardyLogo />{" "}
                     <AnimatedLink
                       href="https://www.boardy.ai/"
