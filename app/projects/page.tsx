@@ -33,20 +33,6 @@ const projects: Project[] = [
     tech: ["Python", "NumPy", "Pandas", "scikit-learn", "XGBoost"],
     link: "https://github.com/Tejas-Thind/Loan-Amount-ML-Predictor",
   },
-  {
-    title: "User Management System",
-    description:
-      "Built with Spring Boot, deployed on AWS EC2 using Docker. Features REST API for managing users, PostgreSQL integration, and containerized deployment.",
-    tech: ["Java", "Spring Boot", "Docker", "AWS"],
-    link: "https://github.com/Tejas-Thind/User-Management-System",
-  },
-  {
-    title: "FitGenius",
-    description:
-      "Leverages OpenAI API to create customized workout plans tailored to user needs. Allows users to log workouts, track progress, and work toward fitness goals.",
-    tech: ["JavaScript", "HTML", "CSS", "OpenAI API"],
-    link: "https://github.com/Tejas-Thind/FitGenius",
-  },
 ];
 
 export default function Projects() {
