@@ -113,6 +113,7 @@ const useCanvasCursor = () => {
       ctx.globalCompositeOperation = "lighter";
       ctx.strokeStyle = "hsla(" + Math.round(f.update()) + ",70%,55%,0.22)";
       ctx.lineWidth = 1;
+      if (!lines.length) { ctx.frame++; window.requestAnimationFrame(render); return; }
       for (var e, t = 0; t < E.trails; t++) {
         (e = lines[t]).update();
         e.draw();
