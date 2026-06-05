@@ -22,7 +22,7 @@ const experiences: Job[] = [
     company: "Theory Ventures",
     logo: "/images/theory-ventures-logo.jpg",
     role: "AI Engineer Intern",
-    location: "San Francisco Bay Area",
+    location: "San Francisco, CA",
     date: "May 2026 - Present",
     description:
       "Building data infrastructure and intelligence systems for thesis-driven investing.",
