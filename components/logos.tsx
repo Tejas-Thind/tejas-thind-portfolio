@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+const inlineLogoClass =
+  "inline-block w-4 h-4 mx-0.5 rounded-full align-[-0.18em]";
+
 export function WaterlooLogo() {
   return (
     <Image
@@ -7,7 +10,7 @@ export function WaterlooLogo() {
       alt=""
       width={16}
       height={16}
-      className="inline w-4 h-4 mx-0.5 rounded-full align-middle"
+      className={inlineLogoClass}
     />
   );
 }
@@ -19,7 +22,7 @@ export function RootlyLogo() {
       alt=""
       width={16}
       height={16}
-      className="inline w-4 h-4 mx-0.5 rounded-full align-middle"
+      className={inlineLogoClass}
     />
   );
 }
@@ -31,7 +34,7 @@ export function BoardyLogo() {
       alt=""
       width={16}
       height={16}
-      className="inline w-4 h-4 mx-0.5 rounded-full align-middle"
+      className={inlineLogoClass}
     />
   );
 }
@@ -43,7 +46,7 @@ export function TheoryLogo() {
       alt=""
       width={16}
       height={16}
-      className="inline w-4 h-4 mx-0.5 rounded-full align-middle"
+      className={inlineLogoClass}
     />
   );
 }
@@ -55,7 +58,7 @@ export function CloverLogo() {
       alt=""
       width={16}
       height={16}
-      className="inline w-4 h-4 mx-0.5 rounded-full align-middle"
+      className={inlineLogoClass}
     />
   );
 }
@@ -67,7 +70,7 @@ export function StanLogo() {
       alt=""
       width={16}
       height={16}
-      className="inline w-4 h-4 mx-0.5 rounded-full align-middle"
+      className={inlineLogoClass}
     />
   );
 }
@@ -79,7 +82,7 @@ export function PolarityLogo() {
       alt=""
       width={16}
       height={16}
-      className="inline w-4 h-4 mx-0.5 rounded-full align-middle"
+      className={inlineLogoClass}
     />
   );
 }

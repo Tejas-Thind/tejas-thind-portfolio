@@ -8,8 +8,6 @@ import {
   TheoryLogo,
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
-import { CmdKHint } from "@/components/command-palette";
-import { CountUp } from "@/components/count-up";
 import { TextScramble } from "@/components/text-scramble";
 import { useEffect, useState } from "react";
 
@@ -34,7 +32,7 @@ export default function Home() {
       <SiteNav />
 
       <main className="max-w-[62rem] mx-auto px-6 sm:px-8 lg:px-16">
-        <header className="flex items-center py-20 pt-20 sm:pt-28">
+        <header className="flex min-h-[calc(100dvh-9rem)] items-center py-20 pt-24 sm:pt-28">
           <div className="w-full space-y-8 sm:space-y-10">
             <div
               className="space-y-3 sm:space-y-4 animate-init animate-blur-in"
@@ -72,14 +70,17 @@ export default function Home() {
               <p className="text-base text-foreground leading-relaxed font-normal">
                 Currently, I&apos;m an AI Engineer Intern at <TheoryLogo />{" "}
                 <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
-                , building the intelligence layer for thesis-driven investing. I also worked on AI video & image generation infrastructure at <CloverLogo />{" "}
+                , building the intelligence layer for thesis-driven investing. I&apos;ve worked on AI video & image generation infrastructure at <CloverLogo />{" "}
                 <AnimatedLink href="https://cloverlabs.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Clover Labs</AnimatedLink>
-                , and shipped product-facing features at <RootlyLogo />{" "}
-                <AnimatedLink href="https://rootly.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Rootly AI</AnimatedLink>
+                , and shipped product-facing features at{" "}
+                <span className="inline-flex items-center gap-0.5 whitespace-nowrap align-[-0.18em]">
+                  <RootlyLogo />
+                  <AnimatedLink href="https://rootly.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Rootly AI</AnimatedLink>
+                </span>
                 , used by enterprise customers like Nvidia, Figma, LinkedIn & more.
               </p>
               <p className="text-base text-foreground leading-relaxed font-normal">
-                I love content creation and sharing my journey, both the wins and losses, on{" "}
+                I love content creation and sharing my journey on{" "}
                 <AnimatedLink href="https://www.instagram.com/tejastnd/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Instagram</AnimatedLink>
                 .
               </p>
@@ -89,8 +90,8 @@ export default function Home() {
               className="animate-init animate-blur-in"
               style={{ animationDelay: `${getDelay(800)}ms` }}
             >
-              <p className="text-base text-foreground leading-relaxed font-normal">
-                You can reach out to me at{" "}
+              <p className="text-base text-foreground leading-relaxed font-normal whitespace-nowrap">
+                Reach out, I&apos;m always curious to hear interesting opinions and new ideas at{" "}
                 <a
                   href="mailto:t3thind@uwaterloo.ca"
                   className="font-semibold hover:opacity-60 transition-opacity duration-200"
