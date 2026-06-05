@@ -21,6 +21,7 @@ body {
 :root {
   --accent-primary: oklch(0.58 0.13 50);
   --card-cursor-glow: rgba(0, 0, 0, 0.1);
+  --paper-texture-opacity: 0.055;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -59,7 +60,8 @@ body {
 .dark {
   --accent-primary: oklch(0.75 0.11 55);
   --card-cursor-glow: rgba(255, 255, 255, 0.75);
-  --background: oklch(0.145 0 0);
+  --paper-texture-opacity: 0.14;
+  --background: oklch(0.11 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -142,28 +144,28 @@ body {
   }
 }
 
-/* Grain texture overlay — adds film-like depth to flat backgrounds */
+/* Subtle paper texture overlay for soft depth on flat backgrounds */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.045;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
+  opacity: var(--paper-texture-opacity);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23p)' opacity='0.85'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
 }
 
-/* Subtle ambient gradient orb for depth — dark mode only */
+/* In dark mode, invert the paper effect so it reads as white fibers on black. */
+.dark body::after {
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23p)' opacity='0.9'/%3E%3C/svg%3E");
+}
+
+/* Keep the dark background fully even; texture is handled by body::after. */
 .dark body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% -10%, oklch(0.28 0.015 240 / 0.35) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 100% 100%, oklch(0.22 0.008 60 / 0.2) 0%, transparent 60%);
+  content: none;
 }
 
 /* Fix for hover translate animations in Tailwind v4 */
