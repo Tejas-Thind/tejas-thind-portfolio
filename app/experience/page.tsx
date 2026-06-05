@@ -21,10 +21,11 @@ const experiences: Job[] = [
   {
     company: "Theory Ventures",
     logo: "/images/theory-ventures-logo.jpg",
-    role: "Engineer Intern",
-    location: "San Francisco, CA",
-    date: "Summer 2026",
-    description: "Data infrastructure for deep, thesis-driven investing.",
+    role: "AI Engineer Intern",
+    location: "San Francisco Bay Area",
+    date: "May 2026 - Present",
+    description:
+      "Building data infrastructure and intelligence systems for thesis-driven investing.",
     current: true,
     url: "https://www.theoryvc.com/",
   },
@@ -68,7 +69,7 @@ const experiences: Job[] = [
     location: "Toronto, ON",
     date: "Fall 2025",
     description:
-      "Shipped 45+ features used by Nvidia, Figma, Dropbox, LinkedIn, and Yahoo.",
+      "Shipped features and products for customers like NVIDIA, Figma, Dropbox, LinkedIn, and Yahoo.",
     current: false,
     url: "https://rootly.com/",
   },
@@ -79,7 +80,7 @@ const experiences: Job[] = [
     location: "London, ON",
     date: "Winter 2025",
     description:
-      "Worked on defense systems engineering projects, contributing to software development and testing for mission-critical applications.",
+      "Worked on defense systems engineering projects, automating pain points across various departments.",
     current: false,
     url: "https://www.gdls.com/",
   },
