@@ -16,12 +16,6 @@ export function SiteNav() {
     <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in" style={{ animationDelay: "100ms" }}>
       <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
       <div className="relative flex items-center justify-center px-6 sm:px-8 lg:px-16 py-5 sm:py-6 text-sm">
-        <Link
-          href="/"
-          className="absolute left-6 sm:left-8 lg:left-16 font-semibold text-foreground tracking-tight hover-lift"
-        >
-          Tejas Thind
-        </Link>
         <div className="flex gap-6 sm:gap-8">
           {links.map(({ href, label }) => {
             const isActive = pathname === href;
