@@ -4,6 +4,15 @@ import { useEffect, useState } from "react";
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+function scrambleText(text: string) {
+  return text
+    .split("")
+    .map((char, index) =>
+      char === " " ? " " : CHARS[(index * 7 + text.length * 3) % CHARS.length]
+    )
+    .join("");
+}
+
 export function TextScramble({
   text,
   delay = 0,
@@ -13,11 +22,12 @@ export function TextScramble({
   delay?: number;
   duration?: number;
 }) {
-  const [output, setOutput] = useState(text);
+  const [output, setOutput] = useState(() => scrambleText(text));
 
   useEffect(() => {
     let raf: number;
     let startTime: number | null = null;
+    setOutput(scrambleText(text));
 
     const animate = (timestamp: number) => {
       if (startTime === null) startTime = timestamp;
