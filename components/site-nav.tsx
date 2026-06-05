@@ -14,7 +14,7 @@ export function SiteNav() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in" style={{ animationDelay: "100ms" }}>
-      <div className="absolute inset-0 backdrop-blur-sm bg-background/80" />
+      <div className="absolute inset-0 backdrop-blur-sm" />
       <div className="relative flex items-center justify-center px-6 sm:px-8 lg:px-16 py-5 sm:py-6 text-sm">
         <div className="flex gap-6 sm:gap-8">
           {links.map(({ href, label }) => {
