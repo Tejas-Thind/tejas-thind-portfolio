@@ -21,7 +21,8 @@ body {
 :root {
   --accent-primary: oklch(0.58 0.13 50);
   --card-cursor-glow: rgba(0, 0, 0, 0.1);
-  --paper-texture-opacity: 0.055;
+  --paper-texture-opacity: 0.14;
+  --paper-texture-blend: multiply;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -61,6 +62,7 @@ body {
   --accent-primary: oklch(0.75 0.11 55);
   --card-cursor-glow: rgba(255, 255, 255, 0.75);
   --paper-texture-opacity: 0.14;
+  --paper-texture-blend: screen;
   --background: oklch(0.11 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
@@ -144,7 +146,7 @@ body {
   }
 }
 
-/* Subtle paper texture overlay for soft depth on flat backgrounds */
+/* Subtle paper texture overlay: dark grain in light mode, white grain in dark mode. */
 body::after {
   content: '';
   position: fixed;
@@ -152,15 +154,14 @@ body::after {
   pointer-events: none;
   z-index: 1;
   opacity: var(--paper-texture-opacity);
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23p)' opacity='0.85'/%3E%3C/svg%3E");
+  mix-blend-mode: var(--paper-texture-blend);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23p)' opacity='0.9'/%3E%3C/svg%3E");
   background-size: 260px 260px;
 }
 
-/* In dark mode, invert the paper effect so it reads as white fibers on black. */
 .dark body::after {
-  mix-blend-mode: screen;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23p)' opacity='0.9'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
 }
 
 /* Keep the dark background fully even; texture is handled by body::after. */
