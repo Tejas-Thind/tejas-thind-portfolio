@@ -4,11 +4,8 @@ import { SiteFooter } from "@/components/site-footer";
 import {
   WaterlooLogo,
   RootlyLogo,
-  BoardyLogo,
   CloverLogo,
   TheoryLogo,
-  StanLogo,
-  PolarityLogo,
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
 import { CmdKHint } from "@/components/command-palette";
@@ -73,23 +70,17 @@ export default function Home() {
               style={{ animationDelay: `${getDelay(600)}ms` }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal">
-                Currently, I am an Engineering Intern at <TheoryLogo />{" "}
+                Currently, I&apos;m an AI Engineer Intern at <TheoryLogo />{" "}
                 <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
-                , building data infrastructure for thesis-driven investing. I also worked on AI video & image generation infrastructure at <CloverLogo />{" "}
+                , building the intelligence layer for thesis-driven investing. I also worked on AI video & image generation infrastructure at <CloverLogo />{" "}
                 <AnimatedLink href="https://cloverlabs.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Clover Labs</AnimatedLink>
                 , and shipped product-facing features at <RootlyLogo />{" "}
                 <AnimatedLink href="https://rootly.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Rootly AI</AnimatedLink>
-                , used by enterprise customers like Nvidia, Figma & more.
+                , used by enterprise customers like Nvidia, Figma, LinkedIn & more.
               </p>
               <p className="text-base text-foreground leading-relaxed font-normal">
-                Sharing my journey on{" "}
+                I love content creation and sharing my journey, both the wins and losses, on{" "}
                 <AnimatedLink href="https://www.instagram.com/tejastnd/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Instagram</AnimatedLink>
-                {" "}opened Growth doors at <BoardyLogo />{" "}
-                <AnimatedLink href="https://www.boardy.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Boardy</AnimatedLink>
-                , <StanLogo />{" "}
-                <AnimatedLink href="https://www.stan.store" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Stan</AnimatedLink>
-                {" "}& <PolarityLogo />{" "}
-                <AnimatedLink href="https://www.polarity.so" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Polarity</AnimatedLink>
                 .
               </p>
             </div>
