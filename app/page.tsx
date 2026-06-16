@@ -70,7 +70,10 @@ export default function Home() {
               <p className="text-base text-foreground leading-relaxed font-normal">
                 Currently, I&apos;m an AI Engineer Intern at <TheoryLogo />{" "}
                 <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
-                , building the intelligence layer for thesis-driven investing. I&apos;ve worked on AI video & image generation infrastructure at <CloverLogo />{" "}
+                , building the intelligence layer for thesis-driven investing.
+              </p>
+              <p className="text-base text-foreground leading-relaxed font-normal">
+                I&apos;ve worked on AI video & image generation infrastructure at <CloverLogo />{" "}
                 <AnimatedLink href="https://cloverlabs.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Clover Labs</AnimatedLink>
                 , and shipped product-facing features at{" "}
                 <span className="inline-flex items-center gap-0.5 whitespace-nowrap align-[-0.18em]">
@@ -82,7 +85,7 @@ export default function Home() {
               <p className="text-base text-foreground leading-relaxed font-normal">
                 I love content creation and sharing my journey on{" "}
                 <AnimatedLink href="https://www.instagram.com/tejastnd/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Instagram</AnimatedLink>
-                .
+                , growing it to <span className="font-semibold">2.2k+</span> followers and <span className="font-semibold">18M+</span> views.
               </p>
             </div>
 

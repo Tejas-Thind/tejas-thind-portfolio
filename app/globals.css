@@ -201,7 +201,7 @@ body::after {
 }
 .animated-link .underline-bar {
   position: absolute;
-  bottom: -0.16em;
+  bottom: -0.08em;
   left: 0;
   height: 1px;
   width: 100%;
