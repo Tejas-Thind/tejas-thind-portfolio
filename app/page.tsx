@@ -85,7 +85,7 @@ export default function Home() {
               <p className="text-base text-foreground leading-relaxed font-normal">
                 I love content creation and sharing my journey on{" "}
                 <AnimatedLink href="https://www.instagram.com/tejastnd/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Instagram</AnimatedLink>
-                , growing it to <span className="font-semibold">2.5k+</span> followers and <span className="font-semibold">20M+</span> views.
+                , growing it to <span className="font-semibold">2.6k+</span> followers and <span className="font-semibold">20M+</span> views.
               </p>
             </div>
 
