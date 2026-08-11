@@ -17,7 +17,7 @@ const ITEMS: Item[] = [
   { group: "Contact", label: "Email", action: "open", href: "mailto:tejas.st0544@gmail.com" },
   { group: "Contact", label: "LinkedIn", action: "open", href: "https://www.linkedin.com/in/tejas-thind/" },
   { group: "Contact", label: "GitHub", action: "open", href: "https://github.com/Tejas-Thind" },
-  { group: "Contact", label: "X (Twitter)", action: "open", href: "https://x.com/tejasthind4" },
+  { group: "Contact", label: "X", action: "open", href: "https://x.com/tejasthind4" },
   { group: "Contact", label: "Instagram", action: "open", href: "https://www.instagram.com/tejastnd/" },
   { group: "Copy", label: "Copy Email", action: "copy", value: "t3thind@uwaterloo.ca" },
 ];

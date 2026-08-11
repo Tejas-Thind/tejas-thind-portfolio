@@ -93,7 +93,7 @@ export default function Home() {
               className="animate-init animate-blur-in"
               style={{ animationDelay: `${getDelay(800)}ms` }}
             >
-              <p className="text-base text-foreground leading-relaxed font-normal whitespace-nowrap">
+              <p className="text-base text-foreground leading-relaxed font-normal lg:whitespace-nowrap">
                 Reach out, I&apos;m always curious to hear interesting opinions and new ideas at{" "}
                 <a
                   href="mailto:t3thind@uwaterloo.ca"
