@@ -9,7 +9,6 @@ export function SiteNav() {
   const links = [
     { href: "/", label: "About" },
     { href: "/experience", label: "Experience" },
-    { href: "/projects", label: "Projects" },
   ];
 
   return (

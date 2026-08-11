@@ -14,7 +14,6 @@ type Item = {
 const ITEMS: Item[] = [
   { group: "Navigate", label: "About", action: "nav", href: "/" },
   { group: "Navigate", label: "Experience", action: "nav", href: "/experience" },
-  { group: "Navigate", label: "Projects", action: "nav", href: "/projects" },
   { group: "Contact", label: "Email", action: "open", href: "mailto:tejas.st0544@gmail.com" },
   { group: "Contact", label: "LinkedIn", action: "open", href: "https://www.linkedin.com/in/tejas-thind/" },
   { group: "Contact", label: "GitHub", action: "open", href: "https://github.com/Tejas-Thind" },
