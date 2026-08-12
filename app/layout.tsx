@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
-import { Newsreader, Rubik } from "next/font/google";
+import { Instrument_Sans, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import CanvasCursor from "@/components/canvas-cursor";
@@ -9,9 +9,9 @@ import { CommandPalette } from "@/components/command-palette";
 import { PageTransition } from "@/components/page-transition";
 import "./globals.css";
 
-const rubik = Rubik({
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-rubik",
+  variable: "--font-instrument-sans",
   display: "swap",
 });
 
@@ -84,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${rubik.variable} ${GeistMono.variable} ${newsreader.variable}`}
+      className={`dark ${instrumentSans.variable} ${GeistMono.variable} ${newsreader.variable}`}
       suppressHydrationWarning
     >
       <head>

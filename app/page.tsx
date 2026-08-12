@@ -38,7 +38,7 @@ export default function Home() {
               className="space-y-4 sm:space-y-5 animate-init animate-blur-in"
               style={{ animationDelay: `${getDelay(400)}ms` }}
             >
-              <h1 className="text-3xl sm:text-4xl tracking-tighter text-foreground font-serif leading-none">
+              <h1 className="pb-1 text-3xl leading-[1.1] tracking-tighter text-foreground font-serif sm:text-4xl">
                 <span className="font-normal italic">
                   <TextScramble
                     text="Hey, I'm Tejas"

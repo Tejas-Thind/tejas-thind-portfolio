@@ -4,6 +4,7 @@
 /* Fix navbar shift by reserving space for scrollbar */
 html {
   scrollbar-gutter: stable;
+  background-color: var(--background);
   @apply text-foreground;
 }
 
@@ -13,7 +14,7 @@ body {
 
 /* Site typography */
 @theme inline {
-  --font-sans: var(--font-rubik), system-ui, sans-serif;
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-serif: var(--font-newsreader), Georgia, serif;
   --text-xs: calc(0.75rem - 0.5pt);
@@ -28,6 +29,7 @@ body {
 }
 
 :root {
+  --font-rubik: var(--font-instrument-sans);
   --accent-primary: oklch(0.58 0.13 50);
   --scramble-cyan: oklch(0.58 0.14 195);
   --scramble-blue: oklch(0.56 0.18 255);
@@ -35,8 +37,9 @@ body {
   --scramble-violet: oklch(0.58 0.19 305);
   --scramble-amber: oklch(0.66 0.16 85);
   --scramble-green: oklch(0.58 0.16 145);
+  --current-status: oklch(0.44 0.12 160);
   --card-cursor-glow: rgba(0, 0, 0, 0.1);
-  --paper-texture-opacity: 0.14;
+  --paper-texture-opacity: 0.12;
   --paper-texture-blend: multiply;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -81,8 +84,9 @@ body {
   --scramble-violet: oklch(0.73 0.18 305);
   --scramble-amber: oklch(0.79 0.15 85);
   --scramble-green: oklch(0.76 0.15 145);
+  --current-status: oklch(0.76 0.12 160);
   --card-cursor-glow: rgba(255, 255, 255, 0.75);
-  --paper-texture-opacity: 0.14;
+  --paper-texture-opacity: 0.12;
   --paper-texture-blend: screen;
   --background: oklch(0.11 0 0);
   --foreground: oklch(0.985 0 0);
@@ -167,7 +171,7 @@ body {
   }
 }
 
-/* Subtle paper texture overlay: dark grain in light mode, white grain in dark mode. */
+/* Archival paper grain: a broad seamless grain with sparse micro-flecks. */
 body::after {
   content: '';
   position: fixed;
@@ -176,18 +180,52 @@ body::after {
   z-index: 1;
   opacity: var(--paper-texture-opacity);
   mix-blend-mode: var(--paper-texture-blend);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23p)' opacity='0.9'/%3E%3C/svg%3E");
-  background-size: 260px 260px;
-}
-
-.dark body::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23p)' opacity='0.9'/%3E%3C/svg%3E");
-  background-size: 260px 260px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='p' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='3' seed='17' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='360' height='360' filter='url(%23p)' opacity='0.76'/%3E%3Cg fill='%23808080' opacity='0.22'%3E%3Ccircle cx='21' cy='44' r='0.45'/%3E%3Ccircle cx='67' cy='302' r='0.35'/%3E%3Ccircle cx='102' cy='119' r='0.55'/%3E%3Ccircle cx='143' cy='251' r='0.3'/%3E%3Ccircle cx='181' cy='73' r='0.4'/%3E%3Ccircle cx='214' cy='333' r='0.55'/%3E%3Ccircle cx='247' cy='159' r='0.3'/%3E%3Ccircle cx='278' cy='25' r='0.5'/%3E%3Ccircle cx='316' cy='221' r='0.4'/%3E%3Ccircle cx='348' cy='97' r='0.3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 360px 360px;
 }
 
 /* Keep the dark background fully even; texture is handled by body::after. */
 .dark body::before {
   content: none;
+}
+
+.site-nav-surface {
+  background-color: color-mix(
+    in oklab,
+    var(--background) 96%,
+    transparent
+  );
+  -webkit-backdrop-filter: blur(16px) saturate(0.85);
+  backdrop-filter: blur(16px) saturate(0.85);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.current-status {
+  color: var(--current-status);
+}
+
+.current-status-dot {
+  background-color: var(--current-status);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-nav-surface {
+    background-color: var(--background);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 /* Fix for hover translate animations in Tailwind v4 */
@@ -228,6 +266,60 @@ body::after {
 .animated-link:hover .underline-bar {
   opacity: 0.8;
   transform: scaleX(1);
+}
+
+.footer-action {
+  position: relative;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 0.25rem;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: color 400ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.footer-action::after {
+  content: "";
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.35rem;
+  left: 0.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition:
+    opacity 400ms cubic-bezier(0.32, 0.72, 0, 1),
+    transform 500ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.footer-action:hover {
+  color: var(--foreground);
+}
+
+.footer-action:hover::after,
+.footer-action:focus-visible::after {
+  opacity: 0.65;
+  transform: scaleX(1);
+}
+
+.footer-action:focus-visible {
+  border-radius: 0.25rem;
+  outline: 1px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.command-shortcut-hint {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .command-shortcut-hint {
+    display: inline-flex;
+  }
 }
 
 
@@ -338,5 +430,29 @@ body::after {
   @keyframes cmd-in {
     from { opacity: 0; transform: scale(0.96) translateY(-6px); }
     to   { opacity: 1; transform: scale(1)    translateY(0);    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-init,
+  .animate-init-slide,
+  .animate-blur-in,
+  .animate-fade-in-up,
+  .animate-slide-up-fade,
+  .animate-card-in,
+  .animate-page-in,
+  .animate-cmd-in,
+  .animate-pulse {
+    animation: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
