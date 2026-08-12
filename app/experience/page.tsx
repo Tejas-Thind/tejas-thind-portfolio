@@ -3,7 +3,6 @@ import type React from "react";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
-import { SiteFooter } from "@/components/site-footer";
 
 type Job = {
   company: string;
@@ -108,7 +107,6 @@ export default function Experience() {
           </div>
         </section>
 
-        <SiteFooter />
       </main>
     </div>
   );

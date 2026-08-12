@@ -1,6 +1,5 @@
 "use client";
 import { SiteNav } from "@/components/site-nav";
-import { SiteFooter } from "@/components/site-footer";
 import {
   WaterlooLogo,
   RootlyLogo,
@@ -107,11 +106,6 @@ export default function Home() {
           </div>
         </header>
 
-        <SiteFooter
-          animated
-          animationDelay={getDelay(1000)}
-          className="pt-4 pb-6"
-        />
       </main>
 
       <div className="fixed bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />

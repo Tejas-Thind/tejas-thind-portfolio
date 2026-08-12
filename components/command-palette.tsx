@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Search } from "lucide-react";
 
 type Item = {
   group: string;
@@ -202,16 +203,11 @@ export function CommandPalette() {
         </h2>
         {/* Search input */}
         <div className="flex items-center gap-3 px-4 border-b border-border">
-          <svg
-            className="w-4 h-4 text-muted-foreground flex-shrink-0"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
+          <Search
+            className="h-4 w-4 flex-shrink-0 text-muted-foreground"
+            strokeWidth={1.5}
+            aria-hidden="true"
+          />
           <input
             ref={inputRef}
             value={query}
@@ -277,12 +273,13 @@ export function CmdKHint() {
     <button
       onClick={() => window.dispatchEvent(new Event("open-palette"))}
       aria-label="Open command palette"
-      className="footer-action group"
+      className="utility-button utility-command-button group"
     >
-      <span>Command menu</span>
-      <kbd className="command-shortcut-hint rounded-[4px] border border-border/70 bg-muted/25 px-1.5 py-1 font-mono text-[0.68rem] leading-none text-muted-foreground transition-[color,border-color,background-color,transform] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-px group-hover:border-foreground/25 group-hover:text-foreground">
+      <Search className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden="true" />
+      <kbd className="command-shortcut-hint utility-keycap font-mono">
         {shortcut}
       </kbd>
+      <span className="utility-tooltip">Command menu</span>
     </button>
   );
 }
