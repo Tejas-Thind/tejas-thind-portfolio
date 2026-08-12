@@ -19,16 +19,14 @@ export function SiteFooter({ className = "", animated = false, animationDelay = 
       className={cn("py-8 border-t border-border", animated && "animate-init animate-blur-in", className)}
       style={animated ? { animationDelay: `${animationDelay}ms` } : undefined}
     >
-      <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground items-center">
-        <span className="text-muted-foreground">Appearance:</span>
+      <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground sm:gap-8">
         <button
           onClick={toggleTheme}
-          className="text-muted-foreground hover:text-foreground hover-lift -ml-2 cursor-pointer"
+          className="footer-action"
           aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
         >
-          {isDark ? "☀️" : "🌙"}
+          {isDark ? "Light mode" : "Dark mode"}
         </button>
-        <span className="text-muted-foreground" aria-hidden="true">|</span>
         <CmdKHint />
       </div>
     </footer>

@@ -13,26 +13,82 @@ type Item = {
 
 const ITEMS: Item[] = [
   { group: "Navigate", label: "About", action: "nav", href: "/" },
-  { group: "Navigate", label: "Experience", action: "nav", href: "/experience" },
-  { group: "Contact", label: "Email", action: "open", href: "mailto:tejas.st0544@gmail.com" },
-  { group: "Contact", label: "LinkedIn", action: "open", href: "https://www.linkedin.com/in/tejas-thind/" },
-  { group: "Contact", label: "GitHub", action: "open", href: "https://github.com/Tejas-Thind" },
-  { group: "Contact", label: "X", action: "open", href: "https://x.com/tejasthind4" },
-  { group: "Contact", label: "Instagram", action: "open", href: "https://www.instagram.com/tejastnd/" },
-  { group: "Copy", label: "Copy Email", action: "copy", value: "t3thind@uwaterloo.ca" },
+  {
+    group: "Navigate",
+    label: "Experience",
+    action: "nav",
+    href: "/experience",
+  },
+  {
+    group: "Contact",
+    label: "Email",
+    action: "open",
+    href: "mailto:t3thind@uwaterloo.ca",
+  },
+  {
+    group: "Contact",
+    label: "LinkedIn",
+    action: "open",
+    href: "https://www.linkedin.com/in/tejas-thind/",
+  },
+  {
+    group: "Contact",
+    label: "GitHub",
+    action: "open",
+    href: "https://github.com/Tejas-Thind",
+  },
+  {
+    group: "Contact",
+    label: "X",
+    action: "open",
+    href: "https://x.com/tejasthind4",
+  },
+  {
+    group: "Contact",
+    label: "Instagram",
+    action: "open",
+    href: "https://www.instagram.com/tejastnd/",
+  },
+  {
+    group: "Copy",
+    label: "Copy Email",
+    action: "copy",
+    value: "t3thind@uwaterloo.ca",
+  },
 ];
+
+function usePlatformShortcut() {
+  const [shortcut, setShortcut] = useState("⌘K");
+
+  useEffect(() => {
+    const navigatorWithClientHints = navigator as Navigator & {
+      userAgentData?: { platform?: string };
+    };
+    const platform =
+      navigatorWithClientHints.userAgentData?.platform ||
+      navigator.platform ||
+      navigator.userAgent;
+    const isApple = /Mac|iPhone|iPad|iPod/i.test(platform);
+    setShortcut(isApple ? "⌘K" : "Ctrl K");
+  }, []);
+
+  return shortcut;
+}
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const shortcut = usePlatformShortcut();
   const router = useRouter();
 
   const filtered = ITEMS.filter(
     (item) =>
       item.label.toLowerCase().includes(query.toLowerCase()) ||
-      item.group.toLowerCase().includes(query.toLowerCase())
+      item.group.toLowerCase().includes(query.toLowerCase()),
   );
 
   const groups = Array.from(new Set(filtered.map((i) => i.group)));
@@ -47,12 +103,13 @@ export function CommandPalette() {
     (item: Item) => {
       close();
       if (item.action === "nav" && item.href) router.push(item.href);
-      else if (item.action === "open" && item.href)
-        window.open(item.href, "_blank", "noopener noreferrer");
-      else if (item.action === "copy" && item.value)
+      else if (item.action === "open" && item.href) {
+        if (item.href.startsWith("mailto:")) window.location.href = item.href;
+        else window.open(item.href, "_blank", "noopener noreferrer");
+      } else if (item.action === "copy" && item.value)
         navigator.clipboard.writeText(item.value);
     },
-    [close, router]
+    [close, router],
   );
 
   // Global keyboard shortcut + open-palette event
@@ -77,8 +134,18 @@ export function CommandPalette() {
   // Focus input when opened
   useEffect(() => {
     if (open) {
+      previousFocusRef.current =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
       const t = setTimeout(() => inputRef.current?.focus(), 10);
-      return () => clearTimeout(t);
+      const previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        clearTimeout(t);
+        document.body.style.overflow = previousOverflow;
+        previousFocusRef.current?.focus();
+      };
     }
   }, [open]);
 
@@ -86,7 +153,21 @@ export function CommandPalette() {
   useEffect(() => setSelected(0), [query]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowDown") {
+    if (e.key === "Tab") {
+      const focusable = panelRef.current?.querySelectorAll<HTMLElement>(
+        'input, button, [href], [tabindex]:not([tabindex="-1"])',
+      );
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    } else if (e.key === "ArrowDown") {
       e.preventDefault();
       setSelected((s) => Math.min(s + 1, filtered.length - 1));
     } else if (e.key === "ArrowUp") {
@@ -108,10 +189,17 @@ export function CommandPalette() {
       <div className="absolute inset-0 bg-background/50 backdrop-blur-sm" />
 
       <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="command-palette-title"
         className="relative w-full max-w-md rounded-xl border border-border bg-background/90 backdrop-blur-xl shadow-2xl overflow-hidden animate-cmd-in"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
       >
+        <h2 id="command-palette-title" className="sr-only">
+          Command palette
+        </h2>
         {/* Search input */}
         <div className="flex items-center gap-3 px-4 border-b border-border">
           <svg
@@ -129,6 +217,7 @@ export function CommandPalette() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Type a command..."
+            aria-label="Search commands"
             className="flex-1 bg-transparent py-4 text-sm text-foreground placeholder:text-muted-foreground outline-none"
           />
         </div>
@@ -174,7 +263,7 @@ export function CommandPalette() {
           <span>↑↓ navigate</span>
           <span>↵ select</span>
           <span>esc close</span>
-          <span className="ml-auto">⌘/Ctrl K</span>
+          <span className="command-shortcut-hint ml-auto">{shortcut}</span>
         </div>
       </div>
     </div>
@@ -182,12 +271,18 @@ export function CommandPalette() {
 }
 
 export function CmdKHint() {
+  const shortcut = usePlatformShortcut();
+
   return (
     <button
       onClick={() => window.dispatchEvent(new Event("open-palette"))}
-      className="text-muted-foreground hover:text-foreground hover-lift cursor-pointer text-xs border border-border/50 rounded px-1.5 py-0.5"
+      aria-label="Open command palette"
+      className="footer-action group"
     >
-      ⌘/Ctrl K
+      <span>Command menu</span>
+      <kbd className="command-shortcut-hint rounded-[4px] border border-border/70 bg-muted/25 px-1.5 py-1 font-mono text-[0.68rem] leading-none text-muted-foreground transition-[color,border-color,background-color,transform] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-px group-hover:border-foreground/25 group-hover:text-foreground">
+        {shortcut}
+      </kbd>
     </button>
   );
 }

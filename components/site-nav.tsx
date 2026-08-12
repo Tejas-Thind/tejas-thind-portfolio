@@ -25,12 +25,12 @@ export function SiteNav() {
     : { href: "/experience", label: "Experience" };
 
   const socialLinkClass =
-    "flex h-8 w-8 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40";
+    "flex h-10 w-10 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in" style={{ animationDelay: "100ms" }}>
-      <div className="absolute inset-0 backdrop-blur-sm" />
-      <div className="relative mx-auto flex w-full max-w-[62rem] items-center justify-end px-6 sm:px-8 lg:px-16 py-5 sm:py-6 text-sm">
+      <div className="site-nav-surface absolute inset-x-0 -bottom-4 top-0" />
+      <div className="relative mx-auto flex w-full max-w-[62rem] items-center justify-end px-6 py-4 text-sm sm:px-8 sm:py-5 lg:px-16">
         <div className="flex items-center gap-0.5">
           <a
             href="mailto:t3thind@uwaterloo.ca"
@@ -79,7 +79,7 @@ export function SiteNav() {
 
         <Link
           href={destination.href}
-          className="group inline-flex items-center gap-1.5 font-normal text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground"
+          className="group inline-flex min-h-10 items-center gap-1.5 rounded-sm font-normal text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40"
         >
           {destination.label}
           <span className="transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
