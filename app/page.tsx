@@ -8,24 +8,8 @@ import {
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
 import { TextScramble } from "@/components/text-scramble";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
-
-  useEffect(() => {
-    const hasVisited = sessionStorage.getItem("hasVisited");
-    if (hasVisited) {
-      setIsFirstLoad(false);
-    } else {
-      sessionStorage.setItem("hasVisited", "true");
-    }
-  }, []);
-
-  const getDelay = (baseDelay: number) => {
-    return isFirstLoad ? baseDelay + 800 : baseDelay;
-  };
-
   return (
     <div className="min-h-[100dvh] text-foreground relative">
       <SiteNav />
@@ -35,13 +19,13 @@ export default function Home() {
           <div className="w-full">
             <div
               className="space-y-4 sm:space-y-5 animate-init animate-blur-in"
-              style={{ animationDelay: `${getDelay(400)}ms` }}
+              style={{ animationDelay: "400ms" }}
             >
               <h1 className="pb-1 text-3xl leading-[1.1] tracking-tighter text-foreground font-serif sm:text-4xl">
                 <span className="font-normal italic">
                   <TextScramble
                     text="Hey, I'm Tejas"
-                    delay={getDelay(400)}
+                    delay={0}
                     duration={1000}
                     loopInterval={8000}
                     emphasisStart={9}
@@ -65,7 +49,7 @@ export default function Home() {
 
             <div
               className="mt-2 space-y-2 sm:mt-3 sm:space-y-3 animate-init animate-blur-in"
-              style={{ animationDelay: `${getDelay(600)}ms` }}
+              style={{ animationDelay: "600ms" }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal">
                 Currently, I&apos;m an AI Engineer Intern at <TheoryLogo />{" "}
@@ -91,7 +75,7 @@ export default function Home() {
 
             <div
               className="mt-2 sm:mt-3 animate-init animate-blur-in"
-              style={{ animationDelay: `${getDelay(800)}ms` }}
+              style={{ animationDelay: "800ms" }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal lg:whitespace-nowrap">
                 Reach out, I&apos;m always curious to hear interesting opinions and new ideas at{" "}
