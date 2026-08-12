@@ -33,18 +33,19 @@ export default function Home() {
 
       <main className="max-w-[62rem] mx-auto px-6 sm:px-8 lg:px-16">
         <header className="flex min-h-[calc(100dvh-9rem)] items-center py-20 pt-24 sm:pt-28">
-          <div className="w-full space-y-8 sm:space-y-10">
+          <div className="w-full">
             <div
-              className="space-y-3 sm:space-y-4 animate-init animate-blur-in"
+              className="space-y-4 sm:space-y-5 animate-init animate-blur-in"
               style={{ animationDelay: `${getDelay(400)}ms` }}
             >
-              <h1 className="text-4xl sm:text-5xl tracking-tighter text-foreground font-serif leading-none">
-                <span className="font-normal italic">Hey, I&apos;m </span>
-                <span className="font-semibold italic">
+              <h1 className="text-3xl sm:text-4xl tracking-tighter text-foreground font-serif leading-none">
+                <span className="font-normal italic">
                   <TextScramble
-                    text="Tejas"
+                    text="Hey, I'm Tejas"
                     delay={getDelay(400)}
                     duration={1000}
+                    loopInterval={8000}
+                    emphasisStart={9}
                   />
                 </span>
               </h1>
@@ -64,7 +65,7 @@ export default function Home() {
             </div>
 
             <div
-              className="space-y-3 animate-init animate-blur-in"
+              className="mt-2 space-y-2 sm:mt-3 sm:space-y-3 animate-init animate-blur-in"
               style={{ animationDelay: `${getDelay(600)}ms` }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal">
@@ -90,7 +91,7 @@ export default function Home() {
             </div>
 
             <div
-              className="animate-init animate-blur-in"
+              className="mt-2 sm:mt-3 animate-init animate-blur-in"
               style={{ animationDelay: `${getDelay(800)}ms` }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal lg:whitespace-nowrap">

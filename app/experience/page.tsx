@@ -106,7 +106,7 @@ export default function Experience() {
         <section className="py-32 pt-20 sm:pt-28">
           <div className="space-y-12">
             <h2
-              className="text-4xl sm:text-5xl font-semibold italic font-serif animate-init animate-blur-in"
+              className="text-3xl sm:text-4xl font-medium italic font-serif animate-init animate-blur-in"
               style={{ animationDelay: "100ms" }}
             >
               Experience
