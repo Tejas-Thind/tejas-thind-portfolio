@@ -33,7 +33,7 @@ const experiences: Job[] = [
     location: "Toronto, ON",
     date: "Winter 2026",
     description:
-      "Built growth for Stanley, Stan Store's AI-powered LinkedIn assistant, while growing my own brand.",
+      "Drove growth for Stanley, Stan Store’s AI-powered LinkedIn assistant, while building my personal brand.",
     current: false,
     url: "https://www.stan.store",
   },
