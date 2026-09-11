@@ -21,6 +21,12 @@ const ITEMS: Item[] = [
     href: "/experience",
   },
   {
+    group: "Navigate",
+    label: "Writing",
+    action: "nav",
+    href: "/writing",
+  },
+  {
     group: "Contact",
     label: "Email",
     action: "open",

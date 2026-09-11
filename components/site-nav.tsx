@@ -17,12 +17,15 @@ function XIcon() {
   );
 }
 
+const PAGES = [
+  { href: "/", label: "About" },
+  { href: "/experience", label: "Experience" },
+  { href: "/writing", label: "Writing" },
+];
+
 export function SiteNav() {
   const pathname = usePathname();
-  const onExperiencePage = pathname.startsWith("/experience");
-  const destination = onExperiencePage
-    ? { href: "/", label: "About" }
-    : { href: "/experience", label: "Experience" };
+  const destinations = PAGES.filter((page) => page.href !== pathname);
 
   const socialLinkClass =
     "flex h-10 w-10 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40";
@@ -77,15 +80,24 @@ export function SiteNav() {
           aria-hidden="true"
         />
 
-        <Link
-          href={destination.href}
-          className="group inline-flex min-h-10 items-center gap-1.5 rounded-sm font-normal text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40"
-        >
-          {destination.label}
-          <span className="transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
-            →
-          </span>
-        </Link>
+        <div className="flex items-center gap-2.5">
+          {destinations.map((destination, index) => (
+            <span key={destination.href} className="flex items-center gap-2.5">
+              {index > 0 && (
+                <span className="h-4 w-px bg-border/70" aria-hidden="true" />
+              )}
+              <Link
+                href={destination.href}
+                className="group inline-flex min-h-10 items-center gap-1.5 rounded-sm font-normal text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40"
+              >
+                {destination.label}
+                <span className="transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+                  →
+                </span>
+              </Link>
+            </span>
+          ))}
+        </div>
       </div>
     </nav>
   );
