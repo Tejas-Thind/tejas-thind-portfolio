@@ -3,12 +3,9 @@ import { useEffect, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { AnimatedLink } from "@/components/animated-link";
 
-// NOT wired into prod yet: rendering this is gated behind the
-// SHOW_CONTRIBUTIONS flag (NEXT_PUBLIC_SHOW_CONTRIBUTIONS env var) in
-// app/page.tsx, which defaults to off. This component itself is finished
-// and safe to import; don't remove the flag check in page.tsx without
-// checking with the user first, since the graph is intentionally hidden
-// until they decide to ship it.
+// Renders unconditionally on the homepage. Requires GITHUB_TOKEN
+// (server-side, see app/api/contributions/route.ts) to actually show data;
+// fails silently (renders nothing) if that's missing or GitHub errors.
 
 type Level =
   | "NONE"
