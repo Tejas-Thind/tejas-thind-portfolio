@@ -10,6 +10,10 @@ import { AnimatedLink } from "@/components/animated-link";
 import { TextScramble } from "@/components/text-scramble";
 import { ContributionGraph } from "@/components/contribution-graph";
 
+// Feature flag: off by default everywhere until this var is explicitly set
+// to "true" (e.g. in Vercel env vars) and redeployed. Built, not shipped yet.
+const SHOW_CONTRIBUTIONS = process.env.NEXT_PUBLIC_SHOW_CONTRIBUTIONS === "true";
+
 export default function Home() {
   return (
     <div className="min-h-[100dvh] text-foreground relative">
@@ -89,12 +93,14 @@ export default function Home() {
               </p>
             </div>
 
-            <div
-              className="mt-3 sm:mt-5 animate-init animate-blur-in"
-              style={{ animationDelay: "1000ms" }}
-            >
-              <ContributionGraph />
-            </div>
+            {SHOW_CONTRIBUTIONS && (
+              <div
+                className="mt-3 sm:mt-5 animate-init animate-blur-in"
+                style={{ animationDelay: "1000ms" }}
+              >
+                <ContributionGraph />
+              </div>
+            )}
           </div>
         </header>
 
