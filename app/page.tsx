@@ -8,6 +8,7 @@ import {
 } from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
 import { TextScramble } from "@/components/text-scramble";
+import { ContributionGraph } from "@/components/contribution-graph";
 
 export default function Home() {
   return (
@@ -86,6 +87,13 @@ export default function Home() {
                   t3thind[at]uwaterloo[dot]ca
                 </a>
               </p>
+            </div>
+
+            <div
+              className="mt-4 sm:mt-5 animate-init animate-blur-in"
+              style={{ animationDelay: "1000ms" }}
+            >
+              <ContributionGraph />
             </div>
           </div>
         </header>
