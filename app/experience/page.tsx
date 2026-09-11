@@ -20,10 +20,10 @@ const experiences: Job[] = [
     company: "Theory Ventures",
     role: "AI Engineer Intern",
     location: "San Francisco, CA",
-    date: "May 2026 - Present",
+    date: "May 2026 - Aug 2026",
     description:
-      "Building data infrastructure and intelligence systems for thesis-driven investing.",
-    current: true,
+      "Built data infrastructure and intelligence systems for thesis-driven investing.",
+    current: false,
     url: "https://www.theoryvc.com/",
   },
   {
