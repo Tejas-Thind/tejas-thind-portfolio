@@ -52,7 +52,7 @@ export default function Home() {
               style={{ animationDelay: "600ms" }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal">
-                I built hybrid retrieval and extraction pipelines for transcript search as an AI Engineer Intern at <TheoryLogo />{" "}
+                I built extraction pipelines and hybrid retrieval for transcript search as an AI Engineer Intern at <TheoryLogo />{" "}
                 <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
                 .
               </p>
