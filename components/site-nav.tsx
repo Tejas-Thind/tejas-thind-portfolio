@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { PAGES } from "@/lib/pages";
 
 function XIcon() {
   return (
@@ -16,12 +17,6 @@ function XIcon() {
     </svg>
   );
 }
-
-const PAGES = [
-  { href: "/", label: "About" },
-  { href: "/experience", label: "Experience" },
-  { href: "/writing", label: "Writing" },
-];
 
 export function SiteNav() {
   const pathname = usePathname();

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
+import { PAGES } from "@/lib/pages";
 
 type Item = {
   group: string;
@@ -13,19 +14,14 @@ type Item = {
 };
 
 const ITEMS: Item[] = [
-  { group: "Navigate", label: "About", action: "nav", href: "/" },
-  {
-    group: "Navigate",
-    label: "Experience",
-    action: "nav",
-    href: "/experience",
-  },
-  {
-    group: "Navigate",
-    label: "Writing",
-    action: "nav",
-    href: "/writing",
-  },
+  ...PAGES.map(
+    (page): Item => ({
+      group: "Navigate",
+      label: page.label,
+      action: "nav",
+      href: page.href,
+    }),
+  ),
   {
     group: "Contact",
     label: "Email",
