@@ -84,10 +84,12 @@ export function ContributionGraph() {
           href="https://github.com/Tejas-Thind"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-muted-foreground"
+          className="text-muted-foreground"
         >
-          @Tejas-Thind
-          <ExternalLink className="h-3 w-3" strokeWidth={1.5} aria-hidden="true" />
+          <span className="inline-flex items-center gap-1 whitespace-nowrap">
+            @Tejas-Thind
+            <ExternalLink className="h-3 w-3" strokeWidth={1.5} aria-hidden="true" />
+          </span>
         </AnimatedLink>
       </div>
 
