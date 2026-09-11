@@ -3,6 +3,13 @@ import { useEffect, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { AnimatedLink } from "@/components/animated-link";
 
+// NOT wired into prod yet: rendering this is gated behind the
+// SHOW_CONTRIBUTIONS flag (NEXT_PUBLIC_SHOW_CONTRIBUTIONS env var) in
+// app/page.tsx, which defaults to off. This component itself is finished
+// and safe to import; don't remove the flag check in page.tsx without
+// checking with the user first, since the graph is intentionally hidden
+// until they decide to ship it.
+
 type Level =
   | "NONE"
   | "FIRST_QUARTILE"
@@ -71,8 +78,8 @@ export function ContributionGraph() {
   const activeColor = PALETTE[colorIndex];
 
   return (
-    <div className="rounded-lg border border-border/70 bg-background/35 p-2.5 sm:p-5">
-      <div className="mb-1.5 flex items-center justify-between text-xs text-muted-foreground sm:mb-4">
+    <div className="rounded-lg border border-border/70 bg-background/35 p-2 sm:p-4">
+      <div className="mb-1.5 flex items-center justify-between text-xs text-muted-foreground sm:mb-3">
         <span>
           {data ? data.total.toLocaleString() : "..."} contributions in the past year
         </span>
@@ -88,10 +95,18 @@ export function ContributionGraph() {
       </div>
 
       <div className="overflow-x-auto">
-        <div className="flex gap-[2px] sm:gap-[4px]" style={{ minWidth: "max-content" }}>
+        {/* w-full + justify-between with min-width:max-content: when the grid's
+            natural width fits the card, gaps stretch so the last column lands
+            flush with the right edge (matches the left edge exactly). When it
+            doesn't fit (mobile), min-width wins and this scrolls instead of
+            squishing. */}
+        <div
+          className="flex w-full justify-between gap-[1px] sm:gap-[2px]"
+          style={{ minWidth: "max-content" }}
+        >
           {(data?.weeks ?? Array.from({ length: 53 }, () => ({ days: [] }))).map(
             (week, weekIndex) => (
-              <div key={weekIndex} className="flex flex-col gap-[2px] sm:gap-[4px]">
+              <div key={weekIndex} className="flex flex-col gap-[1px] sm:gap-[2px]">
                 {Array.from({ length: 7 }, (_, dayIndex) => {
                   const day = week.days[dayIndex];
                   const opacity = day ? LEVEL_OPACITY[day.level] : 0.06;
@@ -99,11 +114,11 @@ export function ContributionGraph() {
                     <div
                       key={dayIndex}
                       title={day ? `${day.count} contributions on ${day.date}` : undefined}
-                      className="h-[8px] w-[8px] rounded-full hover:scale-125 sm:h-[11px] sm:w-[11px]"
+                      className="h-[6px] w-[6px] rounded-[3px] sm:h-[8px] sm:w-[8px]"
                       style={{
                         backgroundColor: activeColor,
                         opacity,
-                        transition: `background-color 900ms cubic-bezier(0.32, 0.72, 0, 1) ${weekIndex * 10}ms, transform 200ms ease-out`,
+                        transition: `background-color 900ms cubic-bezier(0.32, 0.72, 0, 1) ${weekIndex * 10}ms`,
                       }}
                     />
                   );
