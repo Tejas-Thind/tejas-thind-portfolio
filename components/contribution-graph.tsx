@@ -107,18 +107,18 @@ export function ContributionGraph() {
       </div>
 
       <div className="overflow-x-auto">
-        {/* w-full + justify-between with min-width:max-content: when the grid's
-            natural width fits the card, gaps stretch so the last column lands
-            flush with the right edge (matches the left edge exactly). When it
-            doesn't fit (mobile), min-width wins and this scrolls instead of
+        {/* w-full + justify-center with min-width:max-content: the grid keeps
+            its real (tight) gap size instead of stretching to fill the card,
+            and centering keeps equal margin on both sides so it still reads
+            symmetric. On mobile min-width wins and this scrolls instead of
             squishing. */}
         <div
-          className="flex w-full justify-between gap-[1px] sm:gap-[2px]"
+          className="flex w-full justify-center gap-[1px]"
           style={{ minWidth: "max-content" }}
         >
           {(data?.weeks ?? Array.from({ length: 53 }, () => ({ days: [] }))).map(
             (week, weekIndex) => (
-              <div key={weekIndex} className="flex flex-col gap-[1px] sm:gap-[2px]">
+              <div key={weekIndex} className="flex flex-col gap-[1px]">
                 {Array.from({ length: 7 }, (_, dayIndex) => {
                   const day = week.days[dayIndex];
                   const opacity = day ? LEVEL_OPACITY[day.level] : 0.06;
