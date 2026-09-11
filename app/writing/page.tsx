@@ -36,7 +36,7 @@ export default function Writing() {
                 />
               </p>
               <p className="max-w-sm text-sm text-muted-foreground">
-                Turns out writing is harder than shipping code. First post soon.
+                Writing is fun but kinda hard. First post coming soon.
               </p>
             </div>
           </div>
