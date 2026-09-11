@@ -22,7 +22,7 @@ const experiences: Job[] = [
     location: "San Francisco, CA",
     date: "May 2026 - Aug 2026",
     description:
-      "Built transcript search and invite ranking for Theory's internal deal-sourcing agent.",
+      "Built hybrid retrieval and extraction pipelines for transcript search on Theory's internal deal agent.",
     current: false,
     url: "https://www.theoryvc.com/",
   },
