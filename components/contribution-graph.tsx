@@ -87,9 +87,11 @@ export function ContributionGraph() {
 
   const activeColor = PALETTE[colorIndex];
 
+  const weeks = data?.weeks ?? Array.from({ length: 53 }, () => ({ days: [] as Day[] }));
+
   return (
     <div className="rounded-lg border border-border/70 bg-background/35 p-1.5 sm:p-2">
-      <div className="mb-1.5 flex items-center justify-between text-xs text-muted-foreground sm:mb-2">
+      <div className="mb-1 flex items-center justify-between text-xs text-muted-foreground sm:mb-1.5">
         <span>
           {data ? data.total.toLocaleString() : "..."} contributions in the past year
         </span>
@@ -106,51 +108,48 @@ export function ContributionGraph() {
         </AnimatedLink>
       </div>
 
-      <div className="overflow-x-auto">
-        {/* w-full + justify-center with min-width:max-content: the grid keeps
-            its real (tight) gap size instead of stretching to fill the card,
-            and centering keeps equal margin on both sides so it still reads
-            symmetric. On mobile min-width wins and this scrolls instead of
-            squishing. */}
-        <div
-          className="flex w-full justify-center gap-[1.5px]"
-          style={{ minWidth: "max-content" }}
-        >
-          {(data?.weeks ?? Array.from({ length: 53 }, () => ({ days: [] }))).map(
-            (week, weekIndex) => (
-              <div key={weekIndex} className="flex flex-col gap-[1.5px]">
-                {Array.from({ length: 7 }, (_, dayIndex) => {
-                  const day = week.days[dayIndex];
-                  const opacity = day ? LEVEL_OPACITY[day.level] : 0.06;
-                  return (
-                    <div
-                      key={dayIndex}
-                      className="h-[6px] w-[6px] rounded-none sm:h-[8px] sm:w-[8px]"
-                      style={{
-                        backgroundColor: activeColor,
-                        opacity,
-                        transition: `background-color 900ms cubic-bezier(0.32, 0.72, 0, 1) ${weekIndex * 10}ms`,
-                      }}
-                      onMouseEnter={
-                        day
-                          ? (e) => {
-                              const r = e.currentTarget.getBoundingClientRect();
-                              const x = Math.max(
-                                60,
-                                Math.min(window.innerWidth - 60, r.left + r.width / 2),
-                              );
-                              setHovered({ x, y: r.top, count: day.count, date: day.date });
-                            }
-                          : undefined
+      {/* CSS grid with fluid (1fr) columns: cells grow to fill exactly the
+          same width as the text row above, instead of a fixed cell size
+          that's either centered (leaves margin) or stretched via bigger
+          gaps (looks sparse). Gap itself stays a fixed, tight 1.5px. */}
+      <div
+        className="grid w-full gap-[1.5px]"
+        style={{
+          gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))`,
+          gridTemplateRows: "repeat(7, minmax(0, 1fr))",
+          gridAutoFlow: "column",
+        }}
+      >
+        {weeks.flatMap((week, weekIndex) =>
+          Array.from({ length: 7 }, (_, dayIndex) => {
+            const day = week.days[dayIndex];
+            const opacity = day ? LEVEL_OPACITY[day.level] : 0.06;
+            return (
+              <div
+                key={`${weekIndex}-${dayIndex}`}
+                className="aspect-square w-full rounded-none"
+                style={{
+                  backgroundColor: activeColor,
+                  opacity,
+                  transition: `background-color 900ms cubic-bezier(0.32, 0.72, 0, 1) ${weekIndex * 10}ms`,
+                }}
+                onMouseEnter={
+                  day
+                    ? (e) => {
+                        const r = e.currentTarget.getBoundingClientRect();
+                        const x = Math.max(
+                          60,
+                          Math.min(window.innerWidth - 60, r.left + r.width / 2),
+                        );
+                        setHovered({ x, y: r.top, count: day.count, date: day.date });
                       }
-                      onMouseLeave={day ? () => setHovered(null) : undefined}
-                    />
-                  );
-                })}
-              </div>
-            ),
-          )}
-        </div>
+                    : undefined
+                }
+                onMouseLeave={day ? () => setHovered(null) : undefined}
+              />
+            );
+          }),
+        )}
       </div>
 
       {hovered &&
