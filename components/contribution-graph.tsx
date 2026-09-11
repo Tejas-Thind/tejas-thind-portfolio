@@ -108,48 +108,48 @@ export function ContributionGraph() {
         </AnimatedLink>
       </div>
 
-      {/* CSS grid with fluid (1fr) columns: cells grow to fill exactly the
-          same width as the text row above, instead of a fixed cell size
-          that's either centered (leaves margin) or stretched via bigger
-          gaps (looks sparse). Gap itself stays a fixed, tight 1.5px. */}
-      <div
-        className="grid w-full gap-[1.5px]"
-        style={{
-          gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))`,
-          gridTemplateRows: "repeat(7, minmax(0, 1fr))",
-          gridAutoFlow: "column",
-        }}
-      >
-        {weeks.flatMap((week, weekIndex) =>
-          Array.from({ length: 7 }, (_, dayIndex) => {
-            const day = week.days[dayIndex];
-            const opacity = day ? LEVEL_OPACITY[day.level] : 0.06;
-            return (
-              <div
-                key={`${weekIndex}-${dayIndex}`}
-                className="aspect-square w-full rounded-none"
-                style={{
-                  backgroundColor: activeColor,
-                  opacity,
-                  transition: `background-color 900ms cubic-bezier(0.32, 0.72, 0, 1) ${weekIndex * 10}ms`,
-                }}
-                onMouseEnter={
-                  day
-                    ? (e) => {
-                        const r = e.currentTarget.getBoundingClientRect();
-                        const x = Math.max(
-                          60,
-                          Math.min(window.innerWidth - 60, r.left + r.width / 2),
-                        );
-                        setHovered({ x, y: r.top, count: day.count, date: day.date });
-                      }
-                    : undefined
-                }
-                onMouseLeave={day ? () => setHovered(null) : undefined}
-              />
-            );
-          }),
-        )}
+      {/* Fixed, compact cell size (matches GitHub's own proportions) rather
+          than stretching cells to fill the card width: at 53 columns,
+          stretching to the full card width on a wide viewport blows the
+          squares up to ~27px, which reads nothing like a contribution graph.
+          The grid is left-aligned so it still starts flush under the stats
+          text above; overflow-x-auto is a safety net for the narrowest
+          viewports where 53 fixed-width columns don't quite fit. */}
+      <div className="overflow-x-auto">
+        <div className="flex gap-[1.5px]" style={{ width: "max-content" }}>
+          {weeks.map((week, weekIndex) => (
+            <div key={weekIndex} className="flex flex-col gap-[1.5px]">
+              {Array.from({ length: 7 }, (_, dayIndex) => {
+                const day = week.days[dayIndex];
+                const opacity = day ? LEVEL_OPACITY[day.level] : 0.06;
+                return (
+                  <div
+                    key={dayIndex}
+                    className="h-[6px] w-[6px] rounded-none sm:h-[8px] sm:w-[8px]"
+                    style={{
+                      backgroundColor: activeColor,
+                      opacity,
+                      transition: `background-color 900ms cubic-bezier(0.32, 0.72, 0, 1) ${weekIndex * 10}ms`,
+                    }}
+                    onMouseEnter={
+                      day
+                        ? (e) => {
+                            const r = e.currentTarget.getBoundingClientRect();
+                            const x = Math.max(
+                              60,
+                              Math.min(window.innerWidth - 60, r.left + r.width / 2),
+                            );
+                            setHovered({ x, y: r.top, count: day.count, date: day.date });
+                          }
+                        : undefined
+                    }
+                    onMouseLeave={day ? () => setHovered(null) : undefined}
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
 
       {hovered &&
