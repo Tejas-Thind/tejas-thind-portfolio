@@ -52,7 +52,7 @@ export default function Home() {
               style={{ animationDelay: "600ms" }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal">
-                I&apos;ve built retrieval and extraction pipelines for transcript search as an AI Engineer Intern at <TheoryLogo />{" "}
+                I&apos;ve built retrieval and extraction that help Theory&apos;s investment team pull cited answers from call transcripts, as an AI Engineer Intern at <TheoryLogo />{" "}
                 <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
                 , and worked on AI video & image generation infrastructure at <CloverLogo />{" "}
                 <AnimatedLink href="https://cloverlabs.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Clover Labs</AnimatedLink>
