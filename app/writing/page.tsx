@@ -1,7 +1,6 @@
 "use client";
 import { Hammer } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
-import { TextScramble } from "@/components/text-scramble";
 
 export default function Writing() {
   return (
@@ -27,14 +26,7 @@ export default function Writing() {
                 strokeWidth={1.5}
                 aria-hidden="true"
               />
-              <p className="text-lg font-medium">
-                <TextScramble
-                  text="Under construction"
-                  delay={300}
-                  duration={900}
-                  loopInterval={7000}
-                />
-              </p>
+              <p className="text-lg font-medium">Under construction</p>
               <p className="max-w-sm text-sm text-muted-foreground">
                 Writing is fun but kinda hard. First post coming soon.
               </p>
