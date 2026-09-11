@@ -1,7 +1,7 @@
 "use client";
 import type React from "react";
 import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 
 type Job = {
@@ -196,7 +196,7 @@ function CardWithEffect({ job }: { job: Job }) {
                     {job.suffix}
                   </span>
                 )}
-                <ArrowUpRight
+                <ExternalLink
                   className="h-3.5 w-3.5 shrink-0 -translate-x-0.5 text-muted-foreground opacity-0 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0 group-hover:opacity-50"
                   strokeWidth={1.5}
                   aria-hidden="true"
