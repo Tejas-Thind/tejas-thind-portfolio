@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { PAGES } from "@/lib/pages";
@@ -87,6 +87,8 @@ export function CommandPalette() {
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const shortcut = usePlatformShortcut();
   const router = useRouter();
+  const [isNavigating, startTransition] = useTransition();
+  const navigatingRef = useRef(false);
 
   const filtered = ITEMS.filter(
     (item) =>
@@ -104,9 +106,17 @@ export function CommandPalette() {
 
   const execute = useCallback(
     (item: Item) => {
+      if (item.action === "nav" && item.href) {
+        // Keep the palette open until the new route has actually landed,
+        // so its backdrop masks the old page instead of flashing it.
+        navigatingRef.current = true;
+        startTransition(() => {
+          router.push(item.href!);
+        });
+        return;
+      }
       close();
-      if (item.action === "nav" && item.href) router.push(item.href);
-      else if (item.action === "open" && item.href) {
+      if (item.action === "open" && item.href) {
         if (item.href.startsWith("mailto:")) window.location.href = item.href;
         else window.open(item.href, "_blank", "noopener noreferrer");
       } else if (item.action === "copy" && item.value)
@@ -114,6 +124,14 @@ export function CommandPalette() {
     },
     [close, router],
   );
+
+  // Close only once the transition-wrapped navigation has committed.
+  useEffect(() => {
+    if (navigatingRef.current && !isNavigating) {
+      navigatingRef.current = false;
+      close();
+    }
+  }, [isNavigating, close]);
 
   // Global keyboard shortcut + open-palette event
   useEffect(() => {
