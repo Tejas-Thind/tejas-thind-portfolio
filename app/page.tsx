@@ -52,9 +52,12 @@ export default function Home() {
               style={{ animationDelay: "600ms" }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal">
-                I&apos;ve built hybrid search and extraction pipelines for transcript search as an AI Engineer Intern at <TheoryLogo />{" "}
+                I built hybrid retrieval and extraction pipelines for transcript search as an AI Engineer Intern at <TheoryLogo />{" "}
                 <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
-                , and worked on AI video & image generation infrastructure at <CloverLogo />{" "}
+                .
+              </p>
+              <p className="text-base text-foreground leading-relaxed font-normal">
+                I&apos;ve also worked on AI video & image generation infrastructure at <CloverLogo />{" "}
                 <AnimatedLink href="https://cloverlabs.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Clover Labs</AnimatedLink>
                 , and shipped product-facing features at{" "}
                 <span className="inline-flex items-center gap-0.5 whitespace-nowrap align-[-0.18em]">
