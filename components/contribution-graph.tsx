@@ -88,8 +88,8 @@ export function ContributionGraph() {
   const activeColor = PALETTE[colorIndex];
 
   return (
-    <div className="rounded-lg border border-border/70 bg-background/35 p-2 sm:p-4">
-      <div className="mb-1.5 flex items-center justify-between text-xs text-muted-foreground sm:mb-3">
+    <div className="rounded-lg border border-border/70 bg-background/35 p-1.5 sm:p-2">
+      <div className="mb-1.5 flex items-center justify-between text-xs text-muted-foreground sm:mb-2">
         <span>
           {data ? data.total.toLocaleString() : "..."} contributions in the past year
         </span>
@@ -113,12 +113,12 @@ export function ContributionGraph() {
             symmetric. On mobile min-width wins and this scrolls instead of
             squishing. */}
         <div
-          className="flex w-full justify-center gap-[1px]"
+          className="flex w-full justify-center gap-[1.5px]"
           style={{ minWidth: "max-content" }}
         >
           {(data?.weeks ?? Array.from({ length: 53 }, () => ({ days: [] }))).map(
             (week, weekIndex) => (
-              <div key={weekIndex} className="flex flex-col gap-[1px]">
+              <div key={weekIndex} className="flex flex-col gap-[1.5px]">
                 {Array.from({ length: 7 }, (_, dayIndex) => {
                   const day = week.days[dayIndex];
                   const opacity = day ? LEVEL_OPACITY[day.level] : 0.06;
