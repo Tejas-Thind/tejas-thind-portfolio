@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { ExternalLink } from "lucide-react";
 import { AnimatedLink } from "@/components/animated-link";
 
@@ -39,9 +40,21 @@ const PALETTE = [
 
 const CYCLE_INTERVAL_MS = 60 * 1000;
 
+type Hovered = { x: number; y: number; count: number; date: string };
+
+function formatDate(dateStr: string) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 export function ContributionGraph() {
   const [data, setData] = useState<ContributionData | null>(null);
   const [failed, setFailed] = useState(false);
+  const [hovered, setHovered] = useState<Hovered | null>(null);
   // Starts at a fixed index so server and client render the same HTML on
   // hydration; the random pick happens after mount instead (see below).
   const [colorIndex, setColorIndex] = useState(0);
@@ -112,13 +125,25 @@ export function ContributionGraph() {
                   return (
                     <div
                       key={dayIndex}
-                      title={day ? `${day.count} contributions on ${day.date}` : undefined}
-                      className="h-[6px] w-[6px] rounded-[3px] sm:h-[8px] sm:w-[8px]"
+                      className="h-[6px] w-[6px] rounded-none sm:h-[8px] sm:w-[8px]"
                       style={{
                         backgroundColor: activeColor,
                         opacity,
                         transition: `background-color 900ms cubic-bezier(0.32, 0.72, 0, 1) ${weekIndex * 10}ms`,
                       }}
+                      onMouseEnter={
+                        day
+                          ? (e) => {
+                              const r = e.currentTarget.getBoundingClientRect();
+                              const x = Math.max(
+                                60,
+                                Math.min(window.innerWidth - 60, r.left + r.width / 2),
+                              );
+                              setHovered({ x, y: r.top, count: day.count, date: day.date });
+                            }
+                          : undefined
+                      }
+                      onMouseLeave={day ? () => setHovered(null) : undefined}
                     />
                   );
                 })}
@@ -127,6 +152,20 @@ export function ContributionGraph() {
           )}
         </div>
       </div>
+
+      {hovered &&
+        createPortal(
+          <div
+            className="pointer-events-none fixed z-[100] -translate-x-1/2 -translate-y-[calc(100%+8px)] whitespace-nowrap rounded-md border border-border bg-background/95 px-2 py-1.5 text-xs shadow-lg backdrop-blur-md"
+            style={{ left: hovered.x, top: hovered.y }}
+          >
+            <span className="font-medium text-foreground">
+              {hovered.count} contribution{hovered.count === 1 ? "" : "s"}
+            </span>
+            <span className="text-muted-foreground"> on {formatDate(hovered.date)}</span>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
