@@ -16,7 +16,7 @@ export default function Home() {
       <SiteNav />
 
       <main className="max-w-[62rem] mx-auto px-6 sm:px-8 lg:px-16">
-        <header className="flex min-h-[calc(100dvh-9rem)] items-center py-20 pt-24 sm:pt-28">
+        <header className="flex min-h-[calc(100dvh-9rem)] items-center py-8 pt-16 sm:py-20 sm:pt-28">
           <div className="w-full">
             <div
               className="space-y-4 sm:space-y-5 animate-init animate-blur-in"
@@ -90,7 +90,7 @@ export default function Home() {
             </div>
 
             <div
-              className="mt-4 sm:mt-5 animate-init animate-blur-in"
+              className="mt-3 sm:mt-5 animate-init animate-blur-in"
               style={{ animationDelay: "1000ms" }}
             >
               <ContributionGraph />
