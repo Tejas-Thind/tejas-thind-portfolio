@@ -37,6 +37,7 @@ body {
   --scramble-violet: oklch(0.58 0.19 305);
   --scramble-amber: oklch(0.66 0.16 85);
   --scramble-green: oklch(0.58 0.16 145);
+  --scramble-pink: oklch(0.6 0.19 335);
   --current-status: oklch(0.44 0.12 160);
   --card-cursor-glow: rgba(0, 0, 0, 0.1);
   --paper-texture-opacity: 0.12;
@@ -84,6 +85,7 @@ body {
   --scramble-violet: oklch(0.73 0.18 305);
   --scramble-amber: oklch(0.79 0.15 85);
   --scramble-green: oklch(0.76 0.15 145);
+  --scramble-pink: oklch(0.74 0.18 335);
   --current-status: oklch(0.76 0.12 160);
   --card-cursor-glow: rgba(255, 255, 255, 0.75);
   --paper-texture-opacity: 0.12;

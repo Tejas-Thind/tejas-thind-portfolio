@@ -29,12 +29,14 @@ const LEVEL_OPACITY: Record<Level, number> = {
 
 // Reuses the site's existing TextScramble palette so the graph's colors
 // stay tied to the rest of the site instead of introducing new ones.
+// Green is skipped here specifically (unlike TextScramble's palette) since
+// it's GitHub's own contribution-graph color and would look like a copy.
 const PALETTE = [
   "var(--scramble-amber)",
   "var(--scramble-coral)",
+  "var(--scramble-pink)",
   "var(--scramble-violet)",
   "var(--scramble-blue)",
-  "var(--scramble-green)",
   "var(--scramble-cyan)",
 ];
 
