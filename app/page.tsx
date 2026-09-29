@@ -1,11 +1,5 @@
 "use client";
 import { SiteNav } from "@/components/site-nav";
-import {
-  WaterlooLogo,
-  RootlyLogo,
-  CloverLogo,
-  TheoryLogo,
-} from "@/components/logos";
 import { AnimatedLink } from "@/components/animated-link";
 import { TextScramble } from "@/components/text-scramble";
 import { ContributionGraph } from "@/components/contribution-graph";
@@ -35,7 +29,7 @@ export default function Home() {
               </h1>
 
               <p className="text-base text-foreground leading-relaxed max-w-md">
-                Management Engineering + AI @ <WaterlooLogo />
+                Management Engineering + AI @{" "}
                 <AnimatedLink
                   href="https://uwaterloo.ca/"
                   target="_blank"
@@ -53,18 +47,15 @@ export default function Home() {
               style={{ animationDelay: "600ms" }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal">
-                I built extraction pipelines and hybrid retrieval for transcript search as an AI Engineer Intern at <TheoryLogo />{" "}
+                I built extraction pipelines and hybrid retrieval for transcript search as an AI Engineer Intern at{" "}
                 <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
                 .
               </p>
               <p className="text-base text-foreground leading-relaxed font-normal">
-                I&apos;ve also worked on AI video & image generation infrastructure at <CloverLogo />{" "}
+                I&apos;ve also worked on AI video & image generation infrastructure at{" "}
                 <AnimatedLink href="https://cloverlabs.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Clover Labs</AnimatedLink>
                 , and shipped product-facing features at{" "}
-                <span className="inline-flex items-center gap-0.5 whitespace-nowrap align-[-0.18em]">
-                  <RootlyLogo />
-                  <AnimatedLink href="https://rootly.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Rootly AI</AnimatedLink>
-                </span>
+                <AnimatedLink href="https://rootly.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Rootly AI</AnimatedLink>
                 , used by enterprise customers like Nvidia, Figma, LinkedIn & more.
               </p>
               <p className="text-base text-foreground leading-relaxed font-normal">
