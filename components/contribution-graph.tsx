@@ -49,10 +49,10 @@ const CYCLE_INTERVAL_MS = 60 * 1000;
 // ballooning in between breakpoints. MAX_CELL_PX caps it from looking too
 // big on wide screens; past that cap the gap keeps growing instead so the
 // grid still lines up exactly under the stats text above.
-const GAP_RATIO = 0.25;
+const GAP_RATIO = 0.2;
 const ROWS = 7;
 const MIN_CELL_PX = 3;
-const MAX_CELL_PX = 10;
+const MAX_CELL_PX = 11;
 const FALLBACK_CELL_PX = 8;
 const FALLBACK_GAP_PX = 2;
 
