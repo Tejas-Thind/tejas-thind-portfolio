@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ExternalLink } from "lucide-react";
 import { AnimatedLink } from "@/components/animated-link";
@@ -42,6 +42,15 @@ const PALETTE = [
 
 const CYCLE_INTERVAL_MS = 60 * 1000;
 
+// Uniform gap on both axes (row and column) - the grid itself decides the
+// cell size to fit, not the other way around, so the gap never has to
+// stretch wider in one direction than the other.
+const GAP_PX = 2;
+const ROWS = 7;
+const MIN_CELL_PX = 3;
+const MAX_CELL_PX = 14;
+const FALLBACK_CELL_PX = 8;
+
 type Hovered = { x: number; y: number; count: number; date: string };
 
 function formatDate(dateStr: string) {
@@ -60,6 +69,11 @@ export function ContributionGraph() {
   // Starts at a fixed index so server and client render the same HTML on
   // hydration; the random pick happens after mount instead (see below).
   const [colorIndex, setColorIndex] = useState(0);
+  // Same hydration-safety reasoning as colorIndex: starts at a fixed
+  // fallback so server/client markup matches, then the real size - derived
+  // from the actually-measured container width - is set post-mount.
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [cellPx, setCellPx] = useState(FALLBACK_CELL_PX);
 
   useEffect(() => {
     let cancelled = false;
@@ -84,6 +98,24 @@ export function ContributionGraph() {
     }, CYCLE_INTERVAL_MS);
     return () => clearInterval(id);
   }, []);
+
+  const columnCount = data?.weeks.length ?? 53;
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const measure = () => {
+      const width = el.clientWidth;
+      const size = (width - GAP_PX * (columnCount - 1)) / columnCount;
+      setCellPx(Math.min(MAX_CELL_PX, Math.max(MIN_CELL_PX, size)));
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [columnCount]);
 
   if (failed) return null;
 
@@ -110,21 +142,20 @@ export function ContributionGraph() {
         </AnimatedLink>
       </div>
 
-      {/* Cell size stays fixed (matches GitHub's own proportions) so squares
-          never balloon on a wide viewport; the leftover horizontal space is
-          spent as extra gap between columns (justify-content: space-between)
-          instead, so the grid's own left/right edges still land exactly
-          under the stats text above. overflow-x-auto is a safety net for
-          the narrowest viewports where 53 fixed-width columns don't fit. */}
-      <div className="overflow-x-auto [--cell-size:5.5px] sm:[--cell-size:10px]">
+      {/* Gap is a fixed constant on both axes; cell size is the variable
+          that's solved for instead, from the container's actually-measured
+          width (via ResizeObserver) - so row gap and column gap always
+          match exactly, and the grid's own edges still land exactly under
+          the stats text above, at any viewport width. overflow-x-auto is a
+          safety net in case cellPx ever gets clamped down to MIN_CELL_PX. */}
+      <div ref={containerRef} className="overflow-x-auto">
         <div
-          className="grid w-full"
+          className="grid"
           style={{
-            gridTemplateColumns: `repeat(${weeks.length}, var(--cell-size))`,
-            gridTemplateRows: "repeat(7, var(--cell-size))",
+            gridTemplateColumns: `repeat(${weeks.length}, ${cellPx}px)`,
+            gridTemplateRows: `repeat(${ROWS}, ${cellPx}px)`,
             gridAutoFlow: "column",
-            rowGap: "1.5px",
-            justifyContent: "space-between",
+            gap: `${GAP_PX}px`,
           }}
         >
           {weeks.flatMap((week, weekIndex) =>
