@@ -116,7 +116,7 @@ export function ContributionGraph() {
           instead, so the grid's own left/right edges still land exactly
           under the stats text above. overflow-x-auto is a safety net for
           the narrowest viewports where 53 fixed-width columns don't fit. */}
-      <div className="overflow-x-auto [--cell-size:5px] sm:[--cell-size:8px]">
+      <div className="overflow-x-auto [--cell-size:5.5px] sm:[--cell-size:10px]">
         <div
           className="grid w-full"
           style={{
