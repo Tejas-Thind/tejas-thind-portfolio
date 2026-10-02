@@ -42,20 +42,19 @@ const PALETTE = [
 
 const CYCLE_INTERVAL_MS = 60 * 1000;
 
-// Cell size stays small and fixed (by breakpoint); the gap is what's
-// solved for from the container's measured width instead, so it comes out
-// uniform on both axes (same value for rows and columns) while the grid
-// still lines up exactly under the stats text above.
-const MOBILE_CELL_PX = 4.5;
-const DESKTOP_CELL_PX = 10;
+// Gap is solved as a fixed fraction of cell size (GAP_RATIO), and both are
+// solved together from the container's measured width - a continuous
+// function of width, not a mobile/desktop breakpoint switch, so the
+// gap:cell ratio stays constant (and tight) at every width instead of
+// ballooning in between breakpoints. MAX_CELL_PX caps it from looking too
+// big on wide screens; past that cap the gap keeps growing instead so the
+// grid still lines up exactly under the stats text above.
+const GAP_RATIO = 0.25;
 const ROWS = 7;
-const MIN_GAP_PX = 1;
+const MIN_CELL_PX = 3;
+const MAX_CELL_PX = 10;
+const FALLBACK_CELL_PX = 8;
 const FALLBACK_GAP_PX = 2;
-// Switches to the bigger desktop cell only once the container is actually
-// wide enough to fit it with at least MIN_GAP_PX of gap - computed from the
-// real measured width instead of a viewport breakpoint, so there's no dead
-// zone where the viewport says "desktop" but the card itself is too narrow.
-const DESKTOP_WIDTH_THRESHOLD = 53 * DESKTOP_CELL_PX + 52 * MIN_GAP_PX;
 
 type Hovered = { x: number; y: number; count: number; date: string };
 
@@ -79,7 +78,7 @@ export function ContributionGraph() {
   // fallback so server/client markup matches, then the real gap - derived
   // from the actually-measured container width - is set post-mount.
   const containerRef = useRef<HTMLDivElement>(null);
-  const [cellPx, setCellPx] = useState(DESKTOP_CELL_PX);
+  const [cellPx, setCellPx] = useState(FALLBACK_CELL_PX);
   const [gapPx, setGapPx] = useState(FALLBACK_GAP_PX);
 
   useEffect(() => {
@@ -110,14 +109,19 @@ export function ContributionGraph() {
 
   useEffect(() => {
     const el = containerRef.current;
-    if (!el) return;
+    if (!el || columnCount < 2) return;
 
     const measure = () => {
       const width = el.clientWidth;
-      const size = width >= DESKTOP_WIDTH_THRESHOLD ? DESKTOP_CELL_PX : MOBILE_CELL_PX;
-      const gap = columnCount > 1 ? (width - size * columnCount) / (columnCount - 1) : 0;
+      // Solving 53*cell + 52*(GAP_RATIO*cell) = width for cell keeps the
+      // gap:cell ratio fixed while still filling the width exactly.
+      const rawCell = width / (columnCount + (columnCount - 1) * GAP_RATIO);
+      const size = Math.min(MAX_CELL_PX, Math.max(MIN_CELL_PX, rawCell));
+      // Once clamped, re-solve the gap alone so the grid still fills the
+      // width exactly - the ratio just no longer holds at that extreme.
+      const gap = (width - size * columnCount) / (columnCount - 1);
       setCellPx(size);
-      setGapPx(Math.max(gap, MIN_GAP_PX));
+      setGapPx(Math.max(gap, 0));
     };
 
     measure();
@@ -151,13 +155,13 @@ export function ContributionGraph() {
         </AnimatedLink>
       </div>
 
-      {/* Cell size stays small and fixed (4px mobile / 8px desktop); the
-          gap is solved for from the container's actually-measured width
-          (via ResizeObserver) instead, applied equally to rows and columns,
-          so it's always uniform and the grid still lines up exactly under
-          the stats text above regardless of viewport width.
-          overflow-x-auto is a safety net in case the gap ever gets clamped
-          up to MIN_GAP_PX on an unrealistically narrow container. */}
+      {/* Cell size and gap are solved together from the container's
+          actually-measured width (via ResizeObserver), keeping gap a fixed
+          fraction (GAP_RATIO) of cell size - applied equally to rows and
+          columns - so spacing reads consistent at any width instead of
+          jumping at a breakpoint, while the grid still lines up exactly
+          under the stats text above. overflow-x-auto is a safety net for
+          the rare case a container is narrower than MIN_CELL_PX allows. */}
       <div ref={containerRef} className="overflow-x-auto">
         <div
           className="grid"
