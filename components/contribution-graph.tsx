@@ -42,14 +42,16 @@ const PALETTE = [
 
 const CYCLE_INTERVAL_MS = 60 * 1000;
 
-// Uniform gap on both axes (row and column) - the grid itself decides the
-// cell size to fit, not the other way around, so the gap never has to
-// stretch wider in one direction than the other.
-const GAP_PX = 2;
+// Cell size stays small and fixed (by breakpoint); the gap is what's
+// solved for from the container's measured width instead, so it comes out
+// uniform on both axes (same value for rows and columns) while the grid
+// still lines up exactly under the stats text above.
+const MOBILE_CELL_PX = 4;
+const DESKTOP_CELL_PX = 8;
+const DESKTOP_BREAKPOINT = "(min-width: 640px)";
 const ROWS = 7;
-const MIN_CELL_PX = 3;
-const MAX_CELL_PX = 14;
-const FALLBACK_CELL_PX = 8;
+const MIN_GAP_PX = 1;
+const FALLBACK_GAP_PX = 2;
 
 type Hovered = { x: number; y: number; count: number; date: string };
 
@@ -70,10 +72,11 @@ export function ContributionGraph() {
   // hydration; the random pick happens after mount instead (see below).
   const [colorIndex, setColorIndex] = useState(0);
   // Same hydration-safety reasoning as colorIndex: starts at a fixed
-  // fallback so server/client markup matches, then the real size - derived
+  // fallback so server/client markup matches, then the real gap - derived
   // from the actually-measured container width - is set post-mount.
   const containerRef = useRef<HTMLDivElement>(null);
-  const [cellPx, setCellPx] = useState(FALLBACK_CELL_PX);
+  const [cellPx, setCellPx] = useState(DESKTOP_CELL_PX);
+  const [gapPx, setGapPx] = useState(FALLBACK_GAP_PX);
 
   useEffect(() => {
     let cancelled = false;
@@ -104,17 +107,24 @@ export function ContributionGraph() {
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
+    const desktopQuery = window.matchMedia(DESKTOP_BREAKPOINT);
 
     const measure = () => {
+      const size = desktopQuery.matches ? DESKTOP_CELL_PX : MOBILE_CELL_PX;
       const width = el.clientWidth;
-      const size = (width - GAP_PX * (columnCount - 1)) / columnCount;
-      setCellPx(Math.min(MAX_CELL_PX, Math.max(MIN_CELL_PX, size)));
+      const gap = columnCount > 1 ? (width - size * columnCount) / (columnCount - 1) : 0;
+      setCellPx(size);
+      setGapPx(Math.max(gap, MIN_GAP_PX));
     };
 
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(el);
-    return () => observer.disconnect();
+    desktopQuery.addEventListener("change", measure);
+    return () => {
+      observer.disconnect();
+      desktopQuery.removeEventListener("change", measure);
+    };
   }, [columnCount]);
 
   if (failed) return null;
@@ -142,12 +152,13 @@ export function ContributionGraph() {
         </AnimatedLink>
       </div>
 
-      {/* Gap is a fixed constant on both axes; cell size is the variable
-          that's solved for instead, from the container's actually-measured
-          width (via ResizeObserver) - so row gap and column gap always
-          match exactly, and the grid's own edges still land exactly under
-          the stats text above, at any viewport width. overflow-x-auto is a
-          safety net in case cellPx ever gets clamped down to MIN_CELL_PX. */}
+      {/* Cell size stays small and fixed (4px mobile / 8px desktop); the
+          gap is solved for from the container's actually-measured width
+          (via ResizeObserver) instead, applied equally to rows and columns,
+          so it's always uniform and the grid still lines up exactly under
+          the stats text above regardless of viewport width.
+          overflow-x-auto is a safety net in case the gap ever gets clamped
+          up to MIN_GAP_PX on an unrealistically narrow container. */}
       <div ref={containerRef} className="overflow-x-auto">
         <div
           className="grid"
@@ -155,7 +166,7 @@ export function ContributionGraph() {
             gridTemplateColumns: `repeat(${weeks.length}, ${cellPx}px)`,
             gridTemplateRows: `repeat(${ROWS}, ${cellPx}px)`,
             gridAutoFlow: "column",
-            gap: `${GAP_PX}px`,
+            gap: `${gapPx}px`,
           }}
         >
           {weeks.flatMap((week, weekIndex) =>
