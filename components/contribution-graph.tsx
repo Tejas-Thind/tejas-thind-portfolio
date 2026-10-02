@@ -46,12 +46,16 @@ const CYCLE_INTERVAL_MS = 60 * 1000;
 // solved for from the container's measured width instead, so it comes out
 // uniform on both axes (same value for rows and columns) while the grid
 // still lines up exactly under the stats text above.
-const MOBILE_CELL_PX = 4;
-const DESKTOP_CELL_PX = 8;
-const DESKTOP_BREAKPOINT = "(min-width: 640px)";
+const MOBILE_CELL_PX = 4.5;
+const DESKTOP_CELL_PX = 10;
 const ROWS = 7;
 const MIN_GAP_PX = 1;
 const FALLBACK_GAP_PX = 2;
+// Switches to the bigger desktop cell only once the container is actually
+// wide enough to fit it with at least MIN_GAP_PX of gap - computed from the
+// real measured width instead of a viewport breakpoint, so there's no dead
+// zone where the viewport says "desktop" but the card itself is too narrow.
+const DESKTOP_WIDTH_THRESHOLD = 53 * DESKTOP_CELL_PX + 52 * MIN_GAP_PX;
 
 type Hovered = { x: number; y: number; count: number; date: string };
 
@@ -107,11 +111,10 @@ export function ContributionGraph() {
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const desktopQuery = window.matchMedia(DESKTOP_BREAKPOINT);
 
     const measure = () => {
-      const size = desktopQuery.matches ? DESKTOP_CELL_PX : MOBILE_CELL_PX;
       const width = el.clientWidth;
+      const size = width >= DESKTOP_WIDTH_THRESHOLD ? DESKTOP_CELL_PX : MOBILE_CELL_PX;
       const gap = columnCount > 1 ? (width - size * columnCount) / (columnCount - 1) : 0;
       setCellPx(size);
       setGapPx(Math.max(gap, MIN_GAP_PX));
@@ -120,11 +123,7 @@ export function ContributionGraph() {
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(el);
-    desktopQuery.addEventListener("change", measure);
-    return () => {
-      observer.disconnect();
-      desktopQuery.removeEventListener("change", measure);
-    };
+    return () => observer.disconnect();
   }, [columnCount]);
 
   if (failed) return null;
