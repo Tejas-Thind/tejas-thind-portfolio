@@ -179,6 +179,14 @@ const useCanvasCursor = () => {
   };
 
   useEffect(() => {
+    // Touch-driven position tracking doesn't translate well to this trail
+    // effect (no continuous movement like a mouse) and preventDefault() on
+    // touchmove can fight normal scrolling - skip it entirely on touch
+    // devices instead of letting it glitch.
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
+
     renderCanvas();
 
     return () => {
