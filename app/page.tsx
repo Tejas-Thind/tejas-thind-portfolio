@@ -1,5 +1,4 @@
 "use client";
-import { SiteNav } from "@/components/site-nav";
 import { AnimatedLink } from "@/components/animated-link";
 import { TextScramble } from "@/components/text-scramble";
 import { ContributionGraph } from "@/components/contribution-graph";
@@ -7,8 +6,6 @@ import { ContributionGraph } from "@/components/contribution-graph";
 export default function Home() {
   return (
     <div className="min-h-[100dvh] text-foreground relative">
-      <SiteNav />
-
       <main className="max-w-[62rem] mx-auto px-6 sm:px-8 lg:px-16">
         <header className="flex min-h-[calc(100dvh-9rem)] items-center pt-16 pb-20 sm:pt-28 sm:pb-20">
           <div className="w-full">

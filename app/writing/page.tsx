@@ -1,12 +1,9 @@
 "use client";
 import { Hammer } from "lucide-react";
-import { SiteNav } from "@/components/site-nav";
 
 export default function Writing() {
   return (
     <div className="min-h-[100dvh] text-foreground relative">
-      <SiteNav />
-
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <section className="py-20 pt-20 sm:pt-24">
           <div className="space-y-8">

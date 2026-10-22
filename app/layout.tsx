@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import CanvasCursor from "@/components/canvas-cursor";
 import { CommandPalette } from "@/components/command-palette";
 import { PageTransition } from "@/components/page-transition";
+import { SiteNav } from "@/components/site-nav";
 import { SiteUtilities } from "@/components/site-utilities";
 import "./globals.css";
 
@@ -114,6 +115,7 @@ export default function RootLayout({
         <CanvasCursor />
         <ThemeProvider>
           <CommandPalette />
+          <SiteNav />
           <PageTransition>{children}</PageTransition>
           <SiteUtilities />
         </ThemeProvider>

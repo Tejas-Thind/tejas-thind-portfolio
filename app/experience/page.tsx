@@ -2,7 +2,6 @@
 import type React from "react";
 import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
-import { SiteNav } from "@/components/site-nav";
 
 type Job = {
   company: string;
@@ -81,8 +80,6 @@ const experiences: Job[] = [
 export default function Experience() {
   return (
     <div className="min-h-[100dvh] text-foreground relative">
-      <SiteNav />
-
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <section className="py-20 pt-20 sm:pt-24">
           <div className="space-y-8">
