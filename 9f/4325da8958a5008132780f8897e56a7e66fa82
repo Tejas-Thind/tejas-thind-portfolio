@@ -1,0 +1,20 @@
+app/layout.tsx
+  s_e391ec747cf6ed::t_55797625f1161e 118
+  s_e391ec747cf6ed::t_bbbccf714454a5 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9f4325da8958a5008132780f8897e56a7e66fa82",
+  "prompts": {},
+  "sessions": {
+    "s_e391ec747cf6ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "82b1d842-74ef-4b8d-8a64-926c41a7759e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
