@@ -171,6 +171,16 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  /* Hide the scrollbar entirely while keeping scroll functional */
+  html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* legacy Edge/IE */
+  }
+  html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none; /* Chrome/Safari */
+  }
 }
 
 /* Archival paper grain: a broad seamless grain with sparse micro-flecks. */
