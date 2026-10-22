@@ -63,21 +63,6 @@ export default function Home() {
             </div>
 
             <div
-              className="mt-2 sm:mt-3 animate-init animate-blur-in"
-              style={{ animationDelay: "800ms" }}
-            >
-              <p className="text-base text-foreground leading-relaxed font-normal lg:whitespace-nowrap">
-                Reach out, I&apos;m always curious to hear interesting opinions and new ideas at{" "}
-                <a
-                  href="mailto:t3thind@uwaterloo.ca"
-                  className="font-semibold hover:opacity-60 transition-opacity duration-200"
-                >
-                  t3thind[at]uwaterloo[dot]ca
-                </a>
-              </p>
-            </div>
-
-            <div
               className="mt-3 sm:mt-5 animate-init animate-blur-in"
               style={{ animationDelay: "1000ms" }}
             >
