@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { PAGES } from "@/lib/pages";
 
@@ -21,13 +22,25 @@ function XIcon() {
 export function SiteNav() {
   const pathname = usePathname();
   const destinations = PAGES.filter((page) => page.href !== pathname);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const socialLinkClass =
     "flex h-10 w-10 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 animate-init animate-blur-in" style={{ animationDelay: "100ms" }}>
-      <div className="site-nav-surface absolute inset-x-0 -bottom-4 top-0" />
+    <nav className="fixed top-0 left-0 right-0 z-50 animate-init-slide animate-slide-up-fade" style={{ animationDelay: "100ms" }}>
+      <div
+        className={`site-nav-surface absolute inset-x-0 -bottom-4 top-0 transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          scrolled ? "opacity-100" : "opacity-0"
+        }`}
+      />
       <div className="relative mx-auto flex w-full max-w-[62rem] items-center justify-end px-6 py-4 text-sm sm:px-8 sm:py-5 lg:px-16">
         <div className="flex items-center gap-0.5">
           <a
