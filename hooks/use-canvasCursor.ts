@@ -113,13 +113,13 @@ const useCanvasCursor = () => {
       ctx.globalCompositeOperation = "lighter";
       ctx.strokeStyle = "hsla(" + Math.round(f.update()) + ",70%,55%,0.22)";
       ctx.lineWidth = 1;
-      if (!lines.length) { ctx.frame++; window.requestAnimationFrame(render); return; }
+      if (!lines.length) { ctx.frame++; rafHandle = window.requestAnimationFrame(render); return; }
       for (var e, t = 0; t < E.trails; t++) {
         (e = lines[t]).update();
         e.draw();
       }
       ctx.frame++;
-      window.requestAnimationFrame(render);
+      rafHandle = window.requestAnimationFrame(render);
     }
   }
 
@@ -133,6 +133,7 @@ const useCanvasCursor = () => {
     e = 0,
     pos = {},
     lines = [],
+    rafHandle = null,
     E = {
       debug: true,
       friction: 0.5,
@@ -157,6 +158,10 @@ const useCanvasCursor = () => {
 
   const handleBlur = () => {
     ctx.running = false;
+    if (rafHandle !== null) {
+      window.cancelAnimationFrame(rafHandle);
+      rafHandle = null;
+    }
   };
 
   const renderCanvas = function () {
@@ -191,6 +196,10 @@ const useCanvasCursor = () => {
 
     return () => {
       ctx.running = false;
+      if (rafHandle !== null) {
+        window.cancelAnimationFrame(rafHandle);
+        rafHandle = null;
+      }
       document.removeEventListener("mousemove", onMousemove);
       document.removeEventListener("touchstart", onMousemove);
       document.body.removeEventListener("orientationchange", resizeCanvas);

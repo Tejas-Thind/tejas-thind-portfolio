@@ -1,33 +1,13 @@
 "use client";
-import { useLayoutEffect, useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { AnimatedLink } from "@/components/animated-link";
 import { TextScramble } from "@/components/text-scramble";
 import { ContributionGraph } from "@/components/contribution-graph";
-import { BasketballIntro } from "@/components/basketball-intro";
-
-const INTRO_SESSION_KEY = "basketball-intro-played";
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(true);
-  const [navReady, setNavReady] = useState(false);
-
-  // Skip the intro (and avoid a flash of it) on repeat visits within the
-  // same session; useLayoutEffect runs before paint, unlike useEffect.
-  useLayoutEffect(() => {
-    try {
-      if (sessionStorage.getItem(INTRO_SESSION_KEY)) {
-        setShowIntro(false);
-        setNavReady(true);
-      }
-    } catch {
-      setNavReady(true);
-    }
-  }, []);
-
   return (
     <div className="min-h-[100dvh] text-foreground relative">
-      {navReady && <SiteNav />}
+      <SiteNav />
 
       <main className="max-w-[62rem] mx-auto px-6 sm:px-8 lg:px-16">
         <header className="flex min-h-[calc(100dvh-9rem)] items-center pt-16 pb-20 sm:pt-28 sm:pb-20">
@@ -112,15 +92,6 @@ export default function Home() {
       </main>
 
       <div className="fixed bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
-
-      {showIntro && (
-        <BasketballIntro
-          onDone={() => {
-            setShowIntro(false);
-            setNavReady(true);
-          }}
-        />
-      )}
     </div>
   );
 }
