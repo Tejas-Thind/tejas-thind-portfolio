@@ -1,0 +1,35 @@
+app/writing/page.tsx
+  s_e391ec747cf6ed::t_42ae5615936dad 2,19-21,41,43-44,53-54
+  s_e391ec747cf6ed::t_eb3efd17362936 3-16,22-27,32,46-52,55
+lib/writing.ts
+  s_e391ec747cf6ed::t_2d3189a7b50bce 1-61
+app/sitemap.ts
+  s_e391ec747cf6ed::t_1a2c837dd311e5 2,24-29
+components/ui/glass-folder-cards.tsx
+  s_e391ec747cf6ed::t_f62900b5f4fb73 919
+  s_e391ec747cf6ed::t_a5db07c65bfb23 1081-1084
+  s_e391ec747cf6ed::t_30f736a78c4747 1192-1194
+  s_e391ec747cf6ed::t_c447ff6b7a744d 1-918,920-1043,1045-1080,1085-1089,1091-1191,1195-1202,1204-1232,1234-1330
+  s_e391ec747cf6ed::t_b9e1fb0b11908f 1090,1203
+  s_e391ec747cf6ed::t_50d9a4b0c37f0e 1044,1233
+app/writing/[slug]/page.tsx
+  s_e391ec747cf6ed::t_acaab4e293ba08 1-64
+.gitignore
+  s_e391ec747cf6ed::t_93e9ae958e4b94 1-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "87659ba968a5482c125622cc5bb26581053171af",
+  "prompts": {},
+  "sessions": {
+    "s_e391ec747cf6ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "82b1d842-74ef-4b8d-8a64-926c41a7759e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
