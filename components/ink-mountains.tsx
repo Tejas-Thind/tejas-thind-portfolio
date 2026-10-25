@@ -433,11 +433,17 @@ export function InkMountains({ seed = 7, className }: Props) {
     };
   }, [seed]);
 
-  // No grain overlay here — the site's global body::after grain already
-  // covers this element, so adding a second one would double up the texture.
   return (
     <div className={className} aria-hidden="true">
       <canvas ref={canvasRef} className="block h-full w-full" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-screen"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          backgroundSize: "160px 160px",
+        }}
+      />
     </div>
   );
 }

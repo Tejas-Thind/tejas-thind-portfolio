@@ -7,77 +7,72 @@ import { InkMountains } from "@/components/ink-mountains";
 export default function Home() {
   return (
     <div className="min-h-[100dvh] text-foreground relative">
-      <main className="relative z-10 max-w-[62rem] mx-auto px-6 sm:px-8 lg:px-16 bg-background">
-        <header className="relative flex min-h-[calc(100dvh-9rem)] items-center pt-16 pb-20 sm:pt-28 sm:pb-20 -mx-6 px-6 sm:-mx-8 sm:px-8 lg:-mx-16 lg:px-16 overflow-hidden">
-          <InkMountains seed={7} className="absolute inset-0 z-0 pointer-events-none" />
-          {/* Scrim behind the text column only, so contrast holds against the
-              mountains/sky regardless of where they fall at any viewport height. */}
-          <div
-            className="pointer-events-none absolute inset-y-0 left-0 z-[5] w-full max-w-lg bg-gradient-to-r from-background/55 via-background/20 to-transparent sm:max-w-xl"
-            aria-hidden="true"
-          />
-          <div
-            className="relative z-10 w-full space-y-4 sm:space-y-5 animate-init animate-blur-in"
-            style={{ animationDelay: "400ms" }}
-          >
-            <h1 className="pb-1 text-3xl leading-[1.1] tracking-tighter text-foreground font-serif sm:text-4xl">
-              <span className="font-normal italic">
-                <TextScramble
-                  text="Hey, I'm Tejas"
-                  delay={0}
-                  duration={1000}
-                  loopInterval={8000}
-                  emphasisStart={9}
-                />
-              </span>
-            </h1>
+      <InkMountains seed={7} className="fixed inset-0 z-0 pointer-events-none" />
+      <main className="relative z-10 max-w-[62rem] mx-auto px-6 sm:px-8 lg:px-16">
+        <header className="flex min-h-[calc(100dvh-9rem)] items-center pt-16 pb-20 sm:pt-28 sm:pb-20">
+          <div className="w-full">
+            <div
+              className="space-y-4 sm:space-y-5 animate-init animate-blur-in"
+              style={{ animationDelay: "400ms" }}
+            >
+              <h1 className="pb-1 text-3xl leading-[1.1] tracking-tighter text-foreground font-serif sm:text-4xl">
+                <span className="font-normal italic">
+                  <TextScramble
+                    text="Hey, I'm Tejas"
+                    delay={0}
+                    duration={1000}
+                    loopInterval={8000}
+                    emphasisStart={9}
+                  />
+                </span>
+              </h1>
 
-            <p className="text-base text-foreground leading-relaxed max-w-md">
-              Management Engineering + AI @{" "}
-              <AnimatedLink
-                href="https://uwaterloo.ca/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground font-semibold"
-              >
-                UWaterloo
-              </AnimatedLink>
-              .
-            </p>
+              <p className="text-base text-foreground leading-relaxed max-w-md">
+                Management Engineering + AI @{" "}
+                <AnimatedLink
+                  href="https://uwaterloo.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground font-semibold"
+                >
+                  UWaterloo
+                </AnimatedLink>
+                .
+              </p>
+            </div>
+
+            <div
+              className="mt-2 space-y-2 sm:mt-3 sm:space-y-3 animate-init animate-blur-in"
+              style={{ animationDelay: "600ms" }}
+            >
+              <p className="text-base text-foreground leading-relaxed font-normal">
+                I built extraction pipelines and hybrid retrieval for transcript search as an AI Engineer Intern at{" "}
+                <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
+                .
+              </p>
+              <p className="text-base text-foreground leading-relaxed font-normal">
+                I&apos;ve also worked on AI video & image generation infrastructure at{" "}
+                <AnimatedLink href="https://cloverlabs.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Clover Labs</AnimatedLink>
+                , and shipped product-facing features at{" "}
+                <AnimatedLink href="https://rootly.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Rootly AI</AnimatedLink>
+                , used by enterprise customers like Nvidia, Figma, LinkedIn & more.
+              </p>
+              <p className="text-base text-foreground leading-relaxed font-normal">
+                I love content creation and sharing my journey on{" "}
+                <AnimatedLink href="https://www.instagram.com/tejastnd/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Instagram</AnimatedLink>
+                , growing it to <span className="font-semibold">2.8k+</span> followers and <span className="font-semibold">23M+</span> views.
+              </p>
+            </div>
+
+            <div
+              className="mt-3 sm:mt-5 animate-init animate-blur-in"
+              style={{ animationDelay: "1000ms" }}
+            >
+              <ContributionGraph />
+            </div>
           </div>
         </header>
 
-        <div className="pb-20 sm:pb-28">
-          <div
-            className="space-y-2 sm:space-y-3 animate-init animate-blur-in"
-            style={{ animationDelay: "100ms" }}
-          >
-            <p className="text-base text-foreground leading-relaxed font-normal">
-              I built extraction pipelines and hybrid retrieval for transcript search as an AI Engineer Intern at{" "}
-              <AnimatedLink href="https://www.theoryvc.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Theory Ventures</AnimatedLink>
-              .
-            </p>
-            <p className="text-base text-foreground leading-relaxed font-normal">
-              I&apos;ve also worked on AI video & image generation infrastructure at{" "}
-              <AnimatedLink href="https://cloverlabs.ai/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Clover Labs</AnimatedLink>
-              , and shipped product-facing features at{" "}
-              <AnimatedLink href="https://rootly.com/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Rootly AI</AnimatedLink>
-              , used by enterprise customers like Nvidia, Figma, LinkedIn & more.
-            </p>
-            <p className="text-base text-foreground leading-relaxed font-normal">
-              I love content creation and sharing my journey on{" "}
-              <AnimatedLink href="https://www.instagram.com/tejastnd/" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold">Instagram</AnimatedLink>
-              , growing it to <span className="font-semibold">2.8k+</span> followers and <span className="font-semibold">23M+</span> views.
-            </p>
-          </div>
-
-          <div
-            className="mt-3 sm:mt-5 animate-init animate-blur-in"
-            style={{ animationDelay: "250ms" }}
-          >
-            <ContributionGraph />
-          </div>
-        </div>
       </main>
     </div>
   );
