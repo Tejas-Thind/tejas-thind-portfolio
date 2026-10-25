@@ -1,0 +1,20 @@
+app/api/contributions/route.ts
+  s_e391ec747cf6ed::t_665e2ac244ca58 53-71,74-82
+  s_e391ec747cf6ed::t_a138a098ca88d8 72-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "83e33001e4856f46b954bbbd6aaf0cbe92943c9b",
+  "prompts": {},
+  "sessions": {
+    "s_e391ec747cf6ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "82b1d842-74ef-4b8d-8a64-926c41a7759e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
