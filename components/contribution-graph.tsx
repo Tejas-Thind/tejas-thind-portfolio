@@ -20,10 +20,10 @@ type Week = { days: Day[] };
 type ContributionData = { total: number; weeks: Week[] };
 
 const LEVEL_OPACITY: Record<Level, number> = {
-  NONE: 0.06,
-  FIRST_QUARTILE: 0.3,
-  SECOND_QUARTILE: 0.5,
-  THIRD_QUARTILE: 0.75,
+  NONE: 0.1,
+  FIRST_QUARTILE: 0.42,
+  SECOND_QUARTILE: 0.62,
+  THIRD_QUARTILE: 0.82,
   FOURTH_QUARTILE: 1,
 };
 
@@ -31,9 +31,15 @@ const LEVEL_OPACITY: Record<Level, number> = {
 // stay tied to the rest of the site instead of introducing new ones.
 // Green is skipped here specifically (unlike TextScramble's palette) since
 // it's GitHub's own contribution-graph color and would look like a copy.
+// Warm tones (amber/coral/pink) are weighted to come up roughly twice as
+// often as cool ones (violet/blue/cyan), so the cycle mostly harmonizes with
+// the warm sunset hero above it instead of landing on a jarring cool color.
 const PALETTE = [
   "var(--scramble-amber)",
+  "var(--scramble-amber)",
   "var(--scramble-coral)",
+  "var(--scramble-coral)",
+  "var(--scramble-pink)",
   "var(--scramble-pink)",
   "var(--scramble-violet)",
   "var(--scramble-blue)",
