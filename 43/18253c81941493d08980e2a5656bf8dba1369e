@@ -1,0 +1,21 @@
+app/page.tsx
+  s_e391ec747cf6ed::t_60f256a25d0f86 10-28,30-42,44-65,67-72,74-75
+components/ink-mountains.tsx
+  s_e391ec747cf6ed::t_fdc5d30aa6cd9e 439-446
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4318253c81941493d08980e2a5656bf8dba1369e",
+  "prompts": {},
+  "sessions": {
+    "s_e391ec747cf6ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "82b1d842-74ef-4b8d-8a64-926c41a7759e",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
