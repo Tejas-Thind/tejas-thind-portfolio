@@ -1,0 +1,35 @@
+app/twitter-image.tsx
+  s_7de38459a6c78f::t_ec58ce6a1a05cd 1
+app/opengraph-image.tsx
+  s_7de38459a6c78f::t_a99e5f98602f3a 1-32
+app/experience/layout.tsx
+  s_7de38459a6c78f::t_41c05f1f4c88b1 1-23
+components/json-ld.tsx
+  s_7de38459a6c78f::t_23fcb8c7f3ccdc 1-10
+lib/site.ts
+  s_7de38459a6c78f::t_b69dded7137f0f 1-42
+app/llms.txt/route.ts
+  s_7de38459a6c78f::t_b4a0ee9edbdc3a 1-42
+app/writing/layout.tsx
+  s_7de38459a6c78f::t_8a7061c38393a4 1-24
+app/robots.ts
+  s_7de38459a6c78f::t_fd81147e51f69b 2-20,24-29
+app/layout.tsx
+  s_7de38459a6c78f::t_10dcf429ffb921 7-8,31-33,35-36,38-39,45-46,49-66,70-73,76-78,124-140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "94a31630203a395d308fbff83152ec4b621a7f4f",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
