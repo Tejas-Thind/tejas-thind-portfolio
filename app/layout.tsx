@@ -4,6 +4,8 @@ import { GeistMono } from "geist/font/mono";
 import { Instrument_Sans, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
+import { JsonLd } from "@/components/json-ld";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, WEBSITE_ID, personNode } from "@/lib/site";
 import CanvasCursor from "@/components/canvas-cursor";
 import { CommandPalette } from "@/components/command-palette";
 import { PageTransition } from "@/components/page-transition";
@@ -26,47 +28,55 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tejasthind.com"),
+  metadataBase: new URL(SITE_URL),
+  // The tab keeps the site title on every page. Pages set their own description
+  // and canonical URL, not a title.
   title: {
-    default: "Tejas Thind",
-    template: "%s | Tejas Thind",
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Engineering + AI student at University of Waterloo. Previous 3x SWE intern.",
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
   keywords: [
     "Tejas Thind",
     "Software Engineer",
     "University of Waterloo",
     "Management Engineering",
-    "Full Stack Developer",
+    "AI Engineer",
+    "Theory Ventures",
     "Portfolio",
   ],
-  authors: [{ name: "Tejas Thind" }],
-  creator: "Tejas Thind",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  // The share image comes from app/opengraph-image.tsx.
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://tejasthind.com",
-    title: "Tejas Thind",
-    description:
-      "Engineering + AI student at University of Waterloo. Previous 3x SWE intern.",
-    siteName: "Tejas Thind Portfolio",
-    images: [
-      {
-        url: "/icon.png",
-        width: 256,
-        height: 256,
-        alt: "Tejas Thind",
-      },
-    ],
+    url: SITE_URL,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
   },
   twitter: {
-    card: "summary",
-    title: "Tejas Thind",
-    description:
-      "Engineering + AI student at University of Waterloo. Previous 3x SWE intern.",
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
     creator: "@tejasthind4",
-    images: ["/icon.png"],
   },
   icons: {
     icon: [
@@ -111,6 +121,23 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              personNode,
+              {
+                "@type": "WebSite",
+                "@id": WEBSITE_ID,
+                url: SITE_URL,
+                name: SITE_NAME,
+                description: SITE_DESCRIPTION,
+                inLanguage: "en",
+                publisher: { "@id": personNode["@id"] },
+              },
+            ],
+          }}
+        />
         <div className="fixed inset-0 z-[-2] bg-background pointer-events-none" />
         <CanvasCursor />
         <ThemeProvider>
