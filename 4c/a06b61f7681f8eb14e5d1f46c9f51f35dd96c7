@@ -1,0 +1,35 @@
+lib/writing.ts
+  s_ec496c13088900::t_ff146bf709b24f 117
+  s_7de38459a6c78f::t_ae3fd359806932 1-3,6-59,61-65,67-71,80-101,103-106,146
+  s_7de38459a6c78f::t_4f21a908b28adf 145
+  s_ec496c13088900::t_08e8e1f344abe1 4
+  s_ec496c13088900::t_ed04389bcf401a 60
+  s_7de38459a6c78f::t_b073948aa2185c 5,72-79,102
+  s_ec496c13088900::t_0f343e1a152182 114-116,118
+  s_ec496c13088900::t_2774f1d6559c1c 66
+  s_ec496c13088900::t_2828d312ce027c 107-113,119-144
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4ca06b61f7681f8eb14e5d1f46c9f51f35dd96c7",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    },
+    "s_ec496c13088900": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9151ee40-e5f5-44aa-941d-fa4f79c665c6",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
