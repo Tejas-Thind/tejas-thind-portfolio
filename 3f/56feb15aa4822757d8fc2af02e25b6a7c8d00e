@@ -1,0 +1,21 @@
+package-lock.json
+  s_7de38459a6c78f::t_d92d77ba263f04 57,2932-2937,3403-3408,3415-3430,3689-3700
+package.json
+  s_7de38459a6c78f::t_5717b21e8ba1e0 58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3f56feb15aa4822757d8fc2af02e25b6a7c8d00e",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "unknown"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
