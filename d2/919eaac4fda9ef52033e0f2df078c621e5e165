@@ -1,0 +1,21 @@
+components/json-ld.tsx
+  s_7de38459a6c78f::t_622dcbc075e788 1-10
+lib/site.ts
+  s_7de38459a6c78f::t_fb269fe22b926e 1-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d2919eaac4fda9ef52033e0f2df078c621e5e165",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
