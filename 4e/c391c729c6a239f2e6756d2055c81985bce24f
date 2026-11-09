@@ -1,0 +1,19 @@
+next.config.mjs
+  s_ec496c13088900::t_d432e866df4f04 12-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4ec391c729c6a239f2e6756d2055c81985bce24f",
+  "prompts": {},
+  "sessions": {
+    "s_ec496c13088900": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9151ee40-e5f5-44aa-941d-fa4f79c665c6",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
