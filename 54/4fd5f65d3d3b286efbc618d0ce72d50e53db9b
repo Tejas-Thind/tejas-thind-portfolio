@@ -1,0 +1,21 @@
+next.config.mjs
+  s_7de38459a6c78f::t_1dd05fdb0d5905 12-17
+app/writing/[slug]/md/route.ts
+  s_7de38459a6c78f::t_6bfc24d1c00214 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "544fd5f65d3d3b286efbc618d0ce72d50e53db9b",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
