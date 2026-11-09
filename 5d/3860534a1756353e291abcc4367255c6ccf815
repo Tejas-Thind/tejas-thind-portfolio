@@ -1,0 +1,31 @@
+app/experience/page.tsx
+  s_7de38459a6c78f::t_65e078f8b4486a 206
+  s_7de38459a6c78f::t_cd24c8bd5ac884 21-22
+  s_7de38459a6c78f::t_4694d22459cd64 25
+  s_9f0e319c2e2532::t_30e3928a2f9f38 19-20,23-24,26
+  s_7de38459a6c78f::t_7c0b2087173a1f 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5d3860534a1756353e291abcc4367255c6ccf815",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    },
+    "s_9f0e319c2e2532": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "369603d0-6eba-4bef-98d0-51584a1b1fe0",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
