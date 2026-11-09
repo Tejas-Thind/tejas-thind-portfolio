@@ -16,6 +16,15 @@ type Job = {
 
 const experiences: Job[] = [
   {
+    company: "Vercel",
+    role: "Software Engineer Intern",
+    location: "San Francisco, CA",
+    date: "Winter 2027",
+    description: "Joining Vercel as a software engineer intern in Winter 2027.",
+    current: false,
+    url: "https://vercel.com/home",
+  },
+  {
     company: "Theory Ventures",
     role: "AI Engineer Intern",
     location: "San Francisco, CA",
@@ -194,7 +203,7 @@ function CardWithEffect({ job }: { job: Job }) {
                   </span>
                 )}
                 <ExternalLink
-                  className="h-3.5 w-3.5 shrink-0 -translate-x-0.5 text-muted-foreground opacity-0 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0 group-hover:opacity-50"
+                  className="h-3.5 w-3.5 shrink-0 -translate-x-0.5 text-muted-foreground opacity-0 transition-[opacity,translate] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0 group-hover:opacity-50"
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
