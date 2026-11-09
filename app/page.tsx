@@ -2,20 +2,23 @@
 import { AnimatedLink } from "@/components/animated-link";
 import { TextScramble } from "@/components/text-scramble";
 import { ContributionGraph } from "@/components/contribution-graph";
-import { InkMountains } from "@/components/ink-mountains";
 
 export default function Home() {
   return (
     <div className="min-h-[100dvh] text-foreground relative">
-      <InkMountains seed={7} className="fixed inset-0 z-0 pointer-events-none" />
       <main className="relative z-10 max-w-[62rem] mx-auto px-6 sm:px-8 lg:px-16">
-        <header className="flex min-h-[calc(100dvh-9rem)] items-center pt-16 pb-20 sm:pt-28 sm:pb-20">
+        {/* Bottom-anchored, not centred: the chart's bottom edge sits 1.5rem
+            above the sun. InkMountains publishes the sun's top as --sun-top
+            once its canvas is built (SceneBackdrop, in the layout); 51.1dvh is the server-rendered fallback.
+            If the content is taller than that, the header just grows downward
+            instead of sliding under the nav. */}
+        <header className="flex min-h-[calc(var(--sun-top,51.1dvh)-1.5rem)] items-end pt-16">
           <div className="w-full">
             <div
-              className="space-y-4 sm:space-y-5 animate-init animate-blur-in"
+              className="space-y-2.5 animate-init animate-blur-in"
               style={{ animationDelay: "400ms" }}
             >
-              <h1 className="pb-1 text-3xl leading-[1.1] tracking-tighter text-foreground font-serif sm:text-4xl">
+              <h1 className="text-3xl leading-[1.1] tracking-tighter text-foreground font-serif sm:text-4xl">
                 <span className="font-normal italic">
                   <TextScramble
                     text="Hey, I'm Tejas"
@@ -26,6 +29,19 @@ export default function Home() {
                   />
                 </span>
               </h1>
+
+              <p className="text-base text-foreground leading-relaxed max-w-2xl">
+                Joining the engineering team behind Next.js, v0, and the AI SDK as an intern at{" "}
+                <AnimatedLink
+                  href="https://vercel.com/home"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground font-semibold"
+                >
+                  Vercel
+                </AnimatedLink>
+                .
+              </p>
 
               <p className="text-base text-foreground leading-relaxed max-w-md">
                 Management Engineering + AI @{" "}
@@ -42,7 +58,7 @@ export default function Home() {
             </div>
 
             <div
-              className="mt-2 space-y-2 sm:mt-3 sm:space-y-3 animate-init animate-blur-in"
+              className="mt-2.5 space-y-2.5 animate-init animate-blur-in"
               style={{ animationDelay: "600ms" }}
             >
               <p className="text-base text-foreground leading-relaxed font-normal">
@@ -65,7 +81,7 @@ export default function Home() {
             </div>
 
             <div
-              className="mt-3 sm:mt-5 animate-init animate-blur-in"
+              className="mt-4 animate-init animate-blur-in"
               style={{ animationDelay: "1000ms" }}
             >
               <ContributionGraph />
