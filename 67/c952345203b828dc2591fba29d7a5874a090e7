@@ -1,0 +1,23 @@
+app/sitemap.ts
+  s_7de38459a6c78f::t_5b423b623b937a 2,24-29
+app/llms.txt/route.ts
+  s_7de38459a6c78f::t_24ebafa59ad0f7 1-54
+app/robots.ts
+  s_7de38459a6c78f::t_f3c5ca802f087b 2-20,24-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "67c952345203b828dc2591fba29d7a5874a090e7",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
