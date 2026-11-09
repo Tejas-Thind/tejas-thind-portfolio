@@ -1,0 +1,29 @@
+app/writing/page.tsx
+  s_7de38459a6c78f::t_b2cfaf75be11c2 8
+  s_7de38459a6c78f::t_0e484699b2708b 3,6,9-10,12,14-19,21,32-48
+  s_7de38459a6c78f::t_dfd80bdb2937d2 52,73
+  s_7de38459a6c78f::t_ea3b02629d6625 82
+  s_7de38459a6c78f::t_a0e961a0267e68 1,5,11,22-24,26,51,53-56,58,60-61,94
+  s_7de38459a6c78f::t_65e078f8b4486a 77
+  s_7de38459a6c78f::t_111dbbbebd8b25 4,27-28,59,69,90
+  s_7de38459a6c78f::t_005068c6dd4274 50
+  s_7de38459a6c78f::t_396425b935516a 72
+  s_7de38459a6c78f::t_20fe2276b758a2 2,25,31,62-68,70-71,74-76,78-81,83-89,91-93
+  s_7de38459a6c78f::t_d444e7a0fbfc9d 13,20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "349cd61e44544add57d1b6e909ec588c14d637e1",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
