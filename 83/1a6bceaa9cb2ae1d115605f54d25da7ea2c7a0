@@ -1,0 +1,21 @@
+app/opengraph-image.tsx
+  s_7de38459a6c78f::t_09e8ba0d35c039 1-33
+app/twitter-image.tsx
+  s_7de38459a6c78f::t_e2f0090db81605 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "831a6bceaa9cb2ae1d115605f54d25da7ea2c7a0",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
