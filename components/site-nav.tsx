@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { PageLink } from "@/components/page-link";
+import { useDisplayedPath } from "@/components/displayed-path";
 import { useEffect, useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { PAGES } from "@/lib/pages";
@@ -20,8 +20,12 @@ function XIcon() {
 }
 
 export function SiteNav() {
-  const pathname = usePathname();
-  const destinations = PAGES.filter((page) => page.href !== pathname);
+  const { path: pathname } = useDisplayedPath();
+  // Hide the link for the section we're in too, so an article under /writing
+  // doesn't show "Writing" in the nav next to its own back link.
+  const destinations = PAGES.filter(
+    (page) => page.href !== pathname && (page.href === "/" || !pathname.startsWith(`${page.href}/`)),
+  );
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -94,7 +98,7 @@ export function SiteNav() {
               {index > 0 && (
                 <span className="h-4 w-px bg-border/70" aria-hidden="true" />
               )}
-              <Link
+              <PageLink
                 href={destination.href}
                 className="group inline-flex min-h-10 items-center gap-1.5 rounded-sm font-normal text-muted-foreground transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/40"
               >
@@ -102,7 +106,7 @@ export function SiteNav() {
                 <span className="transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
                   →
                 </span>
-              </Link>
+              </PageLink>
             </span>
           ))}
         </div>
