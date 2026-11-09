@@ -1,0 +1,21 @@
+components/page-transition.tsx
+  s_7de38459a6c78f::t_805845716d9126 31
+  s_7de38459a6c78f::t_9158f2ae14b2ba 13,38,43
+  s_7de38459a6c78f::t_026e91bcfb1cd7 4-5,7-10,14-30,32-34,36,39-42,47,53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b30fe127bd4962d889069597e663c5490835c9e7",
+  "prompts": {},
+  "sessions": {
+    "s_7de38459a6c78f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ee2bc38-1e96-42bd-83f1-c8f5329e9b1f",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
