@@ -1,0 +1,19 @@
+pnpm-lock.yaml
+  s_ec496c13088900::t_6c642c30b82891 149-151,259,265,271,277,283,289,296,303,310,317,324,331,387,394,401,408,1122,1129,1136,1143,1411-1413,1463,1470,1477,1484,1568-1570,1574-1579,1675,1680-1682,1743,2940-2941,3059-3060,3063-3069,3178-3184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ca09689131c01bd7e27097b47d6424c4f1c10ac1",
+  "prompts": {},
+  "sessions": {
+    "s_ec496c13088900": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9151ee40-e5f5-44aa-941d-fa4f79c665c6",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
