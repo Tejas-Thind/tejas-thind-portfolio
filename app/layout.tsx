@@ -1,11 +1,13 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
-import { Instrument_Sans, Newsreader } from "next/font/google";
+import { Instrument_Sans, Newsreader, Patrick_Hand } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { JsonLd } from "@/components/json-ld";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, WEBSITE_ID, personNode } from "@/lib/site";
+import { DisplayedPathProvider } from "@/components/displayed-path";
+import { SceneBackdrop } from "@/components/scene-backdrop";
 import CanvasCursor from "@/components/canvas-cursor";
 import { CommandPalette } from "@/components/command-palette";
 import { PageTransition } from "@/components/page-transition";
@@ -16,6 +18,14 @@ import "./globals.css";
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument-sans",
+  display: "swap",
+});
+
+// handwriting for the pencil-sketch diagrams in the writing section
+const patrickHand = Patrick_Hand({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-hand",
   display: "swap",
 });
 
@@ -43,6 +53,7 @@ export const metadata: Metadata = {
     "University of Waterloo",
     "Management Engineering",
     "AI Engineer",
+    "Vercel",
     "Theory Ventures",
     "Portfolio",
   ],
@@ -51,6 +62,7 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   alternates: {
     canonical: "/",
+    types: { "application/rss+xml": "/writing/feed.xml" },
   },
   robots: {
     index: true,
@@ -63,7 +75,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // The share image comes from app/opengraph-image.tsx.
+  // The share image comes from app/opengraph-image.tsx (and per post).
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -96,7 +108,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${instrumentSans.variable} ${GeistMono.variable} ${newsreader.variable}`}
+      className={`dark ${instrumentSans.variable} ${GeistMono.variable} ${newsreader.variable} ${patrickHand.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -106,7 +118,7 @@ export default function RootLayout({
               (function() {
                 try {
                   var theme = localStorage.getItem('portfolio-theme');
-                  if (theme === 'light') {
+                  if (theme === 'light' && location.pathname !== '/') {
                     document.documentElement.classList.remove('dark');
                   } else {
                     document.documentElement.classList.add('dark');
@@ -140,12 +152,15 @@ export default function RootLayout({
         />
         <div className="fixed inset-0 z-[-2] bg-background pointer-events-none" />
         <CanvasCursor />
-        <ThemeProvider>
-          <CommandPalette />
-          <SiteNav />
-          <PageTransition>{children}</PageTransition>
-          <SiteUtilities />
-        </ThemeProvider>
+        <DisplayedPathProvider>
+          <ThemeProvider>
+            <SceneBackdrop />
+            <CommandPalette />
+            <SiteNav />
+            <PageTransition>{children}</PageTransition>
+            <SiteUtilities />
+          </ThemeProvider>
+        </DisplayedPathProvider>
         <Analytics />
       </body>
     </html>

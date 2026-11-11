@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { POSTS } from "@/lib/writing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -20,5 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    ...POSTS.map((post) => ({
+      url: `https://tejasthind.com/writing/${post.slug}`,
+      lastModified: post.date ? new Date(post.date) : new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.7,
+    })),
   ];
 }

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { SITE_NAME } from "@/lib/site";
 
-export const alt = "Tejas Thind: Management Engineering and AI at the University of Waterloo";
+export const alt = "Tejas Thind: Management Engineering at the University of Waterloo, joining Vercel";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -25,6 +25,7 @@ export default function Image() {
         <div style={{ marginTop: 20, fontSize: 36, opacity: 0.85 }}>
           Management Engineering + AI at the University of Waterloo
         </div>
+        <div style={{ marginTop: 10, fontSize: 30, opacity: 0.7 }}>Joining Vercel as a software engineer intern</div>
       </div>
     ),
     size,

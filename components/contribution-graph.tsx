@@ -20,10 +20,10 @@ type Week = { days: Day[] };
 type ContributionData = { total: number; weeks: Week[] };
 
 const LEVEL_OPACITY: Record<Level, number> = {
-  NONE: 0.06,
-  FIRST_QUARTILE: 0.3,
-  SECOND_QUARTILE: 0.5,
-  THIRD_QUARTILE: 0.75,
+  NONE: 0.1,
+  FIRST_QUARTILE: 0.42,
+  SECOND_QUARTILE: 0.62,
+  THIRD_QUARTILE: 0.82,
   FOURTH_QUARTILE: 1,
 };
 

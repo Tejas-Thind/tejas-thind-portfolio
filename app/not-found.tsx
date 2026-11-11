@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PageLink } from "@/components/page-link";
 
 export default function NotFound() {
   return (
@@ -11,13 +11,13 @@ export default function NotFound() {
       <p className="text-muted-foreground text-base max-w-xs leading-relaxed mb-10">
         This page doesn&apos;t exist yet. Neither did most good ideas.
       </p>
-      <Link
+      <PageLink
         href="/"
         className="text-foreground text-sm font-semibold hover-lift"
         style={{ textShadow: "0 0 0.6px currentColor, 0 0 0.6px currentColor" }}
       >
         Go home
-      </Link>
+      </PageLink>
     </div>
   );
 }
