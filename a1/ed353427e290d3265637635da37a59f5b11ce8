@@ -1,0 +1,96 @@
+app/writing/[slug]/twitter-image.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1
+app/sitemap.ts
+  s_ec496c13088900::t_3789c3dc13a52c 2,24-29
+components/displayed-path.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-111
+app/page.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 9-15,18,21,33-45,61,84
+app/writing/[slug]/md/route.ts
+  s_ec496c13088900::t_3789c3dc13a52c 1-18
+components/writing/back-to-top.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-24
+components/writing/sketch.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-256
+components/command-palette.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 3-4,89,108-109,119
+components/site-utilities.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 4,10-11,19-33
+components/writing/post-row.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-15
+package.json
+  s_ec496c13088900::t_3789c3dc13a52c 58
+components/page-transition.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-56
+app/not-found.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1,14-15,20
+app/api/contributions/route.ts
+  s_ec496c13088900::t_3789c3dc13a52c 53-82
+.gitignore
+  s_ec496c13088900::t_3789c3dc13a52c 28
+components/theme-provider.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 3,6-13,20
+components/writing/diagrams.tsx
+  s_ec496c13088900::t_cf9a388e3f7f19 1-6
+app/writing/[slug]/opengraph-image.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-39
+components/ink-mountains.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-1163
+components/writing/expandable-figure.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-76
+app/experience/page.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 19-26,206
+  s_ec496c13088900::t_98ee31f4e5d953 18
+components/contribution-graph.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 23-26
+app/writing/page.tsx
+  s_ec496c13088900::t_cf9a388e3f7f19 1-108
+app/writing/feed.xml/route.ts
+  s_ec496c13088900::t_3789c3dc13a52c 1-47
+components/page-link.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-20
+components/site-nav.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 3-4,23-28,101,109
+next.config.mjs
+  s_ec496c13088900::t_3789c3dc13a52c 12-23
+components/scene-backdrop.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-33
+components/writing/read-tracker.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-47
+components/writing/reading-progress.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-38
+app/writing/[slug]/page.tsx
+  s_ec496c13088900::t_3789c3dc13a52c 1-221
+lib/writing.ts
+  s_ec496c13088900::t_cf9a388e3f7f19 1-60
+app/experience/layout.tsx
+  s_ec496c13088900::t_617f863c8fbebf 5,11
+app/layout.tsx
+  s_ec496c13088900::t_dbd4b656d1fd21 4,9-10,24-31,56,65,78,111,121,155-163
+app/llms.txt/route.ts
+  s_ec496c13088900::t_4db279c863e2c4 1,5-8,20,29-36,48
+app/opengraph-image.tsx
+  s_ec496c13088900::t_7e841d88984596 4,28
+lib/site.ts
+  s_ec496c13088900::t_21b0117450c90f 2-3,9,23
+package-lock.json
+  s_ec496c13088900::t_70c6981b7aff53 57,2932-2937,3403-3408,3415-3430,3689-3700
+pnpm-lock.yaml
+  s_ec496c13088900::t_e0381ded53b210 149-151,259,265,271,277,283,289,296,303,310,317,324,331,387,394,401,408,1122,1129,1136,1143,1411-1413,1463,1470,1477,1484,1568-1570,1574-1579,1675,1680-1682,1743,2940-2941,3059-3060,3063-3069,3178-3184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a1ed353427e290d3265637635da37a59f5b11ce8",
+  "prompts": {},
+  "sessions": {
+    "s_ec496c13088900": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9151ee40-e5f5-44aa-941d-fa4f79c665c6",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
