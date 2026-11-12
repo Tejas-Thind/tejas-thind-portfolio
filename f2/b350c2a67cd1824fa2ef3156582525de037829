@@ -1,0 +1,25 @@
+components/page-link.tsx
+  s_ec496c13088900::t_b7ba63d813cbda 5,12,17-21,23
+app/api/contributions/route.ts
+  s_ec496c13088900::t_b7ba63d813cbda 52-57,60
+components/ink-mountains.tsx
+  s_ec496c13088900::t_b7ba63d813cbda 15,207-208,211,1007-1008,1143-1147,1150
+components/displayed-path.tsx
+  s_ec496c13088900::t_b7ba63d813cbda 54,65-74,76,84,96-99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f2b350c2a67cd1824fa2ef3156582525de037829",
+  "prompts": {},
+  "sessions": {
+    "s_ec496c13088900": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9151ee40-e5f5-44aa-941d-fa4f79c665c6",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
