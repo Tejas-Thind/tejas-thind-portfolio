@@ -1,0 +1,25 @@
+app/writing/page.tsx
+  s_ec496c13088900::t_99ba7baa6e7744 1-108
+components/writing/diagrams.tsx
+  s_ec496c13088900::t_ae4639dbacf103 1-6
+lib/writing.ts
+  s_ec496c13088900::t_a8d3217c48a882 1-60
+next.config.mjs
+  s_ec496c13088900::t_1c1c77a879a631 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6d6f1a0a91ba2c0cbd46e5fdb5101d549df58b73",
+  "prompts": {},
+  "sessions": {
+    "s_ec496c13088900": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9151ee40-e5f5-44aa-941d-fa4f79c665c6",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Tejas-3105 <155028169+Tejas-3105@users.noreply.github.com>"
+    }
+  }
+}
