@@ -51,6 +51,7 @@ export function DisplayedPathProvider({ children }: { children: ReactNode }) {
 
   const pathnameRef = useRef(pathname);
   pathnameRef.current = pathname;
+  const targetRef = useRef<string | null>(null);
   const timers = useRef<number[]>([]);
   const clearTimers = () => {
     timers.current.forEach((t) => window.clearTimeout(t));
@@ -61,8 +62,18 @@ export function DisplayedPathProvider({ children }: { children: ReactNode }) {
   const navigate = useCallback(
     (href: string) => {
       const dest = href.split(/[?#]/)[0] || "/";
-      if (dest === pathnameRef.current) return;
+      if (dest === pathnameRef.current) {
+        // heading back to the page we are on: drop any pending navigation
+        if (targetRef.current !== null) {
+          clearTimers();
+          targetRef.current = null;
+          setTarget(null);
+          setVisible(true);
+        }
+        return;
+      }
       clearTimers();
+      targetRef.current = dest;
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       setTarget(dest);
       setVisible(false);
@@ -70,6 +81,7 @@ export function DisplayedPathProvider({ children }: { children: ReactNode }) {
         window.setTimeout(() => router.push(href, { scroll: false }), reduced ? 0 : FADE_MS),
         window.setTimeout(() => {
           if (pathnameRef.current !== dest) {
+            targetRef.current = null;
             setTarget(null);
             setVisible(true);
           }
@@ -80,8 +92,11 @@ export function DisplayedPathProvider({ children }: { children: ReactNode }) {
   );
 
   const commit = useCallback((next: string) => {
-    clearTimers();
     setPath(next);
+    // A newer click may already be heading somewhere else; keep its timers.
+    if (targetRef.current !== null && targetRef.current !== next) return;
+    clearTimers();
+    targetRef.current = null;
     setTarget(null);
   }, []);
   const reveal = useCallback(() => setVisible(true), []);

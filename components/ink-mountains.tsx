@@ -12,7 +12,7 @@ import { useEffect, useRef } from "react";
 //  - Publishes the sun's top edge as the CSS variable --sun-top so page
 //    content can sit relative to it without duplicating the layout maths.
 
-// `active` pauses drawing (the loop keeps ticking, cheaply) while the scene is
+// `active` pauses drawing (the loop parks itself and restarts) while the scene is
 // faded out behind another page, so it costs nothing there.
 type Props = { seed?: number; className?: string; active?: boolean };
 
@@ -204,8 +204,11 @@ const RIDGE_TONE: [number, RGB][] = [
 export function InkMountains({ seed = 7, className, active = true }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const activeRef = useRef(active);
+  // restarts the draw loop after it parked itself while inactive
+  const wakeRef = useRef<(() => void) | null>(null);
   useEffect(() => {
     activeRef.current = active;
+    if (active) wakeRef.current?.();
   }, [active]);
 
   useEffect(() => {
@@ -1001,7 +1004,8 @@ export function InkMountains({ seed = 7, className, active = true }: Props) {
       const dt = last ? Math.min(50, now - last) : 16;
       last = now;
       if (!activeRef.current) {
-        raf = requestAnimationFrame(frame);
+        // park: no per-frame work while the scene is hidden; wakeRef restarts it
+        raf = 0;
         return;
       }
       elapsed += dt;
@@ -1136,8 +1140,14 @@ export function InkMountains({ seed = 7, className, active = true }: Props) {
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
+    wakeRef.current = () => {
+      if (raf) return;
+      last = 0;
+      raf = requestAnimationFrame(frame);
+    };
 
     return () => {
+      wakeRef.current = null;
       cancelAnimationFrame(raf);
       window.clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);

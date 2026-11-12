@@ -49,10 +49,15 @@ type GitHubGraphQLResponse = {
 export async function GET() {
   const token = process.env.GITHUB_TOKEN;
 
+  if (!token && process.env.NODE_ENV !== "development") {
+    // Never invent numbers in production or on previews: a missing token should
+    // be visible, not hidden behind a fake graph.
+    return NextResponse.json({ error: "GITHUB_TOKEN is not set" }, { status: 500 });
+  }
+
   if (!token) {
     // Dev fallback: no token locally, so return sample data instead of failing,
-    // so the contribution graph still renders while developing. Production has
-    // GITHUB_TOKEN set and returns real data.
+    // so the contribution graph still renders while developing.
     const levels = [
       "NONE",
       "FIRST_QUARTILE",
